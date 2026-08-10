@@ -1,0 +1,56 @@
+/* From https://uiverse.io/Madflows/fresh-fireant-15 */
+
+.toggle-switch {
+    position: relative;
+    width: var(--s-width);
+    height: var(--s-height);
+    border: 2px solid;
+    padding: 3px;
+    border-radius: 25px;
+    --s-height: 32px;
+    --s-width: 70px;
+    --s-light: #d8dbe0;
+    --s-dark: #28292c;
+    --s-link: rgb(27, 129, 112);
+    --link-hover: rgb(24, 94, 82);
+}
+
+.toggle-switch .checkbox {
+    position: absolute;
+    display: none;
+}
+
+.toggle-switch .slider {
+    width: 100%;
+    display: block;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-switch .switch-label.light {
+    border-color: var(--s-dark);
+}
+
+.toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    border-radius: 50%;
+    -webkit-box-shadow: inset 12px -4px 0px 0px var(--s-dark);
+    box-shadow: inset 12px -4px 0px 0px var(--s-dark);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.toggle-switch .checkbox:checked~.slider::before {
+    background-color: var(--s-light);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    left:100%;
+    transform: translateX(-100%);
+}

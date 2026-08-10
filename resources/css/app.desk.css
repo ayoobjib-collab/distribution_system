@@ -1,0 +1,34 @@
+/* desktop css */
+@media (min-width: 900px) {
+    .app-container {
+        padding: .5vw;
+    }
+
+    aside.sidebar {
+        border-radius: 10px;
+        position: sticky;
+        top:.5vw;
+    }
+
+    .app-content {
+        border-radius: 10px;
+    }
+
+    .desk-hide {
+        display: none;
+    }
+
+    .mode-switch.mob-hide {
+        padding: 10px 0;
+    }
+
+    .cards>* {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    body:has(.modal-wrap) {
+        padding-right: 15px;
+    }
+
+
+}

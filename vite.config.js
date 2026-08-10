@@ -1,0 +1,21 @@
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/js/app.jsx',// Make sure this points to your JSX entry file
+                //'resources/js/ssr.js',// ssr intery file
+            ],
+            refresh: true,
+        }),
+        react(),
+    ],
+    build: {
+        // outDir: 'public_html/build', // where Vite will output files
+        outDir: 'public_html/build', // where Vite will output files
+        emptyOutDir: true,           // clear old files
+    },
+});
