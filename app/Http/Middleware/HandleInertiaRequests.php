@@ -51,6 +51,8 @@ class HandleInertiaRequests extends Middleware
             'auth.user' => fn() => $request->user()
                 ? $request->user()->only('id', 'full_name', 'mobile')
                 : null,
+
+            'isAdmin' => fn() => $request->user()?->hasRole('admin') ?? false,
         ]);
     }
 }

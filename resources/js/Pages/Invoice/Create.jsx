@@ -1,147 +1,209 @@
-import DashboardLayout from "@/Layouts/Dashboard/Layout";
-import FormField from "@/BaseComponents/FormField";
+import { useEffect, useState } from 'react';
+
 import { useForm, usePage } from "@inertiajs/react";
-import { useState, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+
 import Button from "@/BaseComponents/Button";
 
-import { toast } from 'react-toastify';
+import AsyncSelect from "react-select/async";
+import ModalAddItem from "./Components/ModalAddItem";
+import CustomerData from './Components/CustomerData';
+import InvoiceHead from './Components/InvoiceHead';
+import ItemsTable from './Components/ItemsTable';
 
-import Select from 'react-select';
+import FormField from "@/BaseComponents/FormField";
 
-function CreateUser({ sendUrl, product }) {
-
-    const { msg } = usePage().props;
-
-    useEffect(() => {
-        if (msg)
-            toast.success(msg);
-    }, [msg]);
-
-    const { data, setData, processing, post, put, reset, errors } = useForm(
-        {
-            name: product?.name ?? '',
-            sale_price: product?.sale_price ?? 0,
-            unit: product?.unit ?? 'عدد',
-            stock: product?.stock ?? 0,
-            description: product?.description ?? '',
-            is_active: product?.is_active ?? true
-        }
-    );
-
-    // const selectedBank = banks.find(i => i.value == data.bank) || null;
-
-    function addFormData(e) {
-        const { id, type, value, checked } = e.target;
-
-        setData((prevData) => {
-            let val = type === 'checkbox' ? checked : value;
-            return {
-                ...prevData,
-                [id]: val
-            }
-        });
-    }
-
-    function submitForm(e) {
-
-        e.preventDefault();
-
-        //Create new
-        if ( product == undefined) {
-            post(sendUrl, {
-                preserveScroll: true,
-                onSuccess: () => {
-
-                }
-            })
-
-            //Update
-        } else {
-            put(sendUrl, {
-                preserveScroll: true,
-                onSuccess: () => {
-                    reset();
-                }
-            })
-        }
-    }
+import { MdSave } from "react-icons/md";
+import DashboardLayout from "@/Layouts/Dashboard/Layout"
 
 
-    return (
-        <>
-            <section>
+/**
+ * Invoice create and update
+ */
+function InvoiceCreate({ invoice }) {
 
-                <div className="form-wrap">
-
-                    <form action="" onSubmit={submitForm}>
+	const { msg } = usePage().props;
 
 
-                        <FormField
-                            name="name"
-                            label="عنوان محصول"
-                            value={data.name}
-                            onChange={addFormData}
-                            error={errors.name}
-                        />
+	//States
+	const [items, setItems] = useState(invoice?.items ?? []);
+	const [isSettled, setIsSettled] = useState(false);
 
-                        <FormField
-                            name="stock"
-                            type="tel"
-                            label="تعداد"
-                            value={data.stock}
-                            onChange={addFormData}
-                            error={errors.stock}
-                        />
+	const defualtData = {
+		type: '',
+		account_id: invoice?.account.id ?? '',
+		account_name: invoice?.account.name ?? '',
+		subtotal: invoice?.subtotal ?? '',
+		items: []
+	};
+	const { data, setData, processing, post, put, errors } = useForm(defualtData);
 
-                        <FormField
-                            name="sale_price"
-                            type="tel"
-                            label="قیمت فروش"
-                            value={data.sale_price}
-                            onChange={addFormData}
-                            error={errors.sale_price}
-                            isAmount={true}
-                        />
+	useEffect(() => {
+		if (msg)
+			toast.success(msg);
+	}, [msg]);
 
-                        <FormField
-                            name="unit"
-                            label="واحد"
-                            value={data.unit}
-                            onChange={addFormData}
-                            error={errors.unit}
-                        />
+	useEffect(() => {
+		if (errors && Object.keys(errors).length > 0) {
+			Object.values(errors)
+				.flat() 
+				.forEach((er) => toast.error(er));
+		}
+	}, [errors]);
 
-                        <FormField
-                            name="description"
-                            label="توضیحات"
-                            value={data.description}
-                            onChange={addFormData}
-                            error={errors.description}
-                        />
+	useEffect(() => {
 
-                        <FormField
-                            name="is_active"
-                            type="checkbox"
-                            label="وضعیت فعال بودن"
-                            // customClass="without-bg"
-                            value={data.is_active}
-                            onChange={(e) => {
-                                const isChecked = e.target.checked;
-                                setData('is_active', isChecked);
-                            }}
-                        />
+		const calculatedsubtotal = items.reduce((acc, item) => {
 
-                        <Button isLoading={processing} />
+			const qty = Number(item.quantity) || 0;
+			const price = item.unit_price * (1 - (item.discount / 100));
 
-                    </form>
+			return acc + (qty * price);
+		}, 0);
 
-                </div>
 
-            </section>
-        </>
-    )
+		setData(prev => {
+
+			//Prevent re render
+			if (prev.items === items) return prev;
+
+			return {
+				...prev,
+				items,
+				subtotal: calculatedsubtotal
+			};
+		});
+
+	}, [items]);
+
+	const handleSubmit = (e) => {
+
+		e.preventDefault();
+
+		if (invoice == undefined) {
+
+			post('/invoice', {
+				preserveScroll: true,
+				onSuccess: () => {
+					setData(defualtData);
+					setItems([]);
+				}
+			});
+		} else {
+
+			put(`/invoice/${invoice.id}`, {
+				preserveScroll: true,
+				onSuccess: () => {
+					setData(defualtData);
+				}
+			});
+		}
+
+	};
+
+	const getCustomers = async (inputValue) => {
+		if (!inputValue) return [];
+
+		const res = await fetch(
+			`/api/v1/accounts?search=${encodeURIComponent(inputValue)}`
+		);
+
+		const data = await res.json();
+
+		return data.map(customer => ({
+			value: customer.id,
+			label: customer.name,
+		}));
+	};
+
+	function addCustomer(selectObject) {
+
+		let val = selectObject?.value;
+
+		setData(prev => {
+			return {
+				...prev,
+				account_id: val,
+				account_name: selectObject.label, //label is name
+			};
+		});
+	}
+
+	//Remove invoice items
+	function removeItem(itemId) {
+		setItems(prev => {
+			let newItems = [...prev];
+			return newItems.filter(i => i.id !== itemId);
+		});
+	}
+
+
+	//Update invoice item
+	function updateItem(id, key, value) {
+
+		setItems(prev =>
+			prev.map(item =>
+				item.id === id
+					? { ...item, [key]: value }
+					: item
+			)
+		);
+	}
+
+	return (
+		<>
+
+			<section className='invoice-customer flex flex-col gap-8'>
+				<div className="flex flex-col gap-4 ic-search-wrap">
+					<h4>انتخاب مشتری</h4>
+					<AsyncSelect
+						cacheOptions
+						defaultOptions={false}
+						loadOptions={getCustomers}
+						onChange={addCustomer}
+						placeholder="جستجوی مشتری با نام یا شماره ...."
+						noOptionsMessage={() => "موردی یافت نشد"}
+						required
+					/>
+				</div>
+			</section>
+
+			<section className='invoice-items table-container'>
+
+				<ItemsTable
+					items={items}
+					subtotal={data.subtotal}
+					updateItem={updateItem}
+					removeItem={removeItem}
+				/>
+
+			</section >
+
+			<ModalAddItem
+				invoiceType={data.type}
+				setItems={setItems}
+			/>
+
+			<div className="ii-form-wrap flex mob-fix">
+				<form onSubmit={handleSubmit}>
+					<Button
+						isLoading={processing}
+						text="ذخیره فاکتور"
+					/>
+				</form>
+
+				<button
+					className='secondary'
+					onClick={() => setData(defualtData)}
+				>
+					<MdSave />
+					انصراف
+				</button>
+			</div>
+
+		</>
+	)
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد فاکتور" />
-
-export default CreateUser;
+InvoiceCreate.layout = page => <DashboardLayout children={page} h1="ایجاد فاکتور" />
+export default InvoiceCreate;

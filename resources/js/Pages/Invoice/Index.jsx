@@ -11,6 +11,7 @@ import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 import { CiSquareCheck } from "react-icons/ci";
+import { FaRegEye } from "react-icons/fa6";
 
 
 function Index({ invoices }) {
@@ -36,10 +37,9 @@ function Index({ invoices }) {
                     <thead>
                         <tr>
                             <th>آیدی</th>
-                            <th>نام</th>
-                            <th>موجودی</th>
-                            <th>واحد</th>
-                            <th>قیمت</th>
+                            <th>کاربر ثبت کننده</th>
+                            <th>طرف حساب</th>
+                            <th>مبلغ کل</th>
                             <th>توضیحات</th>
                             <th>عملیات</th>
                         </tr>
@@ -49,22 +49,27 @@ function Index({ invoices }) {
 
                             <tr key={item.id} >
                                 <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.stock}</td>
-                                <td>{item.unit}</td>
-                                <td>{formatAmount(item.sale_price)}</td>
+                                <td>{item.user.full_name}</td>
+                                <td>{item.account.name}</td>
+                                <td>{formatAmount(item.subtotal)}</td>
                                 <td>{item.description}</td>
 
                                 <td className="flex gap-2 justify-center">
 
                                     <Link
-                                        href={`/product/${item.id}/edit`}
+                                        href={`/invoice/${item.id}/edit`}
                                         className="ml-2"
                                     >
                                         <FiEdit size={24} />
                                     </Link>
 
-                                    {item.is_active === 1 && <CiSquareCheck size={27} />}
+                                    <Link
+                                        href={`/invoice/${item.id}`}
+                                        className="ml-2"
+                                    >
+                                        <FaRegEye size={24} />
+                                    </Link>
+
                                 </td>
                             </tr>
                         ))}

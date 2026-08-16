@@ -31,11 +31,14 @@ class LoginController extends Controller
     {
         $credentials = $request->only('mobile', 'password');
 
-        if (Auth::attempt([
-            'mobile' => $credentials['mobile'],
-            'password' => $credentials['password'],
-            'is_active' => 1,
-        ])) {
+        if (Auth::attempt(
+            [
+                'mobile' => $credentials['mobile'],
+                'password' => $credentials['password'],
+                'is_active' => 1,
+            ],
+            true
+        )) {
             $request->session()->regenerate();
             return Inertia::location('/');
         }

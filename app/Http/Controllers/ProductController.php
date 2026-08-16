@@ -77,4 +77,35 @@ class ProductController extends Controller
 
         return back()->with('msg', 'با موفقیت انجام شد');
     }
+
+    public function search(Request $request)
+    {
+        $products = Product::query()
+            ->select([
+                'id',
+                'name',
+                'sale_price',
+                'stock',
+                'unit',
+            ])
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $search = $request->string('search')->toString();
+
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%");
+                });
+            })
+            ->limit(20)
+            ->get();
+
+        return response()->json(
+            $products->map(fn($product) => [
+                'id' => $product->id,
+                'name' => $product->name,
+                'sale_price' => $product->sale_price,
+                'stock' => $product->stock,
+                'unit' => $product->unit,
+            ])
+        );
+    }
 }

@@ -97,4 +97,26 @@ class AccountController extends Controller
         return redirect()->route('accounts.index')
             ->with('success', 'حساب مورد نظر موقتاً حذف (Soft Delete) شد.');
     }
+
+    public function search(Request $request)
+    {
+        $user = $request->user();
+
+        $query = Account::query()
+            ->select(['id', 'name', 'mobile'])
+            ->where('user_id', $user->id);
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('mobile', 'like', "%{$search}%");
+            });
+        }
+
+        $accounts = $query->latest()->get();
+
+        return response()->json($accounts);
+    }
 }

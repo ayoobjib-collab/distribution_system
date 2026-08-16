@@ -35,7 +35,7 @@ require 'testRoute.php';
 /**
  * User Route
  */
-// Route::group(['middleware' => ['auth', 'restric.id']], function () {
+Route::group(['middleware' => ['auth', 'restric.id']], function () {
 
     Route::middleware(['auth', 'permission:user_permission'])->group(function () {
         Route::resource('user', UserController::class);
@@ -51,7 +51,17 @@ require 'testRoute.php';
     # Read cheque data by ai
     // Route::post('/cheques/read-image', [ChequeAiController::class, 'readImage'])->name('cheques.read-image');
 
-// });
+    Route::prefix('api/v1')
+        ->group(function () {
+
+            Route::get('/products', [ProductController::class, 'search'])
+                ->name('api.products.search');
+
+            Route::get('/accounts', [AccountController::class, 'search'])
+                ->name('api.account.search');
+                
+        });
+});
 
 
 Route::group(

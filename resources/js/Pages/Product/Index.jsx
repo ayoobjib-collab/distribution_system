@@ -4,7 +4,7 @@ import Pagination from "@/BaseComponents/Pagination"
 import { formatAmount } from '@/functions/helper.js';
 import { FiEdit } from "react-icons/fi";
 import { LiaTrashAlt } from "react-icons/lia";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
 import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
@@ -14,6 +14,8 @@ import { CiSquareCheck } from "react-icons/ci";
 
 
 function Index({ products }) {
+
+    const { isAdmin } = usePage().props;
 
     const [hideExpire, setHideExpire] = useState(false);
 
@@ -57,12 +59,16 @@ function Index({ products }) {
 
                                 <td className="flex gap-2 justify-center">
 
-                                    <Link
-                                        href={`/product/${item.id}/edit`}
-                                        className="ml-2"
-                                    >
-                                        <FiEdit size={24} />
-                                    </Link>
+                                    {isAdmin
+                                        &&
+                                        <Link
+                                            href={`/product/${item.id}/edit`}
+                                            className="ml-2"
+                                        >
+                                            <FiEdit size={24} />
+                                        </Link>
+                                    }
+
 
                                     {item.is_active === 1 && <CiSquareCheck size={27} />}
                                 </td>

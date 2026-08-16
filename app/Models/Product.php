@@ -19,4 +19,14 @@ class Product extends Model
         'is_active',
         'description',
     ];
+
+    public function hasEnoughStock(int $quantity): bool
+    {
+        return $this->stock >= $quantity;
+    }
+
+    public function decrementStock(int $quantity): void
+    {
+        $this->decrement('stock', $quantity);
+    }
 }
