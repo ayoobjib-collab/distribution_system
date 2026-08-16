@@ -7,8 +7,6 @@ import { memo } from "react";
 
 function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem }) {
 
-    console.log('items table');
-
     const [editIsOpen, setEditOpen] = useState(false);
     const [itemForUpdate, setItemForUpdate] = useState({});
 

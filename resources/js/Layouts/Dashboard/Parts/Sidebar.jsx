@@ -7,32 +7,41 @@ import { HiOutlineArrowSmLeft } from "react-icons/hi";
 
 const Sidebar = ({ isOpen, childClicked }) => {
 
-    const { url, auth } = usePage().props
+    const { url, auth, isAdmin } = usePage().props
 
     const dashboard = '/';
 
-    const links = [
+    var links = [
         {
-            href: '/client',
-            label:'اشخاص'
+            href: '/invoice',
+            label: 'فاکتورها'
         },
         {
-            href: '/client/create',
-            label:'ایجاد شخص'
+            href: '/product',
+            label: 'محصولات'
         },
         {
-            href: '/cheque',
-            label:'چکها'
+            href: '/invoice/create',
+            label: 'ایجاد فاکتور'
         },
         {
-            href: '/cheque/create',
-            label:'افزودن چک'
+            href: '/account',
+            label: 'حساب‌ها'
         },
         {
-            href: '/transaction/create',
-            label:'افزودن مستقیم تراکنش'
-        }      
+            href: '/account/create',
+            label: 'افزودن حساب'
+        }
     ];
+
+    if (isAdmin) {
+        links.push(
+            {
+                href: '/product/create',
+                label: 'ایجاد محصول'
+            }
+        );
+    }
 
     return (
         <aside className={`sidebar ${isOpen ? 'open' : ''}`} >

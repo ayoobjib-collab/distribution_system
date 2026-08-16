@@ -6,6 +6,7 @@ use App\Enums\RoutesName;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -77,39 +78,14 @@ class InvoiceController extends Controller
 
     public function store(InvoiceRequest $request)
     {
-
         return DB::transaction(function () use ($request) {
 
             $validated = $request->validated();
 
-            $products = Product::whereIn('id', collect($validated['items'])->pluck('product_id'))->get()->keyBy('id');
-
-            foreach ($validated['items'] as $item) {
-
-                $product = $products->get($item['product_id']);
-
-                if (!$product || !$product->hasEnoughStock($item['quantity'])) {
-                    throw new \Exception("موجودی کالای {$product->name} کافی نیست.");
-                }
-            }
+            $products = $this->checkProductStock($validated['items']);
 
             $subtotal = 0;
-
-            $itemsData = collect($validated['items'])->map(function ($item) use (&$subtotal) {
-
-                # Unit price is sale price
-                // $item['unit_price'] = $item['sale_price'];
-
-                $totalItem = ($item['unit_price'] * $item['quantity']);
-
-                if (isset($item['discount'])) {
-                    $totalItem -= ($totalItem * ($item['discount'] / 100));
-                }
-
-                $subtotal += $totalItem;
-
-                return array_merge($item, ['total' => $totalItem]);
-            });
+            $itemsData = $this->addTotalAndSubtotalToData($validated['items'], $subtotal);
 
             # Create invoice
             $invoice = Invoice::create([
@@ -119,34 +95,22 @@ class InvoiceController extends Controller
                 'description'     => $validated['description'] ?? '',
             ]);
 
-            # Create invoice items
-            // $invoice->items()->createMany($itemsData->toArray());
 
             foreach ($itemsData as $item) {
                 $invoice->items()->create($item);
-                $products->get($item['product_id'])->decrementStock($item['quantity']);
+                $products->get($item['product_id'])
+                    ->decrementStock($item['quantity']);
             }
 
             return back()->with('msg', 'فاکتور با موفقیت ثبت شد.');
         });
     }
 
-    public function update(InvoiceRequest $request, Invoice $invoice)
+    protected function addTotalAndSubtotalToData(array $itemsData, int &$subtotal)
     {
+        $i = collect($itemsData)
 
-        if (
-            !Auth::user()->hasRole('admin')
-            && $invoice->user_id !== Auth::id()
-        ) {
-            abort(403);
-        }
-
-        return DB::transaction(function () use ($request, $invoice) {
-
-            $validated = $request->validated();
-
-            $subtotal = 0;
-            $itemsData = collect($validated['items'])->map(function ($item) use (&$subtotal) {
+            ->map(function ($item) use (&$subtotal) {
 
                 $totalItem = ($item['unit_price'] * $item['quantity']);
 
@@ -159,11 +123,73 @@ class InvoiceController extends Controller
                 return array_merge($item, ['total' => $totalItem]);
             });
 
-            $invoice->update(array_merge($validated, ['subtotal' => $subtotal]));
+        return $i;
+    }
+
+    protected function checkProductStock(array $itemsData)
+    {
+
+        $products = Product::whereIn(
+            'id',
+            collect($itemsData)->pluck('product_id')
+        )
+            ->lockForUpdate()
+            ->get()
+            ->keyBy('id');
+
+        foreach ($itemsData as $item) {
+            $product = $products->get($item['product_id']);
+            if (!$product->hasEnoughStock($item['quantity'])) {
+                throw new \Exception(
+                    "موجودی کالای {$product->name} کافی نیست."
+                );
+            }
+        }
+
+        return $products;
+    }
+
+    public function update(InvoiceRequest $request, Invoice $invoice)
+    {
+        $this->validateUser($request, $invoice);
+
+        return DB::transaction(function () use ($request, $invoice) {
+
+            $validated = $request->validated();
+
+            # Remvoe old items and stock
+            $oldItems = $invoice->items()->get();
+
+            foreach ($oldItems as $item) {
+                Product::where('id', $item->product_id)
+                    ->increment('stock', $item->quantity);
+            }
 
             $invoice->items()->delete();
 
-            $invoice->items()->createMany($itemsData->toArray());
+            # Add new stock
+            $products = $this->checkProductStock($validated['items']);
+
+            $subtotal = 0;
+            $itemsData = $this->addTotalAndSubtotalToData(
+                $validated['items'],
+                $subtotal
+            );
+
+            $invoice->update([
+                'subtotal'    => $subtotal,
+                'description' => $validated['description'] ?? '',
+            ]);
+
+            /*
+            * Create new items and decrease stock.
+            */
+            foreach ($itemsData as $item) {
+                $invoice->items()->create($item);
+                $products
+                    ->get($item['product_id'])
+                    ->decrementStock($item['quantity']);
+            }
 
             return back()->with('msg', 'فاکتور به‌روزرسانی شد.');
         });
@@ -191,5 +217,45 @@ class InvoiceController extends Controller
                 'invoice' => $invoice,
             ]
         );
+    }
+
+    public function destroy(Request $request, Invoice $invoice)
+    {
+        $this->validateUser($request, $invoice);
+
+        return DB::transaction(function () use ($invoice) {
+
+            $items = $invoice->items()->get();
+
+            foreach ($items as $item) {
+                Product::where('id', $item->product_id)
+                    ->lockForUpdate()
+                    ->increment('stock', $item->quantity);
+            }
+
+            $invoice->delete();
+
+            return back()->with(
+                'msg',
+                'فاکتور با موفقیت حذف شد.'
+            );
+        });
+    }
+
+
+    public function updateStatus(Request $request, Invoice $invoice)
+    {
+        if (! $request->user()->hasRole('admin'))
+            return back()->with('msg', 'شما قادر به انجام این عملیات نیستید!!');
+
+        $request->validate([
+            'status' => ['required', 'string'],
+        ]);
+
+        $invoice->update([
+            'status' => $request->status,
+        ]);
+
+        return back()->with('msg', 'وضعیت فاکتور تغییر کرد.');
     }
 }

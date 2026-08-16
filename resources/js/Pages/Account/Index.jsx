@@ -3,16 +3,15 @@ import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
 
-import { FiEdit } from "react-icons/fi";
 import { LiaTrashAlt } from "react-icons/lia";
+import { CiSquareCheck } from "react-icons/ci";
+import { AiOutlineEdit } from "react-icons/ai";
+
 import { Link } from "@inertiajs/react";
 
 import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
-
-import { CiSquareCheck } from "react-icons/ci";
-
 
 function Index({ accounts }) {
 
@@ -90,7 +89,7 @@ function Index({ accounts }) {
                                                 href={`/account/${item.id}/edit`}
                                                 className="ml-2"
                                             >
-                                                <FiEdit size={24} />
+                                                <AiOutlineEdit size={24} />
                                             </Link>
 
                                         </div>

@@ -30,4 +30,10 @@ class Controller extends BaseController
             404
         );
     }
+
+    public function abortIfIsNotAdmin(Request $request)
+    {
+        if (! $request->user()->hasRole('admin'))
+            abort(404);
+    }
 }

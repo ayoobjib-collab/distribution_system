@@ -146,6 +146,7 @@ function ModalAddItem({ invoiceType, setItems }) {
             >
                 <div className="form-group">
                     <AsyncSelect
+                        classNamePrefix="react-select"
                         cacheOptions
                         defaultOptions={false}
                         loadOptions={getPorducts}

@@ -2,14 +2,13 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
-import { FiEdit } from "react-icons/fi";
 import { LiaTrashAlt } from "react-icons/lia";
 import { Link, usePage } from "@inertiajs/react";
 
 import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
-
+import { AiOutlineEdit } from "react-icons/ai";
 import { CiSquareCheck } from "react-icons/ci";
 
 
@@ -43,7 +42,10 @@ function Index({ products }) {
                             <th>واحد</th>
                             <th>قیمت</th>
                             <th>توضیحات</th>
-                            <th>عملیات</th>
+                            {
+                                isAdmin &&
+                                <th>عملیات</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -57,28 +59,24 @@ function Index({ products }) {
                                 <td>{formatAmount(item.sale_price)}</td>
                                 <td>{item.description}</td>
 
-                                <td className="flex gap-2 justify-center">
-
-                                    {isAdmin
-                                        &&
+                                {isAdmin &&
+                                    < td className="flex gap-2 justify-center">
                                         <Link
                                             href={`/product/${item.id}/edit`}
                                             className="ml-2"
                                         >
-                                            <FiEdit size={24} />
+                                            <AiOutlineEdit size={24} />
                                         </Link>
-                                    }
-
-
-                                    {item.is_active === 1 && <CiSquareCheck size={27} />}
-                                </td>
+                                        {item.is_active === 1 && <CiSquareCheck size={27} />}
+                                    </td>
+                                }
                             </tr>
                         ))}
                     </tbody>
                 </table>
 
                 <Pagination links={products.links} />
-            </section>
+            </section >
 
         </>
     )

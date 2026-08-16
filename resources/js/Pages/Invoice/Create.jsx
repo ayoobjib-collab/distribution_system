@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { useForm, usePage } from "@inertiajs/react";
-import { ToastContainer, toast } from 'react-toastify';
+import { router, useForm, usePage } from "@inertiajs/react";
+import { toast } from 'react-toastify';
 
 import Button from "@/BaseComponents/Button";
 
@@ -46,7 +46,7 @@ function InvoiceCreate({ invoice }) {
 	useEffect(() => {
 		if (errors && Object.keys(errors).length > 0) {
 			Object.values(errors)
-				.flat() 
+				.flat()
 				.forEach((er) => toast.error(er));
 		}
 	}, [errors]);
@@ -157,12 +157,13 @@ function InvoiceCreate({ invoice }) {
 				<div className="flex flex-col gap-4 ic-search-wrap">
 					<h4>انتخاب مشتری</h4>
 					<AsyncSelect
-						cacheOptions
+						classNamePrefix="react-select"
 						defaultOptions={false}
 						loadOptions={getCustomers}
 						onChange={addCustomer}
 						placeholder="جستجوی مشتری با نام یا شماره ...."
 						noOptionsMessage={() => "موردی یافت نشد"}
+						cacheOptions
 						required
 					/>
 				</div>
@@ -194,7 +195,7 @@ function InvoiceCreate({ invoice }) {
 
 				<button
 					className='secondary'
-					onClick={() => setData(defualtData)}
+					onClick={() => router.get('/invoice')}
 				>
 					<MdSave />
 					انصراف

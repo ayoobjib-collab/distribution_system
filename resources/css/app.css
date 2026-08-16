@@ -6,6 +6,7 @@
 /*Some tailwind class*/
 @import url(./ready.css);
 @import url(./components/dark-switch.css);
+@import url(./components/modal-anim.css);
 
 @font-face {
     font-family: yekanbakh;
@@ -61,7 +62,7 @@ html {
     padding: 0;
     height: 100%;
     width: 100%;
-    font-size: clamp(14px, 3vw, 16px);
+    font-size: clamp(15px, 3vw, 16px);
 }
 
 body {
@@ -522,7 +523,8 @@ section.table-container {
 svg {
     vertical-align: middle;
     cursor: pointer;
-    stroke: var(--app-content-main-color)
+    stroke: var(--app-content-main-color);
+    fill: var(--app-content-main-color)
 }
 
 input::-webkit-outer-spin-button,
@@ -562,10 +564,12 @@ button:not(.not-btn) {
     justify-content: center;
     gap: 10px;
     margin-right: auto;
+    font-size:1rem;
 }
 
 button span {
     transition: all .2s ease-in;
+    width: min(50vw, 300px);
 }
 
 button.second {
@@ -614,6 +618,7 @@ button:hover:not(.second, .mode-switch.active, .not-btn) {
     inset: 0;
     align-content: center;
     backdrop-filter: blur(1px);
+    z-index: 5;
 }
 
 .modal {
@@ -738,20 +743,19 @@ footer {
 
 .sidebar-links::-webkit-scrollbar-thumb {
     background-color: #888;
-    /* رنگ نوار */
     border-radius: 4px;
-    /* گوشه گرد */
     border: 2px solid var(--sidebar);
-    /* حاشیه برای فاصله از track */
 }
 
 .sidebar-links::-webkit-scrollbar-thumb:hover {
     background-color: #555;
-    /* رنگ نوار هنگام هاور */
 }
 
-/* برای Firefox */
 .sidebar-links {
     scrollbar-width: thin;
     scrollbar-color: #888 var(--sidebar);
+}
+
+td.complete {
+    background: #00800061;
 }

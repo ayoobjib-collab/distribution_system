@@ -6,6 +6,7 @@ use App\Enums\RoutesName;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -33,8 +34,11 @@ class ProductController extends Controller
         );
     }
 
-    public function create()
+    public function create(Request $request)
     {
+
+        $this->abortIfIsNotAdmin($request);
+
         return $this->render(
             'Create',
             [
@@ -56,7 +60,6 @@ class ProductController extends Controller
 
     public function edit(Product $product, Request $request)
     {
-
         $user = $request->user();
         abort_unless($user?->hasPermissionTo('product_permission'), 404);
 
@@ -88,6 +91,7 @@ class ProductController extends Controller
                 'stock',
                 'unit',
             ])
+            ->where('is_active', true)
             ->when($request->filled('search'), function ($query) use ($request) {
                 $search = $request->string('search')->toString();
 

@@ -438,6 +438,16 @@ a.button:active {
     interpolate-size: allow-keywords;
 }
 
+button.secondary {
+    background-color: var(--app-bg) !important;
+    color: var(--action-color) !important;
+    border: 1px solid var(--action-color) !important;
+}
+
+button.secondary svg {
+    fill: var(--action-color) !important;
+}
+
 @starting-style {
     .trans-form {
         height: 0;
@@ -449,4 +459,47 @@ a.button:active {
     color: transparent;
     pointer-events: none;
     opacity: 0;
+}
+
+@media (width <=800px) {
+    .mob-fix {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        gap: 10px;
+        width: 100%;
+        background: var(--sidebar);
+        padding: 5px 10px;
+    }
+
+    .mob-fix .form-button button[type="submit"] {
+        margin-right: 0;
+        padding: 10px;
+        width: 47vw;
+    }
+
+    .mob-fix form {
+        flex: 1 0 50%;
+    }
+
+    .mob-fix button.secondary {
+        width: 47vw;
+    }
+
+    .modal {
+        inset: 0;
+        width: 100% !important;
+        height: 100%;
+        border-radius: 0 !important;
+    }
+
+    nav.mobile-menu svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .modal .mob-fix button {
+        width: 100%;
+    }
 }

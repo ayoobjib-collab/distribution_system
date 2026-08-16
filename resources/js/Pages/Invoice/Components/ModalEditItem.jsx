@@ -7,21 +7,19 @@ import { useState, useEffect } from "react";
 
 function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
 
-    // console.log('modal edit');
+    // if (!isOpen) return '';
 
     const [copiedItem, setcopiedItem] = useState({
         quantity: '1',
         discount: '0'
     });
 
-    let productName = null, productStock = null;
+
+    let productName = item.name || item?.product?.name;
+    let productStock = item.stock || item?.product?.stock;
 
     useEffect(() => {
         if (item) {
-
-            let productName = item.name || item?.product?.name;
-            let productStock = item.stock || item?.product?.stock;
-
             setcopiedItem({ ...item });
         }
     }, [item]);
@@ -34,17 +32,12 @@ function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
     }
 
 
-
     function addFormData(e) {
-
         const { name, value } = e.target;
-
         let v = value;
-
         if (name === 'quantity') {
             v = Math.min(v, (item.stock || item.product.stock))
         }
-
         setcopiedItem(prev => {
             return {
                 ...prev,

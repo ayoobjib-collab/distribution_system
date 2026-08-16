@@ -2,9 +2,8 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
-import { FiEdit } from "react-icons/fi";
 import { LiaTrashAlt } from "react-icons/lia";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
 import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
@@ -12,9 +11,21 @@ import { useEffect, useState } from "react";
 
 import { CiSquareCheck } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
+import { FaRegTrashAlt } from "react-icons/fa";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { GrCompliance } from "react-icons/gr";
+
+import { toast } from 'react-toastify';
 
 function Index({ invoices }) {
+
+    const { isAdmin, msg } = usePage().props;
+
+    useEffect(() => {
+        if (msg)
+            toast.success(msg);
+    }, [msg]);
 
     const [hideExpire, setHideExpire] = useState(false);
 
@@ -26,6 +37,18 @@ function Index({ invoices }) {
             { [key]: value },
             { preserveState: true }
         );
+    }
+
+    function deleteItem($itemId) {
+        if (confirm('آیا از حذف فاکتور اطمینان دارید؟'))
+            router.delete('/invoice/' + $itemId);
+    }
+
+    function completeStatus($itemId) {
+        if (confirm('فاکتور کامل شده؟'))
+            router.patch(`/invoice/${$itemId}/status`, {
+                status: 'complete',
+            });
     }
 
     return (
@@ -40,7 +63,7 @@ function Index({ invoices }) {
                             <th>کاربر ثبت کننده</th>
                             <th>طرف حساب</th>
                             <th>مبلغ کل</th>
-                            <th>توضیحات</th>
+                            <th>وضعیت</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -52,7 +75,10 @@ function Index({ invoices }) {
                                 <td>{item.user.full_name}</td>
                                 <td>{item.account.name}</td>
                                 <td>{formatAmount(item.subtotal)}</td>
-                                <td>{item.description}</td>
+
+                                <td className={item.status}>
+                                    {item.status_label}
+                                </td>
 
                                 <td className="flex gap-2 justify-center">
 
@@ -60,7 +86,7 @@ function Index({ invoices }) {
                                         href={`/invoice/${item.id}/edit`}
                                         className="ml-2"
                                     >
-                                        <FiEdit size={24} />
+                                        <AiOutlineEdit size={24} />
                                     </Link>
 
                                     <Link
@@ -70,7 +96,25 @@ function Index({ invoices }) {
                                         <FaRegEye size={24} />
                                     </Link>
 
+                                    <span
+                                        onClick={() => deleteItem(item.id)}
+                                        className="ml-2"
+                                    >
+                                        <FaRegTrashAlt size={24} fill="inherit" />
+                                    </span>
+
+                                    {
+                                        isAdmin &&
+                                        <span
+                                            onClick={() => completeStatus(item.id)}
+                                            className="ml-2"
+                                        >
+                                            <GrCompliance size={24} />
+                                        </span>
+                                    }
+
                                 </td>
+
                             </tr>
                         ))}
                     </tbody>

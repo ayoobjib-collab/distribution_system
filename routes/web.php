@@ -29,8 +29,9 @@ use Inertia\Inertia;
 |
 */
 
-require 'testRoute.php';
-
+Route::get('/' , function(){
+    return redirect('/invoice');
+});
 
 /**
  * User Route
@@ -59,8 +60,10 @@ Route::group(['middleware' => ['auth', 'restric.id']], function () {
 
             Route::get('/accounts', [AccountController::class, 'search'])
                 ->name('api.account.search');
-                
         });
+
+    Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
+        ->name('invoice.update-status');
 });
 
 
