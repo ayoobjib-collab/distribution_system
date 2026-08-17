@@ -549,7 +549,7 @@ span.editable {
     cursor: pointer;
 }
 
-button:not(.not-btn) {
+button:not(.not-btn, .Toastify__close-button) {
     background-color: #007bff;
     color: white;
     padding: 0.6rem 1.2rem;
@@ -564,7 +564,7 @@ button:not(.not-btn) {
     justify-content: center;
     gap: 10px;
     margin-right: auto;
-    font-size:1rem;
+    font-size: 1rem;
 }
 
 button span {

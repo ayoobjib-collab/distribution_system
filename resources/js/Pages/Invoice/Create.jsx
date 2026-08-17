@@ -91,6 +91,11 @@ function InvoiceCreate({ invoice }) {
 			});
 		} else {
 
+			if(invoice.status !== 'draft'){
+				toast.error('این فاکتور کامل شده و قابل ویرایش نیست');
+				return;
+			}
+
 			put(`/invoice/${invoice.id}`, {
 				preserveScroll: true,
 				onSuccess: () => {

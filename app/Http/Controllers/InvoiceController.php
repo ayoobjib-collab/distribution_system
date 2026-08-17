@@ -71,7 +71,6 @@ class InvoiceController extends Controller
             'Create',
             [
                 'sendUrl' => RoutesName::CreateInvoice->value,
-                // 'userType' => 
             ]
         );
     }
@@ -139,11 +138,13 @@ class InvoiceController extends Controller
 
         foreach ($itemsData as $item) {
             $product = $products->get($item['product_id']);
+
             if (!$product->hasEnoughStock($item['quantity'])) {
                 throw new \Exception(
                     "موجودی کالای {$product->name} کافی نیست."
                 );
             }
+            
         }
 
         return $products;
@@ -152,6 +153,9 @@ class InvoiceController extends Controller
     public function update(InvoiceRequest $request, Invoice $invoice)
     {
         $this->validateUser($request, $invoice);
+
+        if ($invoice->status !== 'draft')
+            return back()->with('msg', 'فاکتور کامل شده و شما قادر به ویرایش آن نیستید');
 
         return DB::transaction(function () use ($request, $invoice) {
 
@@ -233,6 +237,7 @@ class InvoiceController extends Controller
                     ->increment('stock', $item->quantity);
             }
 
+            # Soft delete
             $invoice->delete();
 
             return back()->with(

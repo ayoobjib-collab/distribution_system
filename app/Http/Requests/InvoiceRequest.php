@@ -18,12 +18,12 @@ class InvoiceRequest extends FormRequest
     {
         $invoiceId = $this->route('invoice')?->id;
 
-        //sale_price to unit_price
         return [
             // Invoice
-            'account_id'      => ['required', 'exists:accounts,id'],
             //'status'          => ['required', 'in:draft,pending,paid,cancelled'],
             //'discount'        => ['nullable', 'integer', 'min:0'],
+            
+            'account_id'      => ['required', 'exists:accounts,id'],
             'description'     => ['nullable', 'string'],
 
             # Invoice Items
