@@ -4,15 +4,21 @@ namespace App\Services\Sms\Abstract;
 
 abstract class SmsGatewayAbstract
 {
-    protected $userName;
-    protected $password;
-    protected $pattern = '';
-    protected $patternValueName;
+    protected string $userName;
+    protected string $password;
+    protected string $pattern = '';
+    protected string $patternValueName;
+
+    public function __construct(string $userName, string $password)
+    {
+        $this->userName = $userName;
+        $this->password = $password;
+    }
 
     /**
      * Set Pattern
      */
-    public function setPattern($pattern)
+    public function setPattern(string $pattern)
     {
         $this->pattern = $pattern;
         return $this;
@@ -21,7 +27,7 @@ abstract class SmsGatewayAbstract
     /**
      * Set Pattern value name
      */
-    public function setPatterValueName($patternValueName)
+    public function setPatterValueName(string $patternValueName)
     {
         $this->patternValueName = $patternValueName;
         return $this;

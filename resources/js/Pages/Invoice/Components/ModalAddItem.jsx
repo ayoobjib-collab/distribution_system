@@ -21,14 +21,14 @@ function ModalAddItem({ invoiceType, setItems }) {
     const [isOpen, setIsOpen] = useState(false);
     const baseInvoiceItem = {
         id: '',
-        product_id: 0,
+        product_id: '',
         name: '',
-        unit_price: 0,
-        final_price: 0,
+        unit_price: '',
+        final_price: '',
         stock: 0,
         unit: 'کارتن',
         quantity: '1',
-        discount: '0'
+        discount: 0
     };
     const [invoiceItem, setInvoiceItem] = useState(baseInvoiceItem);
 

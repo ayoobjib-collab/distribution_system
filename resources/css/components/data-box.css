@@ -1,0 +1,59 @@
+.container-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* کارت‌های مدرن */
+.info-card {
+    background: #b7b7b7;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.info-row span {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.info-row b {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+@media (width < 800px) {
+    .container-wrapper {
+        flex-direction: column;
+        padding: 2px;
+    }
+
+    .info-card{
+        padding: 5px
+    }
+}

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Domain\ValuesObject\Bank;
 use App\Domain\ValuesObject\ChequeType;
+use App\Support\Number;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -14,6 +15,26 @@ class InvoiceRequest extends FormRequest
         return auth()->check();
     }
 
+    protected function prepareForValidation(): void
+    {
+
+        $input = $this->all();
+
+        $needToChangeFiedls = ['quantity', 'unit_price', 'discount'];
+
+        if (isset($input['items']) && is_array($input['items'])) {
+            foreach ($input['items'] as $key => $item) {
+                foreach ($needToChangeFiedls as $fname) {
+                    if (isset($item[$fname])) {
+                        $input['items'][$key][$fname] = Number::faToEn($item[$fname]);
+                    }
+                }
+            }
+        }
+
+        $this->replace($input);
+    }
+
     public function rules(): array
     {
         $invoiceId = $this->route('invoice')?->id;
@@ -22,7 +43,7 @@ class InvoiceRequest extends FormRequest
             // Invoice
             //'status'          => ['required', 'in:draft,pending,paid,cancelled'],
             //'discount'        => ['nullable', 'integer', 'min:0'],
-            
+
             'account_id'      => ['required', 'exists:accounts,id'],
             'description'     => ['nullable', 'string'],
 
@@ -33,7 +54,15 @@ class InvoiceRequest extends FormRequest
             'items.*.unit_price'    => ['required', 'integer', 'min:0'],
             'items.*.discount'      => ['required', 'integer', 'min:0', 'max:40'],
             'items.*.description'   => ['nullable', 'string'],
-            
+
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'account_id' => 'طرف حساب',
+            'items' => 'اقلام فاکتور',
         ];
     }
 }

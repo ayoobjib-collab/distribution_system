@@ -4,6 +4,6 @@ namespace App\Services\Sms\Contracts;
 
 interface SmsGateway
 {
-    public function sendSms($number, $text): bool;
-    public function sendSmsByPattern($number, $text): bool;
+    public function sendSms(string $number, string $text): bool;
+    public function sendSmsByPattern(string $number, string $text): bool;
 }

@@ -8,12 +8,12 @@ use App\Services\Sms\Contracts\SmsGateway;
 class RayganSms extends SmsGatewayAbstract implements SmsGateway
 {
 
-    public function sendSms($number, $text): bool
+    public function sendSms(string $number, string $text): bool
     {
         return false;
     }
 
-    public function sendSmsByPattern($number, $text): bool
+    public function sendSmsByPattern(string $number, string $text): bool
     {
         $curlObject = curl_init();
 

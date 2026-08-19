@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\InvoiceStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,6 +27,7 @@ class Invoice extends Model
     ];
 
     protected $casts = [
+        'status'       => InvoiceStatus::class,
         'credit_limit' => 'integer',
         'is_active'    => 'boolean',
     ];
@@ -51,9 +53,6 @@ class Invoice extends Model
 
     public function getStatusLabelAttribute(): ?string
     {
-        return match ($this->status) {
-            'draft' => 'ثبت شده',
-            'complete' => 'کامل شده'
-        };
+        return $this->status?->label();
     }
 }

@@ -45,6 +45,19 @@ export function getUrl(path) {
     return baseUrl + sperator + path;
 }
 
+export const faToEn = (str) => {
+
+    if (typeof str !== 'string') return str;
+    
+    return str
+
+        // Persian digits ۰۱۲۳۴۵۶۷۸۹
+        .replace(/[\u06F0-\u06F9]/g, (d) => String(d.charCodeAt(0) - 0x06F0))
+
+        // Arabic-Indic digits ٠١٢٣٤٥٦٧٨٩
+        .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660));
+};
+
 
 // VITE_APP_NAME="${APP_NAME}"
 // VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
@@ -53,22 +66,3 @@ export function getUrl(path) {
 // VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 // VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 // VITE_ASSET_URL="${ASSET_URL}"
-
-/* <div className="flex flex-col gap-4 ic-search-wrap">
-    <h4>انتخاب مشتری</h4>
-    <AsyncSelect
-        cacheOptions
-        defaultOptions={false}
-        loadOptions={getCustomers}
-        onChange={addCustomer}
-        placeholder="جستجوی مشتری با نام یا شماره ...."
-        noOptionsMessage={() => "موردی یافت نشد"}
-        required
-    />
-</div> */
-
-
-// Route::get('/customer/{customer}/transactions', [TransactionController::class, 'index']);
-// Route::get('/account/{account}/transactions',   [TransactionAccountController::class, 'index']);
-
-// Route::get('/customer/{customer}/invoices',     [InvoiceController::class, 'index']);

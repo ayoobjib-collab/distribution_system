@@ -7,9 +7,11 @@ import { HiOutlineArrowSmLeft } from "react-icons/hi";
 
 const Sidebar = ({ isOpen, childClicked }) => {
 
-    const { url, auth, isAdmin } = usePage().props
+    const { auth, isAdmin } = usePage().props
 
     const dashboard = '/';
+
+    const url = window.location.pathname;
 
     var links = [
         {
@@ -39,6 +41,10 @@ const Sidebar = ({ isOpen, childClicked }) => {
             {
                 href: '/product/create',
                 label: 'ایجاد محصول'
+            },
+            {
+                href: '/user/create',
+                label: 'ایجاد ویزیتور'
             }
         );
     }

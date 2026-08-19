@@ -2,19 +2,19 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
-import { LiaTrashAlt } from "react-icons/lia";
 import { Link, usePage } from "@inertiajs/react";
 
 import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
+import { LiaTrashAlt } from "react-icons/lia";
 import { CiSquareCheck } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
-
 import { AiOutlineEdit } from "react-icons/ai";
 import { GrCompliance } from "react-icons/gr";
+import { LiaSmsSolid } from "react-icons/lia";
 
 import { toast } from 'react-toastify';
 
@@ -42,6 +42,11 @@ function Index({ invoices }) {
     function deleteItem($itemId) {
         if (confirm('آیا از حذف فاکتور اطمینان دارید؟'))
             router.delete('/invoice/' + $itemId);
+    }
+
+    function sendSms($itemId) {
+        if (confirm('پیامکی حاوی لینک پیش فاکتور برای مشتری ارسال خواهد شد؟'))
+            router.post(`/invoice/${$itemId}/send-invoice`);
     }
 
     function completeStatus($itemId) {
@@ -89,18 +94,25 @@ function Index({ invoices }) {
                                         <AiOutlineEdit size={24} />
                                     </Link>
 
-                                    <Link
+                                    {/* <Link
                                         href={`/invoice/${item.id}`}
                                         className="ml-2"
                                     >
                                         <FaRegEye size={24} />
-                                    </Link>
+                                    </Link> */}
 
                                     <span
                                         onClick={() => deleteItem(item.id)}
                                         className="ml-2"
                                     >
                                         <FaRegTrashAlt size={24} fill="inherit" />
+                                    </span>
+
+                                    <span
+                                        onClick={() => sendSms(item.id)}
+                                        className="ml-2"
+                                    >
+                                        <LiaSmsSolid size={24} fill="inherit" />
                                     </span>
 
                                     {

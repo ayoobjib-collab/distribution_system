@@ -37,14 +37,14 @@ class LoginController extends Controller
                 'password' => $credentials['password'],
                 'is_active' => 1,
             ],
-            true
+            remember: true
         )) {
             $request->session()->regenerate();
             return Inertia::location('/');
         }
 
         return back()->withErrors([
-            'number' => 'اطلاعات ورود نادرست است',
+            'mobile' => 'اطلاعات ورود نادرست است',
         ]);
     }
 }

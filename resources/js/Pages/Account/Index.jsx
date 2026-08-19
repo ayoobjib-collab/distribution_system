@@ -13,7 +13,7 @@ import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
-function Index({ accounts }) {
+function Index({ accounts, h1 }) {
 
     const currentPath = window.location.href;
 
@@ -54,7 +54,7 @@ function Index({ accounts }) {
                                         {item.name}
                                     </td>
 
-                                    <td data-label="نام فروشگاه">
+                                    <td data-label="کاربر ثبت کننده">
                                         {item.user.full_name}
                                     </td>
 

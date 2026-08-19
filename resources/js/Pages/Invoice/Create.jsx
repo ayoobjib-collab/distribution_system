@@ -15,15 +15,17 @@ import FormField from "@/BaseComponents/FormField";
 
 import { MdSave } from "react-icons/md";
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
+import { SiDatabricks } from "react-icons/si";
 
 
 /**
  * Invoice create and update
  */
-function InvoiceCreate({ invoice }) {
+function InvoiceCreate({ invoice, h1 }) {
 
 	const { msg } = usePage().props;
 
+	const isCreateMode = invoice == undefined;
 
 	//States
 	const [items, setItems] = useState(invoice?.items ?? []);
@@ -80,7 +82,17 @@ function InvoiceCreate({ invoice }) {
 
 		e.preventDefault();
 
-		if (invoice == undefined) {
+		if (!data.items.length) {
+			toast.error('فاکتور هیچ محصولی ندارد');
+			return;
+		}
+
+		if (data.account_id == '') {
+			toast.error('یک طرف حساب انتخاب کنید');
+			return;
+		}
+
+		if (isCreateMode) {
 
 			post('/invoice', {
 				preserveScroll: true,
@@ -91,7 +103,7 @@ function InvoiceCreate({ invoice }) {
 			});
 		} else {
 
-			if(invoice.status !== 'draft'){
+			if (invoice.status !== 'draft') {
 				toast.error('این فاکتور کامل شده و قابل ویرایش نیست');
 				return;
 			}
@@ -107,6 +119,7 @@ function InvoiceCreate({ invoice }) {
 	};
 
 	const getCustomers = async (inputValue) => {
+
 		if (!inputValue) return [];
 
 		const res = await fetch(
@@ -158,31 +171,58 @@ function InvoiceCreate({ invoice }) {
 	return (
 		<>
 
+			<div className="flex flex-col gap2" style={{ marginBottom: 5 }}>
+				<h3>
+					<SiDatabricks size={24} />
+					<span className="ml-2">
+						اطلاعات فاکتور
+					</span>
+				</h3>
+			</div >
+
 			<section className='invoice-customer flex flex-col gap-8'>
-				<div className="flex flex-col gap-4 ic-search-wrap">
-					<h4>انتخاب مشتری</h4>
-					<AsyncSelect
-						classNamePrefix="react-select"
-						defaultOptions={false}
-						loadOptions={getCustomers}
-						onChange={addCustomer}
-						placeholder="جستجوی مشتری با نام یا شماره ...."
-						noOptionsMessage={() => "موردی یافت نشد"}
-						cacheOptions
-						required
-					/>
-				</div>
+				{
+					isCreateMode ?
+
+						<div className="form-group ic-search-wrap" style={{ marginBottom: "0" }}>
+							<AsyncSelect
+								classNamePrefix="react-select"
+								defaultOptions={false}
+								loadOptions={getCustomers}
+								onChange={addCustomer}
+								placeholder="انتخاب فروشگاه"
+								noOptionsMessage={() => "موردی یافت نشد"}
+								cacheOptions
+								required
+							/>
+						</div>
+
+						:
+
+						<CustomerData
+							customer_name={invoice.account.name}
+							customer_number={invoice.account.mobile}
+							userFullName={invoice.user.full_name}
+						/>
+				}
 			</section>
 
-			<section className='invoice-items table-container'>
+			<div className="flex flex-col gap2" style={{ marginBottom: 5 }}>
+				<h3>
+					<SiDatabricks size={24} />
+					<span className="ml-2">
+						اقلام فاکتور
+					</span>
+				</h3>
+			</div >
 
+			<section className='invoice-items table-container'>
 				<ItemsTable
 					items={items}
 					subtotal={data.subtotal}
 					updateItem={updateItem}
 					removeItem={removeItem}
 				/>
-
 			</section >
 
 			<ModalAddItem
@@ -203,7 +243,7 @@ function InvoiceCreate({ invoice }) {
 					onClick={() => router.get('/invoice')}
 				>
 					<MdSave />
-					انصراف
+					همه فاکتورها
 				</button>
 			</div>
 
@@ -211,5 +251,5 @@ function InvoiceCreate({ invoice }) {
 	)
 }
 
-InvoiceCreate.layout = page => <DashboardLayout children={page} h1="ایجاد فاکتور" />
+InvoiceCreate.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
 export default InvoiceCreate;

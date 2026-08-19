@@ -1,12 +1,14 @@
 @import url(./app.desk.css);
 @import url(./app.mob.css);
 @import url(./form.css);
-@import url(./upload-ai.css);
+
+/* @import url(./upload-ai.css); */
 
 /*Some tailwind class*/
 @import url(./ready.css);
 @import url(./components/dark-switch.css);
 @import url(./components/modal-anim.css);
+@import url(./components/data-box.css);
 
 @font-face {
     font-family: yekanbakh;
@@ -44,8 +46,8 @@
 }
 
 .light:root {
-    --app-bg: #fff;
-    --sidebar: #f3f6fd;
+    --app-bg: #f3f6fd;
+    --sidebar: #fff;
     --app-content-secondary-color: #f3f6fd;
     --app-content-main-color: #1f1c2e;
     --sidebar-link: #1f1c2e;
@@ -85,7 +87,20 @@ body {
 }
 
 .title h1 {
-    font-size: 22px;
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin-top: 8px;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-top: 8px;
 }
 
 .app-container {

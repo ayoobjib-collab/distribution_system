@@ -1,9 +1,9 @@
-import { FaTrashCan } from 'react-icons/fa6';
 import { formatAmount } from "@/functions/helper";
 import { useCallback, useState } from 'react';
-import { MdEdit } from "react-icons/md";
 import ModalEditItem from './ModalEditItem';
 import { memo } from "react";
+import { AiOutlineEdit } from "react-icons/ai";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem }) {
 
@@ -21,9 +21,6 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
 
     return (
         <>
-            <div className="flex flex-col gap2">
-                <h4>اقلام فاکتور</h4>
-            </div>
 
             <table className="responsive-table">
                 <thead>
@@ -58,16 +55,19 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
 
                             {/* show action link if only is in edit mode */}
                             {!readOnly &&
-                                <td className='flex gap-2 justify-center '>
+                                <td className="flex gap-2 justify-center">
+
+                                    <span className='icon-wrap ml-2' onClick={() => modalEditItem(item)}>
+                                        <AiOutlineEdit size={24} />
+                                    </span>
+
                                     {
                                         removeItem !== undefined &&
-                                        <span className='icon-wrap' onClick={() => removeItem(item.id)}>
-                                            <FaTrashCan color="red" />
+                                        <span className='icon-wrap ml-2' onClick={() => removeItem(item.id)}>
+                                            <FaRegTrashAlt size={24} fill="inherit" />
                                         </span>
                                     }
-                                    <span className='icon-wrap' onClick={() => modalEditItem(item)}>
-                                        <MdEdit color="green" size={20} />
-                                    </span>
+
                                 </td>
                             }
 

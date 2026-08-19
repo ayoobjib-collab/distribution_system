@@ -40,6 +40,7 @@ class AccountController extends Controller
             ->withQueryString();
 
         return $this->render('Index', [
+            'h1' => 'لیست همه طرف حساب‌ها',
             'accounts' => $accounts,
             'filters'  => $request->only(['search'])
         ]);

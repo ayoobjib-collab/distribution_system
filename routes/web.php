@@ -7,6 +7,7 @@ use App\Http\Controllers\ChequeController;
 use App\Http\Controllers\ChequeLogsController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\InvoicePublicPreviewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
@@ -29,14 +30,19 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/' , function(){
+Route::get('/', function () {
     return redirect('/invoice');
 });
 
 /**
+ * Public invoice url
+ */
+Route::get('/invoice/share/{hash}', [InvoicePublicPreviewController::class, 'show'])->name('invoice.public');
+
+/**
  * User Route
  */
-Route::group(['middleware' => ['auth', 'restric.id']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
     Route::middleware(['auth', 'permission:user_permission'])->group(function () {
         Route::resource('user', UserController::class);
@@ -47,10 +53,11 @@ Route::group(['middleware' => ['auth', 'restric.id']], function () {
     Route::resource('product', ProductController::class);
     Route::resource('transaction', TransactionController::class);
 
-    // Route::get('/clients/search', [ClientController::class, 'search'])->name('clients.search');
+    Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
+        ->name('invoice.update-status');
 
-    # Read cheque data by ai
-    // Route::post('/cheques/read-image', [ChequeAiController::class, 'readImage'])->name('cheques.read-image');
+    Route::post('/invoice/{invoice}/send-invoice', [InvoicePublicPreviewController::class, 'sendInvoice'])
+        ->name('send-invoice');
 
     Route::prefix('api/v1')
         ->group(function () {
@@ -61,9 +68,6 @@ Route::group(['middleware' => ['auth', 'restric.id']], function () {
             Route::get('/accounts', [AccountController::class, 'search'])
                 ->name('api.account.search');
         });
-
-    Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
-        ->name('invoice.update-status');
 });
 
 

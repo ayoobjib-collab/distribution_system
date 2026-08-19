@@ -1,5 +1,5 @@
 import React from "react";
-import { formatAmount, reFromatAmount } from "@/functions/helper.js";
+import { formatAmount, reFromatAmount, faToEn } from "@/functions/helper.js";
 
 function FormField({
     name,
@@ -28,9 +28,14 @@ function FormField({
     function onChangeByFilterData(e) {
         const { id, type, value, checked } = e.target;
 
-        var customEvent = e;
+        var customEvent = { ...e };
+
         if (name == 'price' || isAmount)
             customEvent.target.value = reFromatAmount(value);
+
+        //Change persian num to english num
+        if (type == 'tel')
+            customEvent.target.value = faToEn(value);
 
         onChange(customEvent);
     }

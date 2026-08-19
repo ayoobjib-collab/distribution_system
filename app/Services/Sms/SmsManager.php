@@ -10,17 +10,23 @@ class SmsManager
 
     public function __construct()
     {
-        $defaultGateway = config('sms.dafault_gateway');
-        $defaultGateway = config("sms.gateways.$defaultGateway");
+        // $defaultGateway = config('sms.dafault_gateway');
 
-        $class = $defaultGateway['class'];
-        $this->gateway = new $class();
+        $defaultGateway = 'ippanel';
+
+        $defaultGatewaySettings = config("sms.gateways.$defaultGateway");
+
+        $class      = $defaultGatewaySettings['class'];
+        $userName   = $defaultGatewaySettings['userName'];
+        $password   = $defaultGatewaySettings['password'];
+
+        $this->gateway = new $class($userName, $password);
     }
 
     /**
      * Call any method of sms class by __call
      */
-    public function __call($method, $arguments)
+    public function __call(string $method, mixed $arguments)
     {
         if (method_exists($this->gateway, $method))
             return $this->gateway->$method(...$arguments);
@@ -28,7 +34,5 @@ class SmsManager
         throw new \BadMethodCallException("Method {$method} does not exist on Gateway");
     }
 
-    public function logSms(){
-
-    }
+    public function logSms() {}
 }
