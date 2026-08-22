@@ -6,7 +6,7 @@
 
 /* کارت‌های مدرن */
 .info-card {
-    background: #b7b7b7;
+    background: #656565;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 20px;
@@ -22,7 +22,6 @@
 .card-header {
     font-size: 0.9rem;
     font-weight: 700;
-    color: #475569;
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #f1f5f9;
