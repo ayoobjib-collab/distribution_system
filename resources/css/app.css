@@ -27,38 +27,108 @@
 } */
 
 :root {
-    --app-bg: #0F1115;
+    /* =========================
+       App
+    ========================= */
+    --app-bg: #1e2530;
+
+    /* =========================
+       Sidebar
+    ========================= */
     --sidebar: #181C23;
-    --sidebar-main-color: #fff;
-    --table-border: #1a2131;
-    --table-header: #1a2131;
-    --app-content-main-color: #fff;
-    --sidebar-link: #fff;
+    --sidebar-main-color: #F1F5F9;
+    --sidebar-link: #CBD5E1;
+
     --sidebar-active-link: #1E3A5F;
+    --sidebar-hover-link: #202938;
 
-    --sidebar-hover-link: #1a2539;
-    --action-color: #2869ff;
-    --action-color-hover: #6291fd;
-    --app-content-secondary-color: #1d283c;
-    --filter-reset: #2c394f;
-    --filter-shadow: rgba(16, 24, 39, 0.8) 0px 6px 12px -2px,
-        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    --table-even-row: #656565;
 
+    /* =========================
+       Content
+    ========================= */
+    --app-content-main-color: #F1F5F9;
+    --app-content-secondary-color: #1A1F27;
+
+
+    /* =========================
+       Table
+    ========================= */
+    --table-border: #303642;
+    --table-header: #1E293B;
     --table-header-bg: #1E293B;
+
+    --table-even-row: #151920;
+    --table-hover-row: #1C2533;
+
+
+    /* =========================
+       Actions
+    ========================= */
+    --action-color: #3B82F6;
+    --action-color-hover: #2563EB;
+
+
+    /* =========================
+       Filters
+    ========================= */
+    --filter-reset: #273449;
+
+    --filter-shadow:
+        rgba(0, 0, 0, 0.35) 0px 8px 20px -5px,
+        rgba(0, 0, 0, 0.25) 0px 4px 10px -5px;
 }
 
+
 .light:root {
-    --app-bg: #f3f6fd;
-    --sidebar: #fff;
-    --app-content-secondary-color: #f3f6fd;
-    --app-content-main-color: #1f1c2e;
-    --sidebar-link: #1f1c2e;
-    --sidebar-hover-link: rgba(195, 207, 244, 0.5);
-    --sidebar-active-link: #7ebeff;
-    --sidebar-main-color: #1f1c2e;
-    --filter-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    --table-even-row: #eff4ff;
+    /* =========================
+       App
+    ========================= */
+    --app-bg: #F3F6FD;
+
+
+    /* =========================
+       Sidebar
+    ========================= */
+    --sidebar: #FFFFFF;
+    --sidebar-main-color: #1F2937;
+    --sidebar-link: #475569;
+
+    --sidebar-hover-link: #EEF4FF;
+    --sidebar-active-link: #DCEBFF;
+
+
+    /* =========================
+       Content
+    ========================= */
+    --app-content-main-color: #1F2937;
+    --app-content-secondary-color: #FFFFFF;
+
+
+    /* =========================
+       Table
+    ========================= */
+    --table-border: #D9E2F0;
+    --table-header: #E8EEF7;
+    --table-header-bg: #E8EEF7;
+
+    --table-even-row: #F7F9FC;
+    --table-hover-row: #EEF4FF;
+
+
+    /* =========================
+       Actions
+    ========================= */
+    --action-color: #2563EB;
+    --action-color-hover: #1D4ED8;
+
+
+    /* =========================
+       Filters
+    ========================= */
+    --filter-reset: #E2E8F0;
+
+    --filter-shadow:
+        rgba(99, 99, 99, 0.12) 0px 4px 12px;
 }
 
 body,
@@ -67,7 +137,7 @@ html {
     padding: 0;
     height: 100%;
     width: 100%;
-    font-size: clamp(15px, 3vw, 16px);
+    font-size: clamp(14px, 3vw, 15px);
 }
 
 body {
@@ -89,9 +159,28 @@ body {
     min-height: 100vh;
 }
 
+.title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .title h1 {
     font-size: 1.4rem;
     font-weight: normal;
+}
+
+.title::before {
+    content: '';
+    background: white;
+    height: 100%;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+.react-select__menu.css-1lmdq5q-menu {
+    margin: 0 !important;
 }
 
 h2 {
@@ -500,7 +589,6 @@ section.table-container {
 /*table css*/
 .responsive-table {
     width: 100%;
-    border-collapse: collapse;
     min-width: 900px;
     color: inherit
 }
@@ -513,8 +601,9 @@ section.table-container {
 .responsive-table td {
     padding: 10px 14px;
     text-align: center;
-    border: 1px solid;
+    border: 1px solid #c4c8d757;
     white-space: nowrap;
+    border-radius: 9px;
 }
 
 /* .responsive-table tbody tr:nth-child(even) {

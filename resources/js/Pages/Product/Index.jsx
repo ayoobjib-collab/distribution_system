@@ -82,6 +82,6 @@ function Index({ products }) {
     )
 }
 
-Index.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
+Index.layout = page => <DashboardLayout children={page} h1="لیست محصولات و تعداد موجودی" />
 
 export default Index;

@@ -102,6 +102,7 @@
     flex-direction: row;
     align-items: center;
     position: unset !important;
+    border-color: transparent !important;
 }
 
 .form-group select,
@@ -329,6 +330,7 @@ Checkbox
     gap: 10px;
     --box-var: 35;
     flex-direction: row;
+    justify-content: flex-start;
 }
 
 .form-group.checkbox input {

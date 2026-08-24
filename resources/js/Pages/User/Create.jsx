@@ -82,6 +82,7 @@ function CreateUser({ sendUrl, user }) {
                             value={data.mobile}
                             onChange={addFormData}
                             error={errors.mobile}
+                            required
                         />
 
                         <FormField
@@ -91,6 +92,7 @@ function CreateUser({ sendUrl, user }) {
                             value={data.full_name}
                             onChange={addFormData}
                             error={errors.full_name}
+                            required
                         />
 
                         <FormField
@@ -116,6 +118,6 @@ function CreateUser({ sendUrl, user }) {
     )
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد کاربر" />
+CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد ویزیتور" />
 
 export default CreateUser;

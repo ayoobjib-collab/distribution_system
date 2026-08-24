@@ -84,7 +84,7 @@ function FormField({
                 />
             )}
 
-            <label htmlFor={name}>{label}</label>
+            <label htmlFor={name}>{label + (required ? ' (*)' : '')}</label>
             {error && <div className="errors">{error}</div>}
         </div>
     );

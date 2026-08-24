@@ -86,6 +86,7 @@ function CreateUser({ sendUrl, account }) {
                             value={data.name}
                             onChange={addFormData}
                             error={errors.name}
+                            required={true}
                         />
 
                         <FormField
@@ -95,6 +96,7 @@ function CreateUser({ sendUrl, account }) {
                             value={data.mobile}
                             onChange={addFormData}
                             error={errors.mobile}
+                            required={true}
                         />
 
                         <FormField
@@ -144,6 +146,6 @@ function CreateUser({ sendUrl, account }) {
     )
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد طرف حساب یا فروشگاه" />
+CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد طرف حساب(فروشگاه شخص یا ...)" />
 
 export default CreateUser;
