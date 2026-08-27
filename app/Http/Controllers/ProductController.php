@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return back()->with('msg', 'با موفقیت ایجاد شد');
+        $this->back('محصول با موفقیت ثبت شد');
     }
 
     public function edit(Product $product, Request $request)
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         $product->update($validated);
 
-        return back()->with('msg', 'با موفقیت انجام شد');
+         $this->back('با موفقیت بروزرسانی شد');
     }
 
     public function search(Request $request)

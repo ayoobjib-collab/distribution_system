@@ -17,7 +17,7 @@ class InvoiceStoreAction
             $products = $this->checkProductStock($data['items']);
 
             $subtotal = 0;
-            $itemsData = $this->addTotalAndSubtotalToData($data['items'], $subtotal);
+            $itemsData = $this->addTotalAndSubtotalToData($products, $data['items'], $subtotal);
 
             # Create invoice
             $invoice = Invoice::create([
@@ -55,6 +55,7 @@ class InvoiceStoreAction
 
             $subtotal = 0;
             $itemsData = $this->addTotalAndSubtotalToData(
+                $products,
                 $data['items'],
                 $subtotal
             );
@@ -76,11 +77,27 @@ class InvoiceStoreAction
         });
     }
 
-    protected function addTotalAndSubtotalToData(array $itemsData, int &$subtotal)
+    /**
+     * @param \Illuminate\Support\Collection $products
+     * @param array $items
+     * @param int $subtotal
+     * @return array
+     */
+    protected function addTotalAndSubtotalToData($products, array $items, int &$subtotal)
     {
-        $i = collect($itemsData)
+        $i = collect($items)
 
-            ->map(function ($item) use (&$subtotal) {
+            ->map(function ($item) use (&$subtotal, $products) {
+
+                # Find price form base product
+                $product = $products->get($item['product_id']);
+
+                if (!$product) {
+                    throw new \Exception("محصول با شناسه {$item['product_id']} یافت نشد.");
+                }
+
+                # Use product price instead of form price
+                $item['unit_price'] = $product->sale_price;
 
                 $totalItem = ($item['unit_price'] * $item['quantity']);
 
@@ -96,18 +113,19 @@ class InvoiceStoreAction
         return $i;
     }
 
-    protected function checkProductStock(array $itemsData)
+    protected function checkProductStock(array $items)
     {
 
         $products = Product::whereIn(
             'id',
-            collect($itemsData)->pluck('product_id')
+            collect($items)->pluck('product_id')
         )
             ->lockForUpdate()
             ->get()
             ->keyBy('id');
 
-        foreach ($itemsData as $item) {
+        foreach ($items as $item) {
+
             $product = $products->get($item['product_id']);
 
             if (!$product->hasEnoughStock($item['quantity'])) {

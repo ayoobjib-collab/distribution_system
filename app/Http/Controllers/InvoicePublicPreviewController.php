@@ -37,12 +37,10 @@ class InvoicePublicPreviewController extends Controller
 
         $accountNumber = $invoice?->account?->mobile;
 
-        dd($this->createPublicUrl($invoice->id));
-
         if ($sms->sendSms($accountNumber, $this->createSmsText($invoice->id)))
-            return back()->with('msg', 'پیامک با موفقیت ارسال شد');
+            $this->back('پیامک ارسال شد');
 
-        return back()->with('msg', 'خطا: در ارسال پیام مشکلی پیامک آمده');
+        $this->back('خطایی در ارسال پیامک پیش آمده', false);
     }
 
     public function createSmsText(int $invoiceId)

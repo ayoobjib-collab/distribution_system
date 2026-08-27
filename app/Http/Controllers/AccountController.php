@@ -64,7 +64,7 @@ class AccountController extends Controller
 
         Account::create($data);
 
-        return back()->with('msg', 'حساب کاربری جدید با موفقیت تعریف شد.');
+        $this->back('حساب کاربری تغریف شد');
     }
 
     public function edit(Account $account, Request $request)
@@ -88,15 +88,14 @@ class AccountController extends Controller
 
         $account->update($data);
 
-        return back()->with('msg', 'اطلاعات حساب با موفقیت بروزرسانی شد.');
+        $this->back('حساب بروز رسانی');
     }
 
     public function destroy(Account $account)
     {
         $account->delete();
 
-        return redirect()->route('accounts.index')
-            ->with('success', 'حساب مورد نظر موقتاً حذف (Soft Delete) شد.');
+        $this->back('حساب موقتا حذف شد');
     }
 
     public function search(Request $request)

@@ -41,8 +41,10 @@ function InvoiceCreate({ invoice, h1 }) {
 	const { data, setData, processing, post, put, errors } = useForm(defualtData);
 
 	useEffect(() => {
-		if (msg)
-			toast.success(msg);
+		if (msg.status)
+			toast.success(msg.text);
+		else
+			toast.error(msg.text);
 	}, [msg]);
 
 	useEffect(() => {

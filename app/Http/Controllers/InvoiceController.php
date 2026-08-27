@@ -13,6 +13,7 @@ use App\Services\Sms\SmsManager;
 use App\Support\InvoiceHash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
@@ -96,10 +97,7 @@ class InvoiceController extends Controller
             $request->validated()
         );
 
-        return back()->with(
-            'msg',
-            'فاکتور با موفقیت ثبت شد.'
-        );
+        $this->back('فاکتور با موفقیت ثتب شد');
     }
 
 
@@ -108,12 +106,12 @@ class InvoiceController extends Controller
 
         $this->validateUser($request, $invoice);
 
-        if ($invoice->status !== InvoiceStatus::Draft )
+        if ($invoice->status !== InvoiceStatus::Draft)
             return back()->with('msg', 'فاکتور کامل شده و شما قادر به ویرایش آن نیستید');
 
         $action->executeUpdate($request->validated(), $invoice);
 
-        return back()->with('msg', 'فاکتور به‌روزرسانی شد.');
+        $this->back('فاکتور بروز رسانی شد');
     }
 
     public function edit(int $id)
@@ -158,42 +156,25 @@ class InvoiceController extends Controller
             # Soft delete
             $invoice->delete();
 
-            return back()->with(
-                'msg',
-                'فاکتور با موفقیت حذف شد.'
-            );
+            $this->back('فاکتور حذف موقت شد');
         });
     }
 
     public function updateStatus(Request $request, Invoice $invoice)
     {
         if (! $request->user()->hasRole('admin'))
-            return back()->with('msg', 'شما قادر به انجام این عملیات نیستید!!');
+            $this->back('شما قادر به انجام این عملیات نیستید');
 
         $status = $request->status;
 
         if (!InvoiceStatus::tryFrom($status)) {
-            return back()->with('msg', 'مقدار وضعیت معتبر نمی‌باشد');
-        }
-
-        if ($request->status === InvoiceStatus::Sent_customer->value) {
-
-            $accountId = $invoice->account_id;
-
-            $account = Account::findOrFail($accountId);
-
-            $app->make('url')->to('/');
-
-            $text =
-
-                $sms = new SmsManager();
-            $sms->sendSms($account->number, $text);
+            $this->back('مقدار وضعیت معتبر نمی‌باشد');
         }
 
         $invoice->update([
             'status' => $request->status,
         ]);
 
-        return back()->with('msg', 'وضعیت فاکتور تغییر کرد.');
+        $this->back('وضعیت فاکتور آپدیت شد');
     }
 }

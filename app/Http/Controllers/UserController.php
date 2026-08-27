@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Enums\RoutesName;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
+
 
 class UserController extends Controller
 {
@@ -18,7 +17,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $h1 = "لیست تمام تراکنش‌ها";
+        $h1 = "لیست تمام کاربران";
 
         $users = User::with('roles')
             ->paginate(10)
@@ -33,7 +32,8 @@ class UserController extends Controller
         return $this->render(
             'Index',
             [
-                'users' => $users
+                'users' => $users,
+                'h1'    => $h1
             ]
         );
     }
@@ -62,7 +62,7 @@ class UserController extends Controller
 
         $user->assignRole('salesman');
 
-        return back()->with('msg', 'با موفقیت ایجاد شد');
+        $this->back('با موفقیت ایجاد شد');
     }
 
     public function edit(User $user)
@@ -82,7 +82,6 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return back()->with('msg', 'با موفقیت انجام شد');
+        $this->back('با موفقیت بروزرسانی شد');
     }
-
 }

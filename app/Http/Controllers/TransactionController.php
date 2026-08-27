@@ -32,11 +32,7 @@ class TransactionController extends Controller
             ->orderBy('created_at', 'DESC');
 
         return $this->render(
-            'Index',
-            [
-
-                'msg'               => session('msg')
-            ]
+            'Index'
         );
     }
 
@@ -66,7 +62,6 @@ class TransactionController extends Controller
             [
                 'sendUrl'           => RoutesName::CreateTransaction->value,
                 'msg'               => session('msg', null),
-                'transactionType'   => TransactionType::options(),
             ]
         );
     }

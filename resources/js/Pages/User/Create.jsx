@@ -16,8 +16,10 @@ function CreateUser({ sendUrl, user }) {
     const { msg } = usePage().props;
 
     useEffect(() => {
-        if (msg)
-            toast.success(msg);
+        if (msg.status)
+            toast.success(msg.text);
+        else
+            toast.error(msg.text);
     }, [msg]);
 
     const { data, setData, processing, post, put, reset, errors } = useForm(

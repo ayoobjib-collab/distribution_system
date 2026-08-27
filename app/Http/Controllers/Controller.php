@@ -36,4 +36,15 @@ class Controller extends BaseController
         if (! $request->user()->hasRole('admin'))
             abort(404);
     }
+
+    public function back(string $msg, bool $status = true)
+    {
+        return back()->with(
+            'msg',
+            [
+                'status' => $status,
+                'text'   => $msg
+            ]
+        );
+    }
 }

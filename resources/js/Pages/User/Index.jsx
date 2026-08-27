@@ -1,17 +1,10 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
-
-import { formatAmount } from '@/functions/helper.js';
-import { FiEdit } from "react-icons/fi";
-import ModalMoveCheque from "./Components/ModalMoveCheque";
-import { LiaTrashAlt } from "react-icons/lia";
 import { Link } from "@inertiajs/react";
-
-import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import { CiSquareCheck } from "react-icons/ci";
+import { AiOutlineEdit } from "react-icons/ai";
 
 
 function Index({ users }) {
@@ -64,7 +57,7 @@ function Index({ users }) {
                                         href={`/user/${item.id}/edit`}
                                         className="ml-2"
                                     >
-                                        <FiEdit size={24} />
+                                        <AiOutlineEdit size={24} />
                                     </Link>
 
                                     {item.is_active === 1 && <CiSquareCheck size={27} />}

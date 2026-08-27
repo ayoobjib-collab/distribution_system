@@ -44,7 +44,7 @@ class HandleInertiaRequests extends Middleware
             },
 
             'msg' => function () use ($request) {
-                return $request->session()->get('msg') ?? '';
+                return $request->session()->get('msg') ?? [];
             },
 
             // Lazily...
