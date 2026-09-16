@@ -2,12 +2,10 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
-import { LiaTrashAlt } from "react-icons/lia";
 import { Link, usePage } from "@inertiajs/react";
 
-import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
-import { useEffect, useState } from "react";
+
 import { AiOutlineEdit } from "react-icons/ai";
 import { CiSquareCheck } from "react-icons/ci";
 
@@ -15,8 +13,6 @@ import { CiSquareCheck } from "react-icons/ci";
 function Index({ products }) {
 
     const { isAdmin } = usePage().props;
-
-    const [hideExpire, setHideExpire] = useState(false);
 
     const currentPath = window.location.href;
 

@@ -1,7 +1,7 @@
 import ModalBb from "@/BaseComponents/ModalBb";
 import FormField from "@/BaseComponents/FormField";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LuCircleFadingPlus } from "react-icons/lu";
 import { MdFileDownloadDone } from "react-icons/md";
 
@@ -17,7 +17,6 @@ import AsyncSelect from "react-select/async";
 
 function ModalAddItem({ invoiceType, setItems }) {
 
-
     const [isOpen, setIsOpen] = useState(false);
     const baseInvoiceItem = {
         id: '',
@@ -27,7 +26,7 @@ function ModalAddItem({ invoiceType, setItems }) {
         final_price: '',
         stock: 0,
         unit: 'کارتن',
-        quantity: '1',
+        quantity: 1,
         discount: 0
     };
     const [invoiceItem, setInvoiceItem] = useState(baseInvoiceItem);
@@ -76,6 +75,7 @@ function ModalAddItem({ invoiceType, setItems }) {
                 name: selectObject.label,
                 unit_price: selectObject.unit_price,
                 stock: selectObject.stock,
+                quantity: Math.min(1, parseInt(selectObject.stock)),
                 unit: selectObject.unit
             };
         });
@@ -91,7 +91,6 @@ function ModalAddItem({ invoiceType, setItems }) {
             || !invoiceItem.quantity
             || !invoiceItem.unit_price
         ) {
-
             return;
         }
 

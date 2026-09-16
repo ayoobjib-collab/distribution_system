@@ -6,7 +6,6 @@ use App\Models\Invoice;
 use App\Services\Sms\SmsManager;
 use App\Support\InvoiceHash;
 use App\Support\Number;
-use Illuminate\Http\Request;
 
 class InvoicePublicPreviewController extends Controller
 {

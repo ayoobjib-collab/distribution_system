@@ -3,10 +3,8 @@ import FormField from "@/BaseComponents/FormField";
 import { useForm, usePage } from "@inertiajs/react";
 import { useState, useEffect } from 'react'
 import Button from "@/BaseComponents/Button";
-
 import { toast } from 'react-toastify';
 
-import Select from 'react-select';
 
 function CreateUser({ sendUrl, product }) {
 
@@ -53,7 +51,7 @@ function CreateUser({ sendUrl, product }) {
             post(sendUrl, {
                 preserveScroll: true,
                 onSuccess: () => {
-
+                    reset();
                 }
             })
 

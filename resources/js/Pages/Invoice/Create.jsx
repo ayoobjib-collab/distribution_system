@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
-
 import { router, useForm, usePage } from "@inertiajs/react";
 import { toast } from 'react-toastify';
 
 import Button from "@/BaseComponents/Button";
-
 import AsyncSelect from "react-select/async";
 import ModalAddItem from "./Components/ModalAddItem";
 import CustomerData from './Components/CustomerData';
-import InvoiceHead from './Components/InvoiceHead';
 import ItemsTable from './Components/ItemsTable';
 
-import FormField from "@/BaseComponents/FormField";
+import DashboardLayout from "@/Layouts/Dashboard/Layout"
+import ModalAddPayMethod from './Components/ModalAddPayMethod';
 
 import { MdSave } from "react-icons/md";
-import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import { SiDatabricks } from "react-icons/si";
 
 
@@ -29,13 +26,13 @@ function InvoiceCreate({ invoice, h1 }) {
 
 	//States
 	const [items, setItems] = useState(invoice?.items ?? []);
-	const [isSettled, setIsSettled] = useState(false);
 
 	const defualtData = {
 		type: '',
 		account_id: invoice?.account.id ?? '',
 		account_name: invoice?.account.name ?? '',
 		subtotal: invoice?.subtotal ?? '',
+		pay_method: '',
 		items: []
 	};
 	const { data, setData, processing, post, put, errors } = useForm(defualtData);
@@ -157,10 +154,8 @@ function InvoiceCreate({ invoice, h1 }) {
 		});
 	}
 
-
 	//Update invoice item
 	function updateItem(id, key, value) {
-
 		setItems(prev =>
 			prev.map(item =>
 				item.id === id
@@ -230,6 +225,11 @@ function InvoiceCreate({ invoice, h1 }) {
 			<ModalAddItem
 				invoiceType={data.type}
 				setItems={setItems}
+			/>
+
+			<ModalAddPayMethod
+				pay_method={data.pay_method}
+				childChanged={(e) => setData('pay_method', e.target.value) }
 			/>
 
 			<div className="ii-form-wrap flex mob-fix">

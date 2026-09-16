@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\RoutesName;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Support\Number as Number;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,10 @@ class ProductController extends Controller
 
         $products = Product::query()
             ->when(
-                !$user?->hasPermissionTo('product_permission'),
+                !$user->hasRole('admin'),
                 fn($query) => $query->where('is_active', true)
             )
-            ->paginate(10);
+            ->paginate(self::$paginateCount);
 
         return $this->render(
             'Index',
@@ -36,7 +37,6 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-
         $this->abortIfIsNotAdmin($request);
 
         return $this->render(
@@ -55,13 +55,12 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        $this->back('محصول با موفقیت ثبت شد');
+        return $this->back('محصول با موفقیت ثبت شد');
     }
 
     public function edit(Product $product, Request $request)
     {
-        $user = $request->user();
-        abort_unless($user?->hasPermissionTo('product_permission'), 404);
+        $this->abortIfIsNotAdmin($request);
 
         return $this->render(
             'Create',
@@ -74,15 +73,24 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
+        $this->abortIfIsNotAdmin($request);
+        
         $validated = $request->validated();
 
         $product->update($validated);
 
-         $this->back('با موفقیت بروزرسانی شد');
+        return $this->back('با موفقیت بروزرسانی شد');
     }
 
     public function search(Request $request)
     {
+        $search = $request->string('search')
+            ->trim()
+            ->stripTags()
+            ->toString();
+
+        $search = Number::faToEn($search);
+
         $products = Product::query()
             ->select([
                 'id',
@@ -92,9 +100,7 @@ class ProductController extends Controller
                 'unit',
             ])
             ->where('is_active', true)
-            ->when($request->filled('search'), function ($query) use ($request) {
-                $search = $request->string('search')->toString();
-
+            ->when($request->filled('search'), function ($query) use ($search) {
                 $query->where(function ($query) use ($search) {
                     $query->where('name', 'like', "%{$search}%");
                 });

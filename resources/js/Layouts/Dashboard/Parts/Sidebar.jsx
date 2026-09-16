@@ -28,11 +28,11 @@ const Sidebar = ({ isOpen, childClicked }) => {
         },
         {
             href: '/account',
-            label: 'حساب‌ها'
+            label: 'فروشگاه‌ها'
         },
         {
             href: '/account/create',
-            label: 'افزودن حساب'
+            label: 'افزودن فروشگاه'
         }
     ];
 
@@ -40,11 +40,15 @@ const Sidebar = ({ isOpen, childClicked }) => {
         links.push(
             {
                 href: '/product/create',
-                label: 'ایجاد محصول'
+                label: 'ایجاد محصول(مدیر)'
+            },
+            {
+                href: '/user',
+                label: 'لیست ویزیتورها(مدیر)'
             },
             {
                 href: '/user/create',
-                label: 'ایجاد ویزیتور'
+                label: 'ایجاد ویزیتور(مدیر)'
             }
         );
     }
