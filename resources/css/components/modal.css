@@ -1,0 +1,97 @@
+.modal-wrap {
+    position: fixed;
+    background: #a4a4a578;
+    inset: 0;
+    align-content: center;
+    backdrop-filter: blur(1px);
+    z-index: 5;
+}
+
+.modal {
+    background: var(--app-bg);
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 12px 0px, rgba(0, 0, 0, 0.62) 0px 0px 1px 0px;
+    border: 1px solid rgba(13, 13, 13, 0.05);
+    color: inherit;
+}
+
+.modal h2 {
+    font-size: larger;
+}
+
+.modal header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.pretty-json {
+    text-wrap: auto;
+    direction: ltr;
+    text-align: left;
+}
+
+body:has(.modal-wrap) {
+    overflow: hidden;
+}
+
+.tip-box {
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 40px;
+    gap: 5px;
+    --tp-color: #5d5d5d;
+}
+
+.tip-box .tb-text {
+    color: var(--tp-color);
+}
+
+.tip-box svg {
+    stroke: var(--tp-color);
+}
+
+.modal-wrap {
+    animation: modalOverlayIn 0.2s ease-out;
+}
+
+.modal-wrap .modal {
+    animation: modalIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center;
+}
+
+
+@keyframes modalOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

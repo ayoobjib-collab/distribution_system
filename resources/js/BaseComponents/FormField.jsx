@@ -30,12 +30,12 @@ function FormField({
 
         var customEvent = { ...e };
 
-        if (name == 'price' || isAmount)
-            customEvent.target.value = reFromatAmount(value);
-
         //Change persian num to english num
         if (type == 'tel')
             customEvent.target.value = faToEn(value);
+
+        if (name == 'price' || isAmount)
+            customEvent.target.value = reFromatAmount(value);
 
         onChange(customEvent);
     }

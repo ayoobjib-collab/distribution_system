@@ -7,7 +7,6 @@ import { MdFileDownloadDone } from "react-icons/md";
 
 import { memo } from "react";
 
-// import { getUrl } from "@/functions/helper";
 
 /**
  * Packages

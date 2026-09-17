@@ -1,0 +1,33 @@
+.pagination {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.page-link:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.page-link.active {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.page-link.prev,
+.page-link.next {
+    font-weight: bold;
+}

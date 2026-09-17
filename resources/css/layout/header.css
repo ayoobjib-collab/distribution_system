@@ -1,0 +1,49 @@
+.title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+.title::before {
+    content: '';
+    background: white;
+    height: 100%;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+
+.app-content-header {
+    display: grid;
+    grid-template-columns: minmax(150px, 80%) auto auto auto;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--sidebar);
+    box-shadow: 0px 2px 2px 0 #d8d8d8;
+    border-radius: 10px;
+}
+
+.app-content-headerText {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0;
+}
+
+.app-content-headerButton {
+    background-color: var(--action-color);
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+    border: none;
+    border-radius: 4px;
+    height: 32px;
+    padding: 0 16px;
+    transition: 0.2s;
+    cursor: pointer;
+}

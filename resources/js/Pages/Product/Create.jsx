@@ -1,9 +1,10 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
 import { useForm, usePage } from "@inertiajs/react";
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Button from "@/BaseComponents/Button";
 import { toast } from 'react-toastify';
+import UploadBox from "@/BaseComponents/UploadBox";
 
 
 function CreateUser({ sendUrl, product }) {
@@ -24,7 +25,8 @@ function CreateUser({ sendUrl, product }) {
             unit: product?.unit ?? 'عدد',
             stock: product?.stock ?? 0,
             description: product?.description ?? '',
-            is_active: product?.is_active ?? true
+            is_active: product?.is_active ?? true,
+            image: product?.image ?? [],
         }
     );
 
@@ -109,6 +111,13 @@ function CreateUser({ sendUrl, product }) {
                             value={data.unit}
                             onChange={addFormData}
                             error={errors.unit}
+                        />
+
+                        <UploadBox 
+                            name="image"
+                            label="تصاویر"
+                            value={data.image}
+                            setDataInChild={setData}                        
                         />
 
                         <FormField

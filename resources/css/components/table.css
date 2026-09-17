@@ -1,0 +1,45 @@
+section.table-container {
+    overflow-x: auto;
+}
+
+.responsive-table {
+    width: 100%;
+    min-width: 900px;
+    color: inherit
+}
+
+.responsive-table thead {
+    background-color: var(--table-header-bg);
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 10px 14px;
+    text-align: center;
+    border: 1px solid #c4c8d757;
+    white-space: nowrap;
+    border-radius: 9px;
+}
+
+/* .responsive-table tbody tr:nth-child(even) {
+    background-color: var(--table-even-row);
+} */
+
+.status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-failed {
+    color: red;
+    font-weight: bold;
+}
+
+td.complete {
+    background: #00800061;
+}

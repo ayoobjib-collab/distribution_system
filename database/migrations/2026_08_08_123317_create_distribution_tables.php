@@ -22,6 +22,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('buy_price')->default(0);
             $table->unsignedBigInteger('sale_price')->default(0);
+            
             $table->unsignedSmallInteger('stock')->default(0);
 
             $table->boolean('is_active')->default(true);

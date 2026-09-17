@@ -53,9 +53,26 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active');
 
-        Product::create($data);
+        $product = Product::create($data);
+
+        if ($request->hasFile('image')) {
+            $this->uploadImages($request, $product);
+        }
 
         return $this->back('محصول با موفقیت ثبت شد');
+    }
+
+    public function uploadImages(ProductRequest $request, Product $p)
+    {
+
+        $paths = [];
+
+        foreach ($request->file('image') as $file) {
+            $paths[] = $file->store('products/' . $p->id, 'public');
+        }
+
+        $p->image = $paths;
+        $p->save();
     }
 
     public function edit(Product $product, Request $request)
@@ -74,7 +91,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $this->abortIfIsNotAdmin($request);
-        
+
         $validated = $request->validated();
 
         $product->update($validated);

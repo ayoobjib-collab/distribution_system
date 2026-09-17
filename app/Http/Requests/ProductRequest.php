@@ -21,6 +21,9 @@ class ProductRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
 
+            'image' => ['nullable', 'array'],
+            'image.*' => ['file', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+
             'barcode' => [
                 'nullable',
                 'string',
