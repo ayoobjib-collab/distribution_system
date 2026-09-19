@@ -1,24 +1,20 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Upload } from 'antd';
 import '@/../css/components/upload-box.css';
-
 import { getUrl } from "@/functions/helper";
 
-const UploadBox = ({ name, label, value, setDataInChild }) => {
-
-    console.log((value[0]));
-    // console.log(getUrl(value[0]));
+const UploadBox = memo(({ name, label, value, error, setDataInChild }) => {
 
     const [fileList, setFileList] = useState(
         Array.isArray(value)
-            ? value.map(
-                (item, index) => (
-                    {
-                        uid: `-${index}`,
-                        name: `image-${index}`,
-                        status: 'done',
-                        url: getUrl('storage/' + item),
-                    })
+            ? value.map((item, index) => (
+                {
+                    uid: `-${index}`,
+                    name: `image-${index}`,
+                    status: 'done',
+                    urlInDb: item,
+                    url: getUrl('storage/' + item),
+                })
             )
             : []
     );
@@ -27,15 +23,27 @@ const UploadBox = ({ name, label, value, setDataInChild }) => {
 
         setFileList(newFileList);
 
-        const files = newFileList
-            .map(file => file.originFileObj)
-            .filter(Boolean);//remove false and null data form array
+        /**
+         * Old images has urlInDb but new file image don't have urlInDb
+         */
+        const oldImages = newFileList
+            .filter(file => file.urlInDb)
+            .map(file => {
+                return file.urlInDb;
+            });
 
-        setDataInChild(name, files);
+        const newImages = newFileList
+            .filter(file => file.originFileObj)
+            .map(file => file.originFileObj);
+
+        /**
+        * Old Image save old urls and image save new files
+        */
+        setDataInChild('old_image', oldImages);
+        setDataInChild(name, newImages);
     };
 
     const onPreview = async file => {
-
         let src = file.url;
 
         if (!src) {
@@ -51,7 +59,6 @@ const UploadBox = ({ name, label, value, setDataInChild }) => {
 
         const imgWindow = window.open(src);
         imgWindow?.document.write(image.outerHTML);
-
     };
 
     return (
@@ -60,6 +67,7 @@ const UploadBox = ({ name, label, value, setDataInChild }) => {
             <span>
                 {label}
             </span>
+            {error && <div className="errors">{error}</div>}
 
             <Upload
                 action=""
@@ -75,6 +83,6 @@ const UploadBox = ({ name, label, value, setDataInChild }) => {
         </div>
 
     );
-};
+});
 
 export default UploadBox;

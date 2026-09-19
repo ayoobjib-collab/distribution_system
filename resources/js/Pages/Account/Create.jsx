@@ -10,15 +10,6 @@ import Select from 'react-select';
 
 function CreateUser({ sendUrl, account }) {
 
-    const { msg } = usePage().props;
-
-    useEffect(() => {
-        if (msg.status)
-            toast.success(msg.text);
-        else
-            toast.error(msg.text);
-    }, [msg]);
-
     const { data, setData, processing, post, put, reset, errors } = useForm(
         {
             name: account?.name ?? '',

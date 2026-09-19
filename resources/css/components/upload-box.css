@@ -1,5 +1,14 @@
 /* Used in Js file */
 
-.upload-box{
+.upload-box {
     margin-bottom: 40px;
+}
+
+span.ant-upload {
+    font-family: 'iransans' !important;
+}
+
+.upload-box .errors {
+    font-size: smaller;
+    color: red;
 }

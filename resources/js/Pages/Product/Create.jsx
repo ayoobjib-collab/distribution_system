@@ -1,36 +1,28 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
 import { useForm, usePage } from "@inertiajs/react";
-import { useEffect } from 'react'
 import Button from "@/BaseComponents/Button";
-import { toast } from 'react-toastify';
-import UploadBox from "@/BaseComponents/UploadBox";
+import UploadBox from "./Components/UploadBox";
 
+function Create({ sendUrl, product }) {
 
-function CreateUser({ sendUrl, product }) {
-
-    const { msg } = usePage().props;
-
-    useEffect(() => {
-        if (msg.status)
-            toast.success(msg.text);
-        else
-            toast.error(msg.text);
-    }, [msg]);
-
-    const { data, setData, processing, post, put, reset, errors } = useForm(
+    const { data, setData, processing, post, reset, errors } = useForm(
         {
+            _method: 'PUT', //PUT method not support xhttp-form-data so by add this line and send reqeust by post method you can send file by request
             name: product?.name ?? '',
             sale_price: product?.sale_price ?? 0,
             unit: product?.unit ?? 'عدد',
             stock: product?.stock ?? 0,
             description: product?.description ?? '',
             is_active: product?.is_active ?? true,
+            old_image: product?.image ?? [],
             image: product?.image ?? [],
         }
     );
 
-    // const selectedBank = banks.find(i => i.value == data.bank) || null;
+    const imageErrors = Object.entries(errors)
+        .filter(([key]) => key.startsWith('image.'))
+        .flatMap(([, messages]) => messages);
 
     function addFormData(e) {
         const { id, type, value, checked } = e.target;
@@ -50,6 +42,7 @@ function CreateUser({ sendUrl, product }) {
 
         //Create new
         if (product == undefined) {
+
             post(sendUrl, {
                 preserveScroll: true,
                 onSuccess: () => {
@@ -59,8 +52,10 @@ function CreateUser({ sendUrl, product }) {
 
             //Update
         } else {
-            put(sendUrl, {
+            //Use POST instead of PUT
+            post(sendUrl, {
                 preserveScroll: true,
+                forceFormData: true,
                 onSuccess: () => {
                     reset();
                 }
@@ -113,11 +108,12 @@ function CreateUser({ sendUrl, product }) {
                             error={errors.unit}
                         />
 
-                        <UploadBox 
+                        <UploadBox
                             name="image"
                             label="تصاویر"
-                            value={data.image}
-                            setDataInChild={setData}                        
+                            value={data.old_image}
+                            setDataInChild={setData}
+                            error={imageErrors}
                         />
 
                         <FormField
@@ -151,6 +147,6 @@ function CreateUser({ sendUrl, product }) {
     )
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد محصول" />
+Create.layout = page => <DashboardLayout children={page} h1="ایجاد محصول" />
 
-export default CreateUser;
+export default Create;

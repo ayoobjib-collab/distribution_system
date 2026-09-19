@@ -20,8 +20,6 @@ import { SiDatabricks } from "react-icons/si";
  */
 function InvoiceCreate({ invoice, h1 }) {
 
-	const { msg } = usePage().props;
-
 	const isCreateMode = invoice == undefined;
 
 	//States
@@ -36,13 +34,6 @@ function InvoiceCreate({ invoice, h1 }) {
 		items: []
 	};
 	const { data, setData, processing, post, put, errors } = useForm(defualtData);
-
-	useEffect(() => {
-		if (msg.status)
-			toast.success(msg.text);
-		else
-			toast.error(msg.text);
-	}, [msg]);
 
 	useEffect(() => {
 		if (errors && Object.keys(errors).length > 0) {

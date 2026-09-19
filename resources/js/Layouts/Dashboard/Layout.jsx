@@ -2,12 +2,23 @@ import Sidebar from "@/Layouts/Dashboard/Parts/Sidebar";
 import DashboardHeader from '@/Layouts/Dashboard/Parts/DashboardHeader';
 import Footer from '@/Layouts/Dashboard/Parts/Footer';
 
-import { useState } from 'react';
-import { Head } from "@inertiajs/react";
-
-import { ToastContainer } from 'react-toastify';
+import { useState, useEffect } from 'react';
+import { Head, usePage } from "@inertiajs/react";
+import { toast, ToastContainer } from 'react-toastify';
 
 const DashboardLayout = ({ children, h1 }) => {
+
+    /**
+     * Handle show msg when page load.
+     */
+    const { msg } = usePage().props;
+
+    useEffect(() => {
+        if (msg.status)
+            toast.success(msg.text);
+        else
+            toast.error(msg.text);
+    }, [msg]);
 
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const toggleSidebar = () => setSidebarOpen(prev => !prev);

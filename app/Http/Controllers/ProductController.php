@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Enums\RoutesName;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use App\Support\Number as Number;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -62,10 +65,9 @@ class ProductController extends Controller
         return $this->back('محصول با موفقیت ثبت شد');
     }
 
-    public function uploadImages(ProductRequest $request, Product $p)
+    public function uploadImages(ProductRequest $request, Product $p, array $currentProductImages = [])
     {
-
-        $paths = [];
+        $paths = $currentProductImages;
 
         foreach ($request->file('image') as $file) {
             $paths[] = $file->store('products/' . $p->id, 'public');
@@ -94,9 +96,48 @@ class ProductController extends Controller
 
         $validated = $request->validated();
 
+        # Remove image before update
+        unset($validated['image']);
         $product->update($validated);
 
+        $productImages = $this->updateProductImagesList($request, $product);
+
+        if ($request->hasFile('image')) {
+
+            $this->uploadImages($request, $product, $productImages);
+        } else {
+
+            # Save images list if new image not sent
+            $product->image = $productImages;
+            $product->save();
+        }
+
         return $this->back('با موفقیت بروزرسانی شد');
+    }
+
+    /**
+     * Upload product images 
+     * 
+     * Check old images by new images
+     */
+    private function updateProductImagesList(ProductRequest $request, Product $product)
+    {
+        $productImages  = $product->image ?? [];
+        $sentImages     = $request->old_image ?? [];
+
+        if (empty($productImages)) return [];
+
+        foreach ($productImages as $key => $img) {
+
+            # Check productImags by sent images
+            if (! in_array($img, $sentImages)) {
+                Storage::disk('public')->delete($img);
+
+                unset($productImages[$key]);
+            }
+        }
+
+        return array_values($productImages);
     }
 
     public function search(Request $request)

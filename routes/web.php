@@ -2,6 +2,7 @@
 
 use App\Enums\RoutesName;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoicePublicPreviewController;
 use App\Http\Controllers\LoginController;
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('account', AccountController::class);
     Route::resource('product', ProductController::class);
     Route::resource('transaction', TransactionController::class);
+    Route::resource('category', CategoryController::class);
 
     Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
         ->name('invoice.update-status');
