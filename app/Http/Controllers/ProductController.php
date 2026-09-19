@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Enums\RoutesName;
 use App\Http\Requests\ProductRequest;
-use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use App\Support\Number as Number;
-
+use Illuminate\Support\Facades\Image;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -75,6 +74,48 @@ class ProductController extends Controller
 
         $p->image = $paths;
         $p->save();
+
+        /**
+         * 
+         */
+        $paths = $currentProductImages;
+
+        $directory = 'products/' . $p->id;
+
+        Storage::disk('public')->makeDirectory($directory);
+
+        foreach ($request->file('image', []) as $file) {
+
+            # Random name 
+            $filename = Str::uuid() . '.webp';
+
+            $originalPath = $directory . '/' . $filename;
+            $mediumPath = $directory . '/' . Str::beforeLast($filename, '.') . '-800.webp';
+            $mobilePath = $directory . '/' . Str::beforeLast($filename, '.') . '-400.webp';
+
+            //Save Main image
+            Image::read($file)
+                ->toWebp(85)
+                ->save(storage_path('app/public/' . $originalPath));
+
+            //Save Medium image
+            Image::read($file)
+                ->scaleDown(width: 800)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $mediumPath));
+
+            //Save Small image
+            Image::read($file)
+                ->scaleDown(width: 400)
+                ->toWebp(75)
+                ->save(storage_path('app/public/' . $mobilePath));
+
+            # SAVE ORGINAL NAME
+            $paths[] = $originalPath;
+        }
+
+        $p->image = array_values($paths);
+        $p->save();
     }
 
     public function edit(Product $product, Request $request)
@@ -96,18 +137,21 @@ class ProductController extends Controller
 
         $validated = $request->validated();
 
-        # Remove image before update
+        /**
+         * Remove image before update
+         * 
+         * If image not remove old images remove complately
+         */
         unset($validated['image']);
         $product->update($validated);
 
         $productImages = $this->updateProductImagesList($request, $product);
 
         if ($request->hasFile('image')) {
-
             $this->uploadImages($request, $product, $productImages);
         } else {
 
-            # Save images list if new image not sent
+            # Save images list if new image file not sent
             $product->image = $productImages;
             $product->save();
         }

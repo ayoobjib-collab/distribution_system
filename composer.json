@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "hashids/hashids": "^5.0",
         "inertiajs/inertia-laravel": "^2.0",
+        "intervention/image": "^3.11",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
