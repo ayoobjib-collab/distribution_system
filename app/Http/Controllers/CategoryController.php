@@ -33,6 +33,8 @@ class CategoryController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
+        $category->load('parent');
+
         return $this->render(
             'Create',
             [

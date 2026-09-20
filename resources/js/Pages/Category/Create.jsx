@@ -1,10 +1,8 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
 import Button from "@/BaseComponents/Button";
-import { useForm, usePage } from "@inertiajs/react";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-
+import { useForm } from "@inertiajs/react";
+import SelectCategory from "../Product/Components/SelectCategory";
 
 function CreateCategory({ category, sendUrl }) {
 
@@ -19,22 +17,23 @@ function CreateCategory({ category, sendUrl }) {
     } = useForm({
         name: category?.name ?? '',
         slug: category?.slug ?? '',
+        parent_id: category?.parent_id ?? null,
     });
 
+    const catErrors = Object.entries(errors)
+        .filter(([key]) => key.startsWith('categor.'))
+        .flatMap(([, messages]) => messages);
 
     function addFormData(e) {
         const { id, value } = e.target;
         setData(id, value);
     }
 
-
     function submitForm(e) {
 
         e.preventDefault();
-
         // Create
         if (category === undefined) {
-
             post(sendUrl, {
                 preserveScroll: true,
 
@@ -42,12 +41,9 @@ function CreateCategory({ category, sendUrl }) {
                     reset();
                 }
             });
-
         }
-
         // Update
         else {
-
             put(sendUrl, {
                 preserveScroll: true,
 
@@ -55,10 +51,8 @@ function CreateCategory({ category, sendUrl }) {
                     reset();
                 }
             });
-
         }
     }
-
 
     return (
         <>
@@ -67,6 +61,15 @@ function CreateCategory({ category, sendUrl }) {
                 <div className="form-wrap">
 
                     <form action="" onSubmit={submitForm}>
+
+                        <SelectCategory
+                            value={category?.parent ?? {}}
+                            setDataInChild={(v) => setData('parent_id', v)}
+                            error={catErrors}
+                            isMulti={false}
+                            required={false}
+                            label="دسته والد"
+                        />
 
                         <FormField
                             name="name"

@@ -25,6 +25,7 @@ class ProductController extends Controller
                 !$user->hasRole('admin'),
                 fn($query) => $query->where('is_active', true)
             )
+            ->with('categories')
             ->paginate(self::$paginateCount);
 
         return $this->render(

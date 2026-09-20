@@ -1,16 +1,24 @@
 import { useState } from "react";
 import AsyncSelect from "react-select/async";
 
-const SelectCategory = ({ value, setDataInChild, error }) => {
+const SelectCategory = ({ value, setDataInChild, error, required = true, isMulti = true, label = "انتخاب دسته" }) => {
 
     const [res, setRes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [sCats, setSCats] = useState(
-        value.map(category => ({
-            value: category.id,
-            label: category.name,
-        }))
-    );
+    const [sCats, setSCats] = useState(() => {
+        if (Array.isArray(value)) {
+            return value.map(category => ({
+                value: category.id,
+                label: category.name,
+            }));
+        }
+        return value
+            ? {
+                value: value.id,
+                label: value.name,
+            }
+            : null;
+    });
 
     const searchMe = async () => {
 
@@ -40,15 +48,23 @@ const SelectCategory = ({ value, setDataInChild, error }) => {
     };
 
     const addCat = (selectObject) => {
-        let val = selectObject?.map(sb => sb.value);
-        setDataInChild('categories', val);
+
+        let val;
+
+        if (isMulti)
+            val = selectObject?.map(sb => sb.value);
+        else
+            val = selectObject?.value;
+
+        setDataInChild(val);
+
         setSCats(selectObject ?? []);
     }
 
     return (
         <div className="form-group ic-search-wrap">
             <AsyncSelect
-                isMulti
+                isMulti={isMulti}
                 classNamePrefix="react-select"
                 defaultOptions={res}
                 onMenuOpen={searchMe}
@@ -56,10 +72,10 @@ const SelectCategory = ({ value, setDataInChild, error }) => {
                 value={sCats}
                 loadOptions={searchRes}
                 onChange={addCat}
-                placeholder="انتخاب دسته"
+                placeholder={label}
                 noOptionsMessage={() => "موردی یافت نشد"}
+                required={required}
                 cacheOptions
-                required
             />
             {error && (<div>{error}</div>)}
         </div>

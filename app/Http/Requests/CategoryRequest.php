@@ -31,6 +31,13 @@ class CategoryRequest extends FormRequest
                 Rule::unique('categories', 'slug')
                     ->ignore($category?->id),
             ],
+            
+            'parent_id' => [
+                'nullable',
+                'integer',
+                'exists:categories,id',
+                Rule::notIn([$category?->id]),
+            ],
         ];
     }
 

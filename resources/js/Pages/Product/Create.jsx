@@ -3,8 +3,8 @@ import FormField from "@/BaseComponents/FormField";
 import { useForm } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
 
-import UploadBox        from "./Components/UploadBox";
-import SelectCategory   from "./Components/SelectCategory";
+import UploadBox from "./Components/UploadBox";
+import SelectCategory from "./Components/SelectCategory";
 
 function Create({ sendUrl, product, h1 }) {
 
@@ -18,14 +18,19 @@ function Create({ sendUrl, product, h1 }) {
             description: product?.description ?? '',
             is_active: product?.is_active ?? true,
             old_image: product?.image ?? [],
-            image: product?.image ?? [],
+            image:[],
 
-            categories: product?.categories ?? [],
+
+            categories: product?.categories?.map(category => category.id) ?? [],
         }
     );
 
     const imageErrors = Object.entries(errors)
         .filter(([key]) => key.startsWith('image.'))
+        .flatMap(([, messages]) => messages);
+
+    const catErrors = Object.entries(errors)
+        .filter(([key]) => key.startsWith('categor.'))
         .flatMap(([, messages]) => messages);
 
     function addFormData(e) {
@@ -121,9 +126,9 @@ function Create({ sendUrl, product, h1 }) {
                         />
 
                         <SelectCategory
-                            value={data.categories}
-                            setDataInChild={setData}
-                            error={errors.categories}
+                            value={product?.categories ?? []}
+                            setDataInChild={(v) => setData('categories', v)}
+                            error={catErrors}
                         />
 
                         <FormField

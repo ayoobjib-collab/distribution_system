@@ -16,6 +16,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
+        'parent_id',
     ];
 
     protected $casts = [
@@ -27,5 +28,15 @@ class Category extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id');
     }
 }
