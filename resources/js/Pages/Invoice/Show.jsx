@@ -3,13 +3,9 @@ import ItemsTable from './Components/ItemsTable';
 
 function ShowInvoice({ invoice }) {
 
-
-
     return (
         <>
-
             <section className="table-container">
-
                 <div className="flex gap-2">
                     <span>
                         نام فروشگاه:
@@ -27,9 +23,8 @@ function ShowInvoice({ invoice }) {
                         {invoice.user.full_name}
                     </b>
                 </div>
-
             </section>
-
+            
             <section className='invoice-items table-container'>
 
                 <ItemsTable
@@ -39,9 +34,7 @@ function ShowInvoice({ invoice }) {
                     updateItem
                     removeItem
                 />
-
             </section >
-
         </>
     )
 }

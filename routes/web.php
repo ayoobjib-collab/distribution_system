@@ -2,11 +2,13 @@
 
 use App\Enums\RoutesName;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\InfinitePage\ProductController as IPProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoicePublicPreviewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 
@@ -54,6 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('transaction', TransactionController::class);
     Route::resource('category', CategoryController::class);
 
+    Route::get('/ip', [ProductListController::class, 'run']);
+
     Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
         ->name('invoice.update-status');
 
@@ -70,6 +74,12 @@ Route::group(['middleware' => ['auth']], function () {
                 ->name('api.account.search');
 
             Route::get('/categories', [CategoryController::class, 'search'])
+                ->name('api.category.search');
+
+            Route::get('/ip/products', [ProductListController::class, 'index'])
+                ->name('api.products.all');
+
+            Route::get('/ip/categories', [ProductListController::class, 'categories'])
                 ->name('api.category.search');
         });
 });
