@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::get('/accounts', [AccountController::class, 'search'])
                 ->name('api.account.search');
+
+            Route::get('/categories', [CategoryController::class, 'search'])
+                ->name('api.category.search');
         });
 });
 

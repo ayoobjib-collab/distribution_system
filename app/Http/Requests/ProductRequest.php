@@ -15,9 +15,16 @@ class ProductRequest extends FormRequest
 
     public function rules(): array
     {
+        $product = $this->route('product');
 
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('products', 'name')
+                    ->ignore($product?->id),
+            ],
 
             'old_image' => ['nullable'],
             'image' => ['nullable', 'array'],
@@ -27,6 +34,8 @@ class ProductRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:255',
+                Rule::unique('products', 'barcode')
+                    ->ignore($product?->id),
             ],
 
             'unit' => ['required', 'string', 'max:100'],
@@ -37,6 +46,17 @@ class ProductRequest extends FormRequest
             'stock' => ['required', 'integer', 'min:0'],
             'is_active' => ['nullable', 'boolean'],
             'description' => ['nullable', 'string'],
+
+            // categories
+            'categories' => [
+                'nullable',
+                'array',
+            ],
+
+            'categories.*' => [
+                'integer',
+                'exists:categories,id',
+            ],
         ];
     }
 
@@ -45,6 +65,8 @@ class ProductRequest extends FormRequest
         return [
             'image' => 'تصویر',
             'image.*' => 'تصویر',
+            'categories' => 'دسته‌بندی‌ها',
+            'categories.*' => 'دسته‌بندی',
         ];
     }
 }

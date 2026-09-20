@@ -1,11 +1,12 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
-import UploadBox from "./Components/UploadBox";
-import { useEffect } from "react";
 
-function Create({ sendUrl, product }) {
+import UploadBox        from "./Components/UploadBox";
+import SelectCategory   from "./Components/SelectCategory";
+
+function Create({ sendUrl, product, h1 }) {
 
     const { data, setData, processing, post, reset, errors } = useForm(
         {
@@ -18,6 +19,8 @@ function Create({ sendUrl, product }) {
             is_active: product?.is_active ?? true,
             old_image: product?.image ?? [],
             image: product?.image ?? [],
+
+            categories: product?.categories ?? [],
         }
     );
 
@@ -43,7 +46,7 @@ function Create({ sendUrl, product }) {
 
         //Create new
         if (product == undefined) {
-            
+
             data._method = 'POST';
 
             post(sendUrl, {
@@ -66,7 +69,6 @@ function Create({ sendUrl, product }) {
         }
     }
 
-
     return (
         <>
             <section>
@@ -74,7 +76,6 @@ function Create({ sendUrl, product }) {
                 <div className="form-wrap">
 
                     <form action="" onSubmit={submitForm}>
-
 
                         <FormField
                             name="name"
@@ -119,6 +120,12 @@ function Create({ sendUrl, product }) {
                             error={imageErrors}
                         />
 
+                        <SelectCategory
+                            value={data.categories}
+                            setDataInChild={setData}
+                            error={errors.categories}
+                        />
+
                         <FormField
                             name="description"
                             label="توضیحات"
@@ -150,6 +157,6 @@ function Create({ sendUrl, product }) {
     )
 }
 
-Create.layout = page => <DashboardLayout children={page} h1="ایجاد محصول" />
+Create.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
 
 export default Create;

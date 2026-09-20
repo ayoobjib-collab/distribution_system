@@ -16,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beberlei/assert/f193f4613c7d7fbcee2c05e4daff4061d49c040e",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/f193f4613c7d7fbcee2c05e4daff4061d49c040e",
                 "reference": "f193f4613c7d7fbcee2c05e4daff4061d49c040e",
                 "shasum": ""
             },
@@ -45,17 +45,20 @@
                     "Assert\\": "lib/Assert"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
             "authors": [
                 {
                     "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com"
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
                 }
             ],
             "description": "Thin assertion library for input validation in business models.",
@@ -80,7 +83,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/brick/math/866551da34e9a618e64a819ee1e01c20d8a588ba",
+                "url": "https://api.github.com/repos/brick/math/zipball/866551da34e9a618e64a819ee1e01c20d8a588ba",
                 "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba",
                 "shasum": ""
             },
@@ -98,6 +101,7 @@
                     "Brick\\Math\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -139,7 +143,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/CarbonPHP/carbon-doctrine-types/bf72f821b9952722ea9f9c3912f85946e1af9e3d",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/bf72f821b9952722ea9f9c3912f85946e1af9e3d",
                 "reference": "bf72f821b9952722ea9f9c3912f85946e1af9e3d",
                 "shasum": ""
             },
@@ -160,6 +164,7 @@
                     "Carbon\\Doctrine\\": "src/Carbon/Doctrine/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -207,7 +212,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/dflydev/dflydev-dot-access-data/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "shasum": ""
             },
@@ -232,6 +237,7 @@
                     "Dflydev\\DotAccessData\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -281,7 +287,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/doctrine/inflector/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "shasum": ""
             },
@@ -301,6 +307,7 @@
                     "Doctrine\\Inflector\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -370,7 +377,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/doctrine/lexer/31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
                 "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
                 "shasum": ""
             },
@@ -390,6 +397,7 @@
                     "Doctrine\\Common\\Lexer\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -438,20 +446,20 @@
         },
         {
             "name": "dragonmantank/cron-expression",
-            "version": "v3.6.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonmantank/cron-expression.git",
-                "reference": "d61a8a9604ec1f8c3d150d09db6ce98b32675013"
+                "reference": "1b2de7f4a468165dca07b142240733a1973e766d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/dragonmantank/cron-expression/d61a8a9604ec1f8c3d150d09db6ce98b32675013",
-                "reference": "d61a8a9604ec1f8c3d150d09db6ce98b32675013",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/1b2de7f4a468165dca07b142240733a1973e766d",
+                "reference": "1b2de7f4a468165dca07b142240733a1973e766d",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.2|^8.3|^8.4|^8.5"
+                "php": "^7.2|^8.0"
             },
             "replace": {
                 "mtdowling/cron-expression": "^1.0"
@@ -472,6 +480,7 @@
                     "Cron\\": "src/Cron/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -489,7 +498,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dragonmantank/cron-expression/issues",
-                "source": "https://github.com/dragonmantank/cron-expression/tree/v3.6.0"
+                "source": "https://github.com/dragonmantank/cron-expression/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -497,7 +506,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-31T18:51:33+00:00"
+            "time": "2025-10-31T18:36:32+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -509,7 +518,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/egulias/EmailValidator/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa",
                 "reference": "d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa",
                 "shasum": ""
             },
@@ -536,6 +545,7 @@
                     "Egulias\\EmailValidator\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -575,7 +585,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/fruitcake/php-cors/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379",
+                "url": "https://api.github.com/repos/fruitcake/php-cors/zipball/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379",
                 "reference": "38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379",
                 "shasum": ""
             },
@@ -599,6 +609,7 @@
                     "Fruitcake\\Cors\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -645,7 +656,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/GrahamCampbell/Result-Type/adccca3324eece92ca35463648c12b9e6293c05b",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/adccca3324eece92ca35463648c12b9e6293c05b",
                 "reference": "adccca3324eece92ca35463648c12b9e6293c05b",
                 "shasum": ""
             },
@@ -662,6 +673,7 @@
                     "GrahamCampbell\\ResultType\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -706,7 +718,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/guzzle/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
                 "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
                 "shasum": ""
             },
@@ -751,6 +763,7 @@
                     "GuzzleHttp\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -833,7 +846,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/promises/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
                 "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
                 "shasum": ""
             },
@@ -857,6 +870,7 @@
                     "GuzzleHttp\\Promise\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -916,7 +930,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/psr7/95e7828100de18b4e269fb1703be530082d5166d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/95e7828100de18b4e269fb1703be530082d5166d",
                 "reference": "95e7828100de18b4e269fb1703be530082d5166d",
                 "shasum": ""
             },
@@ -953,6 +967,7 @@
                     "GuzzleHttp\\Psr7\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1034,7 +1049,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/uri-template/d0058dccf4299d70c3d9da3378b8908b32780368",
+                "url": "https://api.github.com/repos/guzzle/uri-template/zipball/d0058dccf4299d70c3d9da3378b8908b32780368",
                 "reference": "d0058dccf4299d70c3d9da3378b8908b32780368",
                 "shasum": ""
             },
@@ -1059,6 +1074,7 @@
                     "GuzzleHttp\\UriTemplate\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1119,7 +1135,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/vinkla/hashids/197171016b77ddf14e259e186559152eb3f8cf33",
+                "url": "https://api.github.com/repos/vinkla/hashids/zipball/197171016b77ddf14e259e186559152eb3f8cf33",
                 "reference": "197171016b77ddf14e259e186559152eb3f8cf33",
                 "shasum": ""
             },
@@ -1145,6 +1161,7 @@
                     "Hashids\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1187,7 +1204,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/inertiajs/inertia-laravel/ae9f1f7e0692e1b8226b27f007f873ad5e15ecec",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/ae9f1f7e0692e1b8226b27f007f873ad5e15ecec",
                 "reference": "ae9f1f7e0692e1b8226b27f007f873ad5e15ecec",
                 "shasum": ""
             },
@@ -1227,6 +1244,7 @@
                     "Inertia\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1258,7 +1276,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Intervention/gif/c3598a16ebe7690cd55640c44144a9df383ea73c",
+                "url": "https://api.github.com/repos/Intervention/gif/zipball/c3598a16ebe7690cd55640c44144a9df383ea73c",
                 "reference": "c3598a16ebe7690cd55640c44144a9df383ea73c",
                 "shasum": ""
             },
@@ -1277,6 +1295,7 @@
                     "Intervention\\Gif\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1325,7 +1344,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Intervention/image/cf04c8dd245697f701057c13d4bfe140d584e738",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/cf04c8dd245697f701057c13d4bfe140d584e738",
                 "reference": "cf04c8dd245697f701057c13d4bfe140d584e738",
                 "shasum": ""
             },
@@ -1350,6 +1369,7 @@
                     "Intervention\\Image\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1400,7 +1420,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/framework/74e222cee687f957d95aaadddae69270e3205cf7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/74e222cee687f957d95aaadddae69270e3205cf7",
                 "reference": "74e222cee687f957d95aaadddae69270e3205cf7",
                 "shasum": ""
             },
@@ -1576,6 +1596,7 @@
                     ]
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1607,7 +1628,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/prompts/7b4029a84c37cb2725fc7f011586e2997040bc95",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/7b4029a84c37cb2725fc7f011586e2997040bc95",
                 "reference": "7b4029a84c37cb2725fc7f011586e2997040bc95",
                 "shasum": ""
             },
@@ -1644,6 +1665,7 @@
                     "Laravel\\Prompts\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1664,7 +1686,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/sanctum/8c104366459739f3ada0e994bcd3e6fd681ce3d5",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/8c104366459739f3ada0e994bcd3e6fd681ce3d5",
                 "reference": "8c104366459739f3ada0e994bcd3e6fd681ce3d5",
                 "shasum": ""
             },
@@ -1698,6 +1720,7 @@
                     "Laravel\\Sanctum\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1729,7 +1752,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/serializable-closure/4f48ade902b94323ca3be7646db16209ec76be3d",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/4f48ade902b94323ca3be7646db16209ec76be3d",
                 "reference": "4f48ade902b94323ca3be7646db16209ec76be3d",
                 "shasum": ""
             },
@@ -1754,6 +1777,7 @@
                     "Laravel\\SerializableClosure\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1789,7 +1813,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/tinker/c9f80cc835649b5c1842898fb043f8cc098dd741",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/c9f80cc835649b5c1842898fb043f8cc098dd741",
                 "reference": "c9f80cc835649b5c1842898fb043f8cc098dd741",
                 "shasum": ""
             },
@@ -1822,6 +1846,7 @@
                     "Laravel\\Tinker\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1854,7 +1879,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/commonmark/9d489ab67a02960fd8ffe624d93f751daf95439e",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9d489ab67a02960fd8ffe624d93f751daf95439e",
                 "reference": "9d489ab67a02960fd8ffe624d93f751daf95439e",
                 "shasum": ""
             },
@@ -1900,6 +1925,7 @@
                     "League\\CommonMark\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1907,7 +1933,8 @@
                 {
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com"
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and GitHub-Flavored Markdown (GFM)",
@@ -1959,7 +1986,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/config/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
+                "url": "https://api.github.com/repos/thephpleague/config/zipball/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
                 "reference": "754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
                 "shasum": ""
             },
@@ -1986,6 +2013,7 @@
                     "League\\Config\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1993,7 +2021,8 @@
                 {
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com"
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Define configuration arrays with strict schemas and access values with dot notation",
@@ -2039,7 +2068,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/flysystem/f7fb152932f30072d573510cbd4dd657d6475b25",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f7fb152932f30072d573510cbd4dd657d6475b25",
                 "reference": "f7fb152932f30072d573510cbd4dd657d6475b25",
                 "shasum": ""
             },
@@ -2082,6 +2111,7 @@
                     "League\\Flysystem\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2121,7 +2151,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/flysystem-local/a099b24dce160f3b2239043d13d47c4a1a214ea4",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/a099b24dce160f3b2239043d13d47c4a1a214ea4",
                 "reference": "a099b24dce160f3b2239043d13d47c4a1a214ea4",
                 "shasum": ""
             },
@@ -2137,6 +2167,7 @@
                     "League\\Flysystem\\Local\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2169,7 +2200,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/mime-type-detection/f5f47eff7c48ed1003069a2ca67f316fb4021c76",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/f5f47eff7c48ed1003069a2ca67f316fb4021c76",
                 "reference": "f5f47eff7c48ed1003069a2ca67f316fb4021c76",
                 "shasum": ""
             },
@@ -2188,6 +2219,7 @@
                     "League\\MimeTypeDetection\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2224,7 +2256,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Seldaek/monolog/72c534fc0ab181ef52d92a68382318631e301608",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/72c534fc0ab181ef52d92a68382318631e301608",
                 "reference": "72c534fc0ab181ef52d92a68382318631e301608",
                 "shasum": ""
             },
@@ -2285,6 +2317,7 @@
                     "Monolog\\": "src/Monolog"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2328,7 +2361,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/morilog/jalali/40b906c405b72edd20e73797b40be1e650e872c1",
+                "url": "https://api.github.com/repos/morilog/jalali/zipball/40b906c405b72edd20e73797b40be1e650e872c1",
                 "reference": "40b906c405b72edd20e73797b40be1e650e872c1",
                 "shasum": ""
             },
@@ -2349,6 +2382,7 @@
                     "Morilog\\Jalali\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2392,7 +2426,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/CarbonPHP/carbon/9228ce90e1035ff2f0db84b40ec2e023ed802075",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/9228ce90e1035ff2f0db84b40ec2e023ed802075",
                 "reference": "9228ce90e1035ff2f0db84b40ec2e023ed802075",
                 "shasum": ""
             },
@@ -2446,6 +2480,7 @@
                     "Carbon\\": "src/Carbon/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2498,7 +2533,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nette/schema/c54350438cd6914616f790a49cb424605f421562",
+                "url": "https://api.github.com/repos/nette/schema/zipball/c54350438cd6914616f790a49cb424605f421562",
                 "reference": "c54350438cd6914616f790a49cb424605f421562",
                 "shasum": ""
             },
@@ -2527,6 +2562,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
                 "GPL-2.0-only",
@@ -2556,20 +2592,20 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.1.5",
+            "version": "v4.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "b043439dbdf954e6c28b5ea7e34b0100f83165e0"
+                "reference": "2778deb6aab136c8db4ed1f4d6e9f465ca2dbee3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nette/utils/b043439dbdf954e6c28b5ea7e34b0100f83165e0",
-                "reference": "b043439dbdf954e6c28b5ea7e34b0100f83165e0",
+                "url": "https://api.github.com/repos/nette/utils/zipball/2778deb6aab136c8db4ed1f4d6e9f465ca2dbee3",
+                "reference": "2778deb6aab136c8db4ed1f4d6e9f465ca2dbee3",
                 "shasum": ""
             },
             "require": {
-                "php": "8.2 - 8.5"
+                "php": "8.0 - 8.5"
             },
             "conflict": {
                 "nette/finder": "<3",
@@ -2577,15 +2613,13 @@
             },
             "require-dev": {
                 "jetbrains/phpstorm-attributes": "^1.2",
-                "nette/phpstan-rules": "^1.0",
                 "nette/tester": "^2.5",
-                "phpstan/extension-installer": "^1.4@stable",
-                "phpstan/phpstan": "^2.1@stable",
+                "phpstan/phpstan-nette": "^2.0@stable",
                 "tracy/tracy": "^2.9"
             },
             "suggest": {
                 "ext-gd": "to use Image",
-                "ext-iconv": "to use Strings::chr(), ord() and reverse()",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
                 "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
@@ -2594,7 +2628,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -2605,6 +2639,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
                 "GPL-2.0-only",
@@ -2640,9 +2675,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.1.5"
+                "source": "https://github.com/nette/utils/tree/v4.0.10"
             },
-            "time": "2026-07-17T23:02:45+00:00"
+            "time": "2025-12-01T17:30:42+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2654,7 +2689,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nikic/PHP-Parser/9e33da9553fe7786f0962b35f4e4ecf01be89def",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9e33da9553fe7786f0962b35f4e4ecf01be89def",
                 "reference": "9e33da9553fe7786f0962b35f4e4ecf01be89def",
                 "shasum": ""
             },
@@ -2681,6 +2716,7 @@
                     "PhpParser\\": "lib/PhpParser"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2710,7 +2746,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nunomaduro/termwind/5369ef84d8142c1d87e4ec278711d4ece3cbf301",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/5369ef84d8142c1d87e4ec278711d4ece3cbf301",
                 "reference": "5369ef84d8142c1d87e4ec278711d4ece3cbf301",
                 "shasum": ""
             },
@@ -2746,6 +2782,7 @@
                     "Termwind\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2794,7 +2831,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/schmittjoh/php-option/67b192b6a42ec03944b972d6e633ddec78ad2c6d",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/67b192b6a42ec03944b972d6e633ddec78ad2c6d",
                 "reference": "67b192b6a42ec03944b972d6e633ddec78ad2c6d",
                 "shasum": ""
             },
@@ -2820,6 +2857,7 @@
                     "PhpOption\\": "src/PhpOption/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -2868,7 +2906,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/clock/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "shasum": ""
             },
@@ -2881,6 +2919,7 @@
                     "Psr\\Clock\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2915,7 +2954,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/container/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "shasum": ""
             },
@@ -2933,6 +2972,7 @@
                     "Psr\\Container\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2967,7 +3007,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/event-dispatcher/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "shasum": ""
             },
@@ -2985,6 +3025,7 @@
                     "Psr\\EventDispatcher\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3016,7 +3057,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-client/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "shasum": ""
             },
@@ -3035,6 +3076,7 @@
                     "Psr\\Http\\Client\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3067,7 +3109,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-factory/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
@@ -3086,6 +3128,7 @@
                     "Psr\\Http\\Message\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3121,7 +3164,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-message/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "shasum": ""
             },
@@ -3139,6 +3182,7 @@
                     "Psr\\Http\\Message\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3173,7 +3217,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/log/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
@@ -3191,6 +3235,7 @@
                     "Psr\\Log\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3222,7 +3267,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/simple-cache/764e0b3939f5ca87cb904f570ef9be2d78a07865",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865",
                 "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
                 "shasum": ""
             },
@@ -3240,6 +3285,7 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3272,7 +3318,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/bobthecow/psysh/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
                 "reference": "ca0fdcf8a7617afa3adfdf1b5fef573dffb69ca1",
                 "shasum": ""
             },
@@ -3317,6 +3363,7 @@
                     "Psy\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3350,7 +3397,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ralouphie/getallheaders/120b605dfeb996808c31b6477290a714d356e822",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
                 "reference": "120b605dfeb996808c31b6477290a714d356e822",
                 "shasum": ""
             },
@@ -3367,6 +3414,7 @@
                     "src/getallheaders.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3393,7 +3441,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ramsey/collection/344572933ad0181accbf4ba763e85a0306a8c5e2",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/344572933ad0181accbf4ba763e85a0306a8c5e2",
                 "reference": "344572933ad0181accbf4ba763e85a0306a8c5e2",
                 "shasum": ""
             },
@@ -3433,6 +3481,7 @@
                     "Ramsey\\Collection\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3468,7 +3517,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ramsey/uuid/75d73f48d02797c2c285a7e9f348fadc0102ffe2",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/75d73f48d02797c2c285a7e9f348fadc0102ffe2",
                 "reference": "75d73f48d02797c2c285a7e9f348fadc0102ffe2",
                 "shasum": ""
             },
@@ -3520,6 +3569,7 @@
                     "Ramsey\\Uuid\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3545,7 +3595,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/laravel-permission/d7d4cb0d58616722f1afc90e0484e4825155b9b3",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/d7d4cb0d58616722f1afc90e0484e4825155b9b3",
                 "reference": "d7d4cb0d58616722f1afc90e0484e4825155b9b3",
                 "shasum": ""
             },
@@ -3583,6 +3633,7 @@
                     "Spatie\\Permission\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3590,7 +3641,8 @@
                 {
                     "name": "Freek Van der Herten",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Permission handling for Laravel 8.0 and up",
@@ -3627,7 +3679,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/console/9e118dd9e3b94544ff3cce860457c2951a0a2bd6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9e118dd9e3b94544ff3cce860457c2951a0a2bd6",
                 "reference": "9e118dd9e3b94544ff3cce860457c2951a0a2bd6",
                 "shasum": ""
             },
@@ -3670,6 +3722,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3716,20 +3769,20 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v7.4.18",
+            "version": "v6.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "fecf40067fc8d8880ea87b8ac227600b9aadd1d0"
+                "reference": "5484e316cd8125f5215bbf829151e2211aa6d101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/css-selector/fecf40067fc8d8880ea87b8ac227600b9aadd1d0",
-                "reference": "fecf40067fc8d8880ea87b8ac227600b9aadd1d0",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/5484e316cd8125f5215bbf829151e2211aa6d101",
+                "reference": "5484e316cd8125f5215bbf829151e2211aa6d101",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2"
+                "php": ">=8.1"
             },
             "type": "library",
             "autoload": {
@@ -3740,6 +3793,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3760,7 +3814,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.4.18"
+                "source": "https://github.com/symfony/css-selector/tree/v6.4.45"
             },
             "funding": [
                 {
@@ -3780,7 +3834,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-23T10:03:40+00:00"
+            "time": "2026-08-23T07:35:46+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3792,7 +3846,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/deprecation-contracts/f3202fa1b5097b0af062dc978b32ecf63404e31d",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/f3202fa1b5097b0af062dc978b32ecf63404e31d",
                 "reference": "f3202fa1b5097b0af062dc978b32ecf63404e31d",
                 "shasum": ""
             },
@@ -3814,6 +3868,7 @@
                     "function.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3862,7 +3917,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/error-handler/8fa59eb915a14b2881993565a122c9dd1b0f8a19",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/8fa59eb915a14b2881993565a122c9dd1b0f8a19",
                 "reference": "8fa59eb915a14b2881993565a122c9dd1b0f8a19",
                 "shasum": ""
             },
@@ -3892,6 +3947,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3932,24 +3988,24 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v7.4.17",
+            "version": "v6.4.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "d269974ee93c61d03620ffee358355bfdb471d66"
+                "reference": "d7110a878e7e7cbd8aaebe9f55da8af885b8c0af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/event-dispatcher/d269974ee93c61d03620ffee358355bfdb471d66",
-                "reference": "d269974ee93c61d03620ffee358355bfdb471d66",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/d7110a878e7e7cbd8aaebe9f55da8af885b8c0af",
+                "reference": "d7110a878e7e7cbd8aaebe9f55da8af885b8c0af",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "symfony/event-dispatcher-contracts": "^2.5|^3"
             },
             "conflict": {
-                "symfony/dependency-injection": "<6.4",
+                "symfony/dependency-injection": "<5.4",
                 "symfony/service-contracts": "<2.5"
             },
             "provide": {
@@ -3958,14 +4014,13 @@
             },
             "require-dev": {
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^6.4|^7.0|^8.0",
-                "symfony/dependency-injection": "^6.4|^7.0|^8.0",
-                "symfony/error-handler": "^6.4|^7.0|^8.0",
-                "symfony/expression-language": "^6.4|^7.0|^8.0",
-                "symfony/framework-bundle": "^6.4|^7.0|^8.0",
-                "symfony/http-foundation": "^6.4|^7.0|^8.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/error-handler": "^5.4|^6.0|^7.0",
+                "symfony/expression-language": "^5.4|^6.0|^7.0",
+                "symfony/http-foundation": "^5.4|^6.0|^7.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/stopwatch": "^6.4|^7.0|^8.0"
+                "symfony/stopwatch": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -3976,6 +4031,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3992,7 +4048,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher/tree/v7.4.17"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v6.4.44"
             },
             "funding": [
                 {
@@ -4012,7 +4068,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:40:08+00:00"
+            "time": "2026-08-21T14:01:40+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -4024,7 +4080,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/event-dispatcher-contracts/c7de7a00ffb67842132da02ea92988a39ccd9f4e",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c7de7a00ffb67842132da02ea92988a39ccd9f4e",
                 "reference": "c7de7a00ffb67842132da02ea92988a39ccd9f4e",
                 "shasum": ""
             },
@@ -4047,6 +4103,7 @@
                     "Symfony\\Contracts\\EventDispatcher\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4103,7 +4160,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/finder/04db08efd85558162ef43fba10c299871b60d60b",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/04db08efd85558162ef43fba10c299871b60d60b",
                 "reference": "04db08efd85558162ef43fba10c299871b60d60b",
                 "shasum": ""
             },
@@ -4122,6 +4179,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4170,7 +4228,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/http-foundation/08bbdd5cf09248785442c41929aabe42f8ef5cfd",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/08bbdd5cf09248785442c41929aabe42f8ef5cfd",
                 "reference": "08bbdd5cf09248785442c41929aabe42f8ef5cfd",
                 "shasum": ""
             },
@@ -4202,6 +4260,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4250,7 +4309,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/http-kernel/c662aa16f2a6b078800ef5302444043c38932213",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/c662aa16f2a6b078800ef5302444043c38932213",
                 "reference": "c662aa16f2a6b078800ef5302444043c38932213",
                 "shasum": ""
             },
@@ -4319,6 +4378,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4367,7 +4427,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/mailer/21cc391f6f6a20b8765125cabee0c6195b5b8f10",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/21cc391f6f6a20b8765125cabee0c6195b5b8f10",
                 "reference": "21cc391f6f6a20b8765125cabee0c6195b5b8f10",
                 "shasum": ""
             },
@@ -4402,6 +4462,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4450,7 +4511,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/mime/e700a9819829e1395ae95b508c6355053b5644fe",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/e700a9819829e1395ae95b508c6355053b5644fe",
                 "reference": "e700a9819829e1395ae95b508c6355053b5644fe",
                 "shasum": ""
             },
@@ -4486,6 +4547,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4538,7 +4600,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-ctype/141046a8f9477948ff284fa65be2095baafb94f2",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2",
                 "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
                 "shasum": ""
             },
@@ -4566,6 +4628,7 @@
                     "Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4620,7 +4683,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-grapheme/bb899c1db0aa8127dc3afe8cda4a67eb24915f8d",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/bb899c1db0aa8127dc3afe8cda4a67eb24915f8d",
                 "reference": "bb899c1db0aa8127dc3afe8cda4a67eb24915f8d",
                 "shasum": ""
             },
@@ -4645,6 +4708,7 @@
                     "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4701,7 +4765,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-idn/51b5ff5ba85452b31ec6f55490b08148612339d9",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/51b5ff5ba85452b31ec6f55490b08148612339d9",
                 "reference": "51b5ff5ba85452b31ec6f55490b08148612339d9",
                 "shasum": ""
             },
@@ -4727,6 +4791,7 @@
                     "Symfony\\Polyfill\\Intl\\Idn\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4787,7 +4852,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-normalizer/aa20edea75bd9c48cfecc8360922e5a6e5c44502",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/aa20edea75bd9c48cfecc8360922e5a6e5c44502",
                 "reference": "aa20edea75bd9c48cfecc8360922e5a6e5c44502",
                 "shasum": ""
             },
@@ -4815,6 +4880,7 @@
                     "Resources/stubs"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4871,7 +4937,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-mbstring/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "shasum": ""
             },
@@ -4900,6 +4966,7 @@
                     "Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4955,7 +5022,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php80/dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
                 "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
                 "shasum": ""
             },
@@ -4980,6 +5047,7 @@
                     "Resources/stubs"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5038,7 +5106,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php83/5ea99087fb99c273a9b9236ed4c31e78b16103c6",
+                "url": "https://api.github.com/repos/symfony/polyfill-php83/zipball/5ea99087fb99c273a9b9236ed4c31e78b16103c6",
                 "reference": "5ea99087fb99c273a9b9236ed4c31e78b16103c6",
                 "shasum": ""
             },
@@ -5063,6 +5131,7 @@
                     "Resources/stubs"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5117,7 +5186,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-uuid/26dfec253c4cf3e51b541b52ddf7e42cb0908e94",
+                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/26dfec253c4cf3e51b541b52ddf7e42cb0908e94",
                 "reference": "26dfec253c4cf3e51b541b52ddf7e42cb0908e94",
                 "shasum": ""
             },
@@ -5145,6 +5214,7 @@
                     "Symfony\\Polyfill\\Uuid\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5199,7 +5269,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/process/b9f3d9ddf67543b92dbfa6d210c407d7a7982781",
+                "url": "https://api.github.com/repos/symfony/process/zipball/b9f3d9ddf67543b92dbfa6d210c407d7a7982781",
                 "reference": "b9f3d9ddf67543b92dbfa6d210c407d7a7982781",
                 "shasum": ""
             },
@@ -5215,6 +5285,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5263,7 +5334,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/routing/6fe2ed5b356beec41d5720dd73db72887c3f9d6d",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/6fe2ed5b356beec41d5720dd73db72887c3f9d6d",
                 "reference": "6fe2ed5b356beec41d5720dd73db72887c3f9d6d",
                 "shasum": ""
             },
@@ -5295,6 +5366,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5349,7 +5421,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/service-contracts/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/15e6a07ec2a2c75ceb1b21dd98105ee8456d2257",
                 "reference": "15e6a07ec2a2c75ceb1b21dd98105ee8456d2257",
                 "shasum": ""
             },
@@ -5379,6 +5451,7 @@
                     "/Test/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5427,23 +5500,22 @@
         },
         {
             "name": "symfony/string",
-            "version": "v7.4.19",
+            "version": "v6.4.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "02731ce2bd26514bec9efc0baef2cd0b0cf67f46"
+                "reference": "4513ab2b0ad2d7845a2f920e2f30b61633c9e606"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/string/02731ce2bd26514bec9efc0baef2cd0b0cf67f46",
-                "reference": "02731ce2bd26514bec9efc0baef2cd0b0cf67f46",
+                "url": "https://api.github.com/repos/symfony/string/zipball/4513ab2b0ad2d7845a2f920e2f30b61633c9e606",
+                "reference": "4513ab2b0ad2d7845a2f920e2f30b61633c9e606",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
-                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "php": ">=8.1",
                 "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-intl-grapheme": "~1.33",
+                "symfony/polyfill-intl-grapheme": "~1.0",
                 "symfony/polyfill-intl-normalizer": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0"
             },
@@ -5451,11 +5523,10 @@
                 "symfony/translation-contracts": "<2.5"
             },
             "require-dev": {
-                "symfony/emoji": "^7.1|^8.0",
-                "symfony/http-client": "^6.4|^7.0|^8.0",
-                "symfony/intl": "^6.4|^7.0|^8.0",
+                "symfony/http-client": "^5.4|^6.0|^7.0",
+                "symfony/intl": "^6.2|^7.0",
                 "symfony/translation-contracts": "^2.5|^3.0",
-                "symfony/var-exporter": "^6.4|^7.0|^8.0"
+                "symfony/var-exporter": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -5469,6 +5540,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5493,7 +5565,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v7.4.19"
+                "source": "https://github.com/symfony/string/tree/v6.4.46"
             },
             "funding": [
                 {
@@ -5513,7 +5585,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-11T14:46:58+00:00"
+            "time": "2026-09-11T09:03:57+00:00"
         },
         {
             "name": "symfony/translation",
@@ -5525,7 +5597,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/translation/fa2235501e2cf6b1d38ab42954b248a5e93c8e89",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/fa2235501e2cf6b1d38ab42954b248a5e93c8e89",
                 "reference": "fa2235501e2cf6b1d38ab42954b248a5e93c8e89",
                 "shasum": ""
             },
@@ -5575,6 +5647,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5623,7 +5696,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/translation-contracts/ccb206b98faccc511ebae8e5fad50f2dc0b30621",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/ccb206b98faccc511ebae8e5fad50f2dc0b30621",
                 "reference": "ccb206b98faccc511ebae8e5fad50f2dc0b30621",
                 "shasum": ""
             },
@@ -5648,6 +5721,7 @@
                     "/Test/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5704,7 +5778,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/uid/6b973c385f00341b246f697d82dc01a09107acdd",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/6b973c385f00341b246f697d82dc01a09107acdd",
                 "reference": "6b973c385f00341b246f697d82dc01a09107acdd",
                 "shasum": ""
             },
@@ -5724,6 +5798,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5781,7 +5856,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/var-dumper/86a9b2f1bd81c9780a809632238ab6ba10292166",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/86a9b2f1bd81c9780a809632238ab6ba10292166",
                 "reference": "86a9b2f1bd81c9780a809632238ab6ba10292166",
                 "shasum": ""
             },
@@ -5816,6 +5891,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5868,7 +5944,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/tijsverkoyen/CssToInlineStyles/f0292ccf0ec75843d65027214426b6b163b48b41",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/f0292ccf0ec75843d65027214426b6b163b48b41",
                 "reference": "f0292ccf0ec75843d65027214426b6b163b48b41",
                 "shasum": ""
             },
@@ -5894,13 +5970,15 @@
                     "TijsVerkoyen\\CssToInlineStyles\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu"
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -5921,7 +5999,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/vlucas/phpdotenv/301c07936b16d88628b126b01d082ba153cf4c40",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/301c07936b16d88628b126b01d082ba153cf4c40",
                 "reference": "301c07936b16d88628b126b01d082ba153cf4c40",
                 "shasum": ""
             },
@@ -5957,6 +6035,7 @@
                     "Dotenv\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -6004,7 +6083,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/voku/portable-ascii/8e1051fe39379367aecf014f41744ce7539a856f",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/8e1051fe39379367aecf014f41744ce7539a856f",
                 "reference": "8e1051fe39379367aecf014f41744ce7539a856f",
                 "shasum": ""
             },
@@ -6023,6 +6102,7 @@
                     "voku\\": "src/voku/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6079,7 +6159,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/FakerPHP/Faker/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "shasum": ""
             },
@@ -6111,6 +6191,7 @@
                     "Faker\\": "src/Faker/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6141,7 +6222,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/filp/whoops/baec851ad6ae00db8bd0fdd30d208afc1b71c56e",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/baec851ad6ae00db8bd0fdd30d208afc1b71c56e",
                 "reference": "baec851ad6ae00db8bd0fdd30d208afc1b71c56e",
                 "shasum": ""
             },
@@ -6169,13 +6250,15 @@
                     "Whoops\\": "src/Whoops/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -6210,7 +6293,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/hamcrest/hamcrest-php/b61cd040da1a4925bc90a51c074f5297e7c0fa52",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b61cd040da1a4925bc90a51c074f5297e7c0fa52",
                 "reference": "b61cd040da1a4925bc90a51c074f5297e7c0fa52",
                 "shasum": ""
             },
@@ -6241,6 +6324,7 @@
                     "hamcrest"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -6256,16 +6340,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.32.1",
+            "version": "v1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253"
+                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/pint/006bd7825eb01daf92959d060b89cd9514fe4253",
-                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
+                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
                 "shasum": ""
             },
             "require": {
@@ -6273,19 +6357,16 @@
                 "ext-mbstring": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^8.3.0"
+                "php": "^8.1.0"
             },
             "require-dev": {
-                "composer/semver": "^3.4.4",
-                "friendsofphp/php-cs-fixer": "^3.95.25",
-                "illuminate/view": "^13.31.0",
-                "larastan/larastan": "^3.11.0",
-                "laravel-zero/framework": "^13.0.0",
-                "laravel/agent-detector": "^2.0.2",
-                "laravel/prompts": "^0.3.24",
-                "mockery/mockery": "^1.6.15",
-                "nunomaduro/termwind": "^2.4.0",
-                "pestphp/pest": "^4.7.8"
+                "friendsofphp/php-cs-fixer": "^3.66.0",
+                "illuminate/view": "^10.48.25",
+                "larastan/larastan": "^2.9.12",
+                "laravel-zero/framework": "^10.48.25",
+                "mockery/mockery": "^1.6.12",
+                "nunomaduro/termwind": "^1.17.0",
+                "pestphp/pest": "^2.36.0"
             },
             "bin": [
                 "builds/pint"
@@ -6298,6 +6379,7 @@
                     "Database\\Factories\\": "database/factories/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6310,7 +6392,6 @@
             "description": "An opinionated code formatter for PHP.",
             "homepage": "https://laravel.com",
             "keywords": [
-                "dev",
                 "format",
                 "formatter",
                 "lint",
@@ -6321,7 +6402,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2026-09-10T10:47:55+00:00"
+            "time": "2025-01-14T16:20:53+00:00"
         },
         {
             "name": "laravel/sail",
@@ -6333,7 +6414,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/sail/639e03ac12cf23def171770bcab05758045b2642",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/639e03ac12cf23def171770bcab05758045b2642",
                 "reference": "639e03ac12cf23def171770bcab05758045b2642",
                 "shasum": ""
             },
@@ -6365,6 +6446,7 @@
                     "Laravel\\Sail\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6395,7 +6477,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/mockery/mockery/967a801bd188989a5669bd280f252d51c0fdc9ee",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/967a801bd188989a5669bd280f252d51c0fdc9ee",
                 "reference": "967a801bd188989a5669bd280f252d51c0fdc9ee",
                 "shasum": ""
             },
@@ -6420,6 +6502,7 @@
                     "Mockery\\": "library/Mockery"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -6427,17 +6510,20 @@
                 {
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
-                    "homepage": "https://github.com/padraic"
+                    "homepage": "https://github.com/padraic",
+                    "role": "Author"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "https://davedevelopment.co.uk"
+                    "homepage": "https://davedevelopment.co.uk",
+                    "role": "Developer"
                 },
                 {
                     "name": "Nathanael Esayeas",
                     "email": "nathanael.esayeas@protonmail.com",
-                    "homepage": "https://github.com/ghostwriter"
+                    "homepage": "https://github.com/ghostwriter",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -6473,7 +6559,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/myclabs/DeepCopy/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae",
                 "reference": "8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae",
                 "shasum": ""
             },
@@ -6499,6 +6585,7 @@
                     "DeepCopy\\": "src/DeepCopy/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6532,7 +6619,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nunomaduro/collision/995245421d3d7593a6960822063bdba4f5d7cf1a",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/995245421d3d7593a6960822063bdba4f5d7cf1a",
                 "reference": "995245421d3d7593a6960822063bdba4f5d7cf1a",
                 "shasum": ""
             },
@@ -6575,6 +6662,7 @@
                     "NunoMaduro\\Collision\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6627,7 +6715,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phar-io/manifest/54750ef60c58e43759730615a392c31c80e23176",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/54750ef60c58e43759730615a392c31c80e23176",
                 "reference": "54750ef60c58e43759730615a392c31c80e23176",
                 "shasum": ""
             },
@@ -6650,21 +6738,25 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -6690,7 +6782,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phar-io/version/4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "shasum": ""
             },
@@ -6703,21 +6795,25 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -6737,7 +6833,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-code-coverage/7e308268858ed6baedc8704a304727d20bc07c77",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/7e308268858ed6baedc8704a304727d20bc07c77",
                 "reference": "7e308268858ed6baedc8704a304727d20bc07c77",
                 "shasum": ""
             },
@@ -6774,13 +6870,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -6813,7 +6911,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-file-iterator/a95037b6d9e608ba092da1b23931e537cadc3c3c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/a95037b6d9e608ba092da1b23931e537cadc3c3c",
                 "reference": "a95037b6d9e608ba092da1b23931e537cadc3c3c",
                 "shasum": ""
             },
@@ -6834,13 +6932,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -6872,7 +6972,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-invoker/f5e568ba02fa5ba0ddd0f618391d5a9ea50b06d7",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/f5e568ba02fa5ba0ddd0f618391d5a9ea50b06d7",
                 "reference": "f5e568ba02fa5ba0ddd0f618391d5a9ea50b06d7",
                 "shasum": ""
             },
@@ -6897,13 +6997,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Invoke callables with a timeout",
@@ -6933,7 +7035,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-text-template/0c7b06ff49e3d5072f057eb1fa59258bf287a748",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/0c7b06ff49e3d5072f057eb1fa59258bf287a748",
                 "reference": "0c7b06ff49e3d5072f057eb1fa59258bf287a748",
                 "shasum": ""
             },
@@ -6954,13 +7056,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -6991,7 +7095,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-timer/e2a2d67966e740530f4a3343fe2e030ffdc1161d",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/e2a2d67966e740530f4a3343fe2e030ffdc1161d",
                 "reference": "e2a2d67966e740530f4a3343fe2e030ffdc1161d",
                 "shasum": ""
             },
@@ -7012,13 +7116,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -7048,7 +7154,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/phpunit/0e8c1d19cea35ad97d4887f363d07c78e30fbf06",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0e8c1d19cea35ad97d4887f363d07c78e30fbf06",
                 "reference": "0e8c1d19cea35ad97d4887f363d07c78e30fbf06",
                 "shasum": ""
             },
@@ -7100,13 +7206,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -7139,7 +7247,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/cli-parser/c34583b87e7b7a8055bf6c450c2c77ce32a24084",
+                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/c34583b87e7b7a8055bf6c450c2c77ce32a24084",
                 "reference": "c34583b87e7b7a8055bf6c450c2c77ce32a24084",
                 "shasum": ""
             },
@@ -7160,13 +7268,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library for parsing CLI options",
@@ -7194,7 +7304,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/code-unit/a81fee9eef0b7a76af11d121767abc44c104e503",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/a81fee9eef0b7a76af11d121767abc44c104e503",
                 "reference": "a81fee9eef0b7a76af11d121767abc44c104e503",
                 "shasum": ""
             },
@@ -7215,13 +7325,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the PHP code units",
@@ -7248,7 +7360,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/code-unit-reverse-lookup/5e3a687f7d8ae33fb362c5c0743794bbb2420a1d",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/5e3a687f7d8ae33fb362c5c0743794bbb2420a1d",
                 "reference": "5e3a687f7d8ae33fb362c5c0743794bbb2420a1d",
                 "shasum": ""
             },
@@ -7269,6 +7381,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7302,7 +7415,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/comparator/55dfef806eb7dfeb6e7a6935601fef866f8ca48d",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/55dfef806eb7dfeb6e7a6935601fef866f8ca48d",
                 "reference": "55dfef806eb7dfeb6e7a6935601fef866f8ca48d",
                 "shasum": ""
             },
@@ -7327,6 +7440,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7390,7 +7504,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/complexity/68ff824baeae169ec9f2137158ee529584553799",
+                "url": "https://api.github.com/repos/sebastianbergmann/complexity/zipball/68ff824baeae169ec9f2137158ee529584553799",
                 "reference": "68ff824baeae169ec9f2137158ee529584553799",
                 "shasum": ""
             },
@@ -7412,13 +7526,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library for calculating the complexity of PHP code units",
@@ -7446,7 +7562,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/diff/c41e007b4b62af48218231d6c2275e4c9b975b2e",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/c41e007b4b62af48218231d6c2275e4c9b975b2e",
                 "reference": "c41e007b4b62af48218231d6c2275e4c9b975b2e",
                 "shasum": ""
             },
@@ -7468,6 +7584,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7512,7 +7629,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/environment/8074dbcd93529b357029f5cc5058fd3e43666984",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/8074dbcd93529b357029f5cc5058fd3e43666984",
                 "reference": "8074dbcd93529b357029f5cc5058fd3e43666984",
                 "shasum": ""
             },
@@ -7536,6 +7653,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7575,7 +7693,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/exporter/0735b90f4da94969541dac1da743446e276defa6",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/0735b90f4da94969541dac1da743446e276defa6",
                 "reference": "0735b90f4da94969541dac1da743446e276defa6",
                 "shasum": ""
             },
@@ -7598,6 +7716,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7664,7 +7783,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/global-state/987bafff24ecc4c9ac418cab1145b96dd6e9cbd9",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/987bafff24ecc4c9ac418cab1145b96dd6e9cbd9",
                 "reference": "987bafff24ecc4c9ac418cab1145b96dd6e9cbd9",
                 "shasum": ""
             },
@@ -7688,6 +7807,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7725,7 +7845,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/lines-of-code/856e7f6a75a84e339195d48c556f23be2ebf75d0",
+                "url": "https://api.github.com/repos/sebastianbergmann/lines-of-code/zipball/856e7f6a75a84e339195d48c556f23be2ebf75d0",
                 "reference": "856e7f6a75a84e339195d48c556f23be2ebf75d0",
                 "shasum": ""
             },
@@ -7747,13 +7867,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library for counting the lines of code in PHP source code",
@@ -7781,7 +7903,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/object-enumerator/202d0e344a580d7f7d04b3fafce6933e59dae906",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/202d0e344a580d7f7d04b3fafce6933e59dae906",
                 "reference": "202d0e344a580d7f7d04b3fafce6933e59dae906",
                 "shasum": ""
             },
@@ -7804,6 +7926,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7837,7 +7960,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/object-reflector/24ed13d98130f0e7122df55d06c5c4942a577957",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/24ed13d98130f0e7122df55d06c5c4942a577957",
                 "reference": "24ed13d98130f0e7122df55d06c5c4942a577957",
                 "shasum": ""
             },
@@ -7858,6 +7981,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7891,7 +8015,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/recursion-context/5d32fe257a9b39cb63146924d6b4e32a22d4502a",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/5d32fe257a9b39cb63146924d6b4e32a22d4502a",
                 "reference": "5d32fe257a9b39cb63146924d6b4e32a22d4502a",
                 "shasum": ""
             },
@@ -7912,6 +8036,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7966,7 +8091,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/type/462699a16464c3944eefc02ebdd77882bd3925bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/462699a16464c3944eefc02ebdd77882bd3925bf",
                 "reference": "462699a16464c3944eefc02ebdd77882bd3925bf",
                 "shasum": ""
             },
@@ -7987,13 +8112,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -8020,7 +8147,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/version/c51fa83a5d8f43f1402e3f32a005e6262244ef17",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/c51fa83a5d8f43f1402e3f32a005e6262244ef17",
                 "reference": "c51fa83a5d8f43f1402e3f32a005e6262244ef17",
                 "shasum": ""
             },
@@ -8038,13 +8165,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -8071,7 +8200,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/backtrace/8ffe78be5ed355b5009e3dd989d183433e9a5adc",
+                "url": "https://api.github.com/repos/spatie/backtrace/zipball/8ffe78be5ed355b5009e3dd989d183433e9a5adc",
                 "reference": "8ffe78be5ed355b5009e3dd989d183433e9a5adc",
                 "shasum": ""
             },
@@ -8091,6 +8220,7 @@
                     "Spatie\\Backtrace\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -8098,7 +8228,8 @@
                 {
                     "name": "Freek Van de Herten",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A better backtrace",
@@ -8133,7 +8264,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/error-solutions/e495d7178ca524f2dd0fe6a1d99a1e608e1c9936",
+                "url": "https://api.github.com/repos/spatie/error-solutions/zipball/e495d7178ca524f2dd0fe6a1d99a1e608e1c9936",
                 "reference": "e495d7178ca524f2dd0fe6a1d99a1e608e1c9936",
                 "shasum": ""
             },
@@ -8168,13 +8299,15 @@
                     "Spatie\\LaravelIgnition\\": "legacy/laravel-ignition"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Ruben Van Assche",
-                    "email": "ruben@spatie.be"
+                    "email": "ruben@spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "This is my package error-solutions",
@@ -8205,7 +8338,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/flare-client-php/53f41b08a27cc039e1a8ed2be9a202e924f31bad",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/53f41b08a27cc039e1a8ed2be9a202e924f31bad",
                 "reference": "53f41b08a27cc039e1a8ed2be9a202e924f31bad",
                 "shasum": ""
             },
@@ -8240,6 +8373,7 @@
                     "Spatie\\FlareClient\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -8273,7 +8407,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/ignition/b59385bb7aa24dae81bcc15850ebecfda7b40838",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/b59385bb7aa24dae81bcc15850ebecfda7b40838",
                 "reference": "b59385bb7aa24dae81bcc15850ebecfda7b40838",
                 "shasum": ""
             },
@@ -8316,13 +8450,15 @@
                     "Spatie\\Ignition\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Spatie",
-                    "email": "info@spatie.be"
+                    "email": "info@spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A beautiful error page for PHP applications.",
@@ -8357,7 +8493,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/laravel-ignition/1baee07216d6748ebd3a65ba97381b051838707a",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/1baee07216d6748ebd3a65ba97381b051838707a",
                 "reference": "1baee07216d6748ebd3a65ba97381b051838707a",
                 "shasum": ""
             },
@@ -8405,13 +8541,15 @@
                     "Spatie\\LaravelIgnition\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Spatie",
-                    "email": "info@spatie.be"
+                    "email": "info@spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A beautiful error page for Laravel applications.",
@@ -8438,28 +8576,28 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v7.4.18",
+            "version": "v6.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "4cef939e55b8a21c5780418de0d98ab00d0736e1"
+                "reference": "a778aba2d7130eba6150cc80cb692988a361ee4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/yaml/4cef939e55b8a21c5780418de0d98ab00d0736e1",
-                "reference": "4cef939e55b8a21c5780418de0d98ab00d0736e1",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/a778aba2d7130eba6150cc80cb692988a361ee4b",
+                "reference": "a778aba2d7130eba6150cc80cb692988a361ee4b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.1",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "symfony/console": "<6.4"
+                "symfony/console": "<5.4"
             },
             "require-dev": {
-                "symfony/console": "^6.4|^7.0|^8.0"
+                "symfony/console": "^5.4|^6.0|^7.0"
             },
             "bin": [
                 "Resources/bin/yaml-lint"
@@ -8473,6 +8611,7 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -8489,7 +8628,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.4.18"
+                "source": "https://github.com/symfony/yaml/tree/v6.4.45"
             },
             "funding": [
                 {
@@ -8509,7 +8648,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-30T00:47:26+00:00"
+            "time": "2026-08-30T00:27:22+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -8521,7 +8660,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/theseer/tokenizer/b7489ce515e168639d17feec34b8847c326b0b3c",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/b7489ce515e168639d17feec34b8847c326b0b3c",
                 "reference": "b7489ce515e168639d17feec34b8847c326b0b3c",
                 "shasum": ""
             },
@@ -8537,13 +8676,15 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",

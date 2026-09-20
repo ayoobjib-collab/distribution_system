@@ -1,0 +1,69 @@
+import { useState } from "react";
+import AsyncSelect from "react-select/async";
+
+const SelectCategory = ({ value, setDataInChild, error }) => {
+
+    const [res, setRes] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [sCats, setSCats] = useState(
+        value.map(category => ({
+            value: category.id,
+            label: category.name,
+        }))
+    );
+
+    const searchMe = async () => {
+
+        if (res.length > 0) return;
+
+        setLoading(true);
+
+        try {
+            const response = await fetch(`/api/v1/categories`);
+            const data = await response.json();
+
+            setRes(
+                data.map(category => ({
+                    value: category.id,
+                    label: category.name,
+                }))
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const searchRes = async (inputValue) => {
+        return res.filter(item =>
+            item.label.toLowerCase().includes(inputValue.toLowerCase())
+        );
+    };
+
+    const addCat = (selectObject) => {
+        let val = selectObject?.map(sb => sb.value);
+        setDataInChild('categories', val);
+        setSCats(selectObject ?? []);
+    }
+
+    return (
+        <div className="form-group ic-search-wrap">
+            <AsyncSelect
+                isMulti
+                classNamePrefix="react-select"
+                defaultOptions={res}
+                onMenuOpen={searchMe}
+                isLoading={loading}
+                value={sCats}
+                loadOptions={searchRes}
+                onChange={addCat}
+                placeholder="انتخاب دسته"
+                noOptionsMessage={() => "موردی یافت نشد"}
+                cacheOptions
+                required
+            />
+            {error && (<div>{error}</div>)}
+        </div>
+    );
+}
+
+export default SelectCategory;

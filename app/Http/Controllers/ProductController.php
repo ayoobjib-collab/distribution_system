@@ -63,20 +63,23 @@ class ProductController extends Controller
             $updateProductImages->handle($request, $product);
         }
 
+        $this->updateCategory($request, $product);
+
         return $this->back('محصول با موفقیت ثبت شد');
     }
 
-    public function edit(Product $product, Request $request)
+    public function edit(Request $request, Product $product)
     {
         $this->abortIfIsNotAdmin($request);
 
-        dd($product->image_urls);
+        $product->load('categories:id,name');
 
         return $this->render(
             'Create',
             [
                 'sendUrl' => route('product.update', ['product' => $product]),
-                'product' => $product
+                'product' => $product,
+                'h1'      => 'ویرایش محصول'
             ]
         );
     }
@@ -90,14 +93,21 @@ class ProductController extends Controller
         /**
          * Remove image before update
          * 
-         * If image not remove old images remove complately
+         * If don't remove image old images remove complately
          */
         unset($validated['image']);
         $product->update($validated);
 
         $updateProductImages->handle($request, $product);
 
+        $this->updateCategory($request, $product);
+
         return $this->back('با موفقیت بروزرسانی شد');
+    }
+
+    public function updateCategory(ProductRequest $request, Product $product)
+    {
+        $product->categories()->sync($request->categories ?? []);
     }
 
     public function search(Request $request)

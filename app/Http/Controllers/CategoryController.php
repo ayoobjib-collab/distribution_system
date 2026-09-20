@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class CategoryController extends Controller
             'Create',
             [
                 'category' => $category,
-                'sendUrl' => route('category.update', ['category'=>$category]),
+                'sendUrl' => route('category.update', ['category' => $category]),
             ]
         );
     }
@@ -56,7 +57,7 @@ class CategoryController extends Controller
     /**
      * Display the specified category.
      */
-    public function show(Category $category)
+    public function show(CategoryRequest $category)
     {
         $category->load("products");
 
@@ -69,22 +70,9 @@ class CategoryController extends Controller
     /**
      * Update the specified category.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $validated = $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'max:255',
-            ],
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                'max:255',
-                'unique:categories,slug,' . $category->id,
-            ],
-        ]);
+        $validated =  $request->validated();
 
         $category->update($validated);
 
@@ -106,24 +94,47 @@ class CategoryController extends Controller
     /**
      * Store a newly created category.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'max:255',
-            ],
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                'unique:categories,slug',
-            ],
-        ]);
+        $validated =  $request->validated();
 
         Category::create($validated);
 
         return $this->back('محصول با موفقیت ثبت شد');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->string('search')
+            ->trim()
+            ->stripTags()
+            ->toString();
+
+
+        if (empty($search)) {
+
+            $categories = Category::all();
+        } else {
+
+            $categories = Category::query()
+                ->select([
+                    'id',
+                    'name',
+                ])
+                ->when($request->filled('search'), function ($query) use ($search) {
+                    $query->where(function ($query) use ($search) {
+                        $query->where('name', 'like', "%{$search}%");
+                    });
+                })
+                ->limit(20)
+                ->get();
+        }
+
+        return response()->json(
+            $categories->map(fn($product) => [
+                'id' => $product->id,
+                'name' => $product->name,
+            ])
+        );
     }
 }

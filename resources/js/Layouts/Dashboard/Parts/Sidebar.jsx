@@ -43,13 +43,18 @@ const Sidebar = ({ isOpen, childClicked }) => {
                 label: 'ایجاد محصول(مدیر)'
             },
             {
+                href: '/category/create',
+                label: 'ایجاد دسته(مدیر)'
+            },
+            {
                 href: '/user',
                 label: 'لیست ویزیتورها(مدیر)'
             },
             {
                 href: '/user/create',
                 label: 'ایجاد ویزیتور(مدیر)'
-            }
+            },
+
         );
     }
 
