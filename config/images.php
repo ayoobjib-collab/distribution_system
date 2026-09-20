@@ -1,9 +1,37 @@
 <?php
 
 /**
- * Images config for use in intervention/image
- * 
+ * Image configuration.
+ *
+ * Settings used by Intervention Image and product image processing.
  */
+
 return [
-    'IMAGE_DRIVER' => 'gd'
+
+    /*
+    |--------------------------------------------------------------------------
+    | Image Driver
+    |--------------------------------------------------------------------------
+    |
+    | Intervention Image driver.
+    |
+    */
+
+    'driver' => 'gd',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Product Images
+    |--------------------------------------------------------------------------
+    */
+
+    'product' => [
+
+        /*
+        | Small/mobile image width.
+        */
+        'small' => 500,
+        'medium' => 800
+    ],
+
 ];

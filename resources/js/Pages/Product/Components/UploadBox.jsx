@@ -4,7 +4,7 @@ import '@/../css/components/upload-box.css';
 import { getUrl } from "@/functions/helper";
 
 const UploadBox = memo(({ name, label, value, error, setDataInChild }) => {
-
+    
     const [fileList, setFileList] = useState(
         Array.isArray(value)
             ? value.map((item, index) => (

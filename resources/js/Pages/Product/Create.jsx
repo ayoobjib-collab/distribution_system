@@ -3,6 +3,7 @@ import FormField from "@/BaseComponents/FormField";
 import { useForm, usePage } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
 import UploadBox from "./Components/UploadBox";
+import { useEffect } from "react";
 
 function Create({ sendUrl, product }) {
 
@@ -42,6 +43,8 @@ function Create({ sendUrl, product }) {
 
         //Create new
         if (product == undefined) {
+            
+            data._method = 'POST';
 
             post(sendUrl, {
                 preserveScroll: true,
@@ -52,7 +55,7 @@ function Create({ sendUrl, product }) {
 
             //Update
         } else {
-            //Use POST instead of PUT
+            //Use POST instead of PUT for send file
             post(sendUrl, {
                 preserveScroll: true,
                 forceFormData: true,
