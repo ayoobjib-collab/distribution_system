@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('transaction', TransactionController::class);
     Route::resource('category', CategoryController::class);
 
-    Route::get('/ip', [ProductListController::class, 'run']);
+    Route::get('/list', [ProductListController::class, 'run']);
 
     Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
         ->name('invoice.update-status');

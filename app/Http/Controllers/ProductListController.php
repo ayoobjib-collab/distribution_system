@@ -13,13 +13,13 @@ class ProductListController extends Controller
 
     public function getViewPath(): string
     {
-        return 'IP';
+        return 'List';
     }
 
     public function run()
     {
         return $this->render(
-            'Show',
+            'Index',
             [
                 'cats'      => $this->categories(),
                 'products' => Inertia::scroll(fn() => Product::paginate())
@@ -41,7 +41,7 @@ class ProductListController extends Controller
             ->select([
                 'id',
                 'name',
-                'price',
+                'sale_price',
                 'image',
             ])
             ->with([

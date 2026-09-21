@@ -1,0 +1,128 @@
+@import url(../components/quantity.css);
+
+.title {
+    display: none;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.cats>div {
+    flex: 1 0 auto;
+    background: #0078ff;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.cats {
+    border-bottom: 2px solid #d9cfcf4a;
+    padding-bottom: 5px;
+}
+
+/* Product Cart*/
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    padding-top: 10px;
+}
+
+.product-cart {
+    border: 1px solid var(--table-border);
+    border-radius: 10px;
+}
+
+.pc-top {
+    aspect-ratio: 1 / 1;
+    background: #c4c8d757;
+    border-radius: 8px;
+    position: relative;
+}
+
+.pc-top svg.no-bg {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+.pc-bottom {
+    padding: 8px;
+}
+
+.pc-top img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.product-title {
+    margin: 0 0 14px;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    direction: rtl;
+}
+
+.add-to-invoice {
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+
+span.add-to-invoice svg {
+    width: 40px;
+    height: 40px;
+}
+
+#addToInvoice path {
+    stroke: red;
+    stroke-width: 15px;
+}
+
+@media (max-width: 900px) {
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-title {
+        font-size: 13px;
+    }
+
+    .product-price .price {
+        font-size: 15px;
+    }
+
+    .ant-drawer-body,
+    .ant-drawer-header {
+        padding: 8px !important;
+    }
+}
+
+.ma-img-wrap img {
+    width: 100%;
+    height: 50vh;
+}
+
+.mp-price {
+    text-align: left;
+    font-size: 1.4rem;
+}
