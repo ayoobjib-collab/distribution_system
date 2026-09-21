@@ -22,11 +22,13 @@ return new class extends Migration
 
             $table->unsignedBigInteger('buy_price')->default(0);
             $table->unsignedBigInteger('sale_price')->default(0);
-            
+            $table->unsignedSmallInteger('max_discount')->nullable();
+
             $table->unsignedSmallInteger('stock')->default(0);
 
             $table->boolean('is_active')->default(true);
             $table->text('description')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -49,10 +51,11 @@ return new class extends Migration
             $table->string('economic_code')->nullable();
 
             $table->text('address')->nullable();
-            $table->string('lat')->nullable();
-            $table->string('long')->nullable();
 
-            $table->unsignedBigInteger('credit_limit')->default(0);
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+
+            $table->unsignedBigInteger('credit_limit')->nullable();
 
             $table->boolean('is_active')->default(true);
             $table->timestamps();

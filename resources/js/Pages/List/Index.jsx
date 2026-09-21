@@ -1,10 +1,12 @@
+import { useState } from "react";
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
+
 import '@/../css/page/list-index.css';
-import ProductCart from "./Components/ProductCart";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+import ProductCart from "./Components/ProductCart";
 import ModalAddToInvoice from "./Components/ModalAddToInvoice";
-import { useState } from "react";
+import LinkToInvoice from "./Components/LinkToInvoice";
 
 function ListIndex({ cats, products }) {
 
@@ -35,11 +37,18 @@ function ListIndex({ cats, products }) {
                 ))}
             </div>
 
-            <ModalAddToInvoice
-                product={selectedProduct}
-                childClosed={() => setSelectedProduct(null)}
-                open={selectedProduct !== null}
-            />
+            {
+                selectedProduct !== null ?
+
+                    <ModalAddToInvoice
+                        product={selectedProduct}
+                        childClosed={() => setSelectedProduct(null)}
+                        open={selectedProduct !== null}
+                    />
+                    :
+                    <LinkToInvoice />
+            }
+
 
             <div style={{ display: "none" }}>
                 <IoAddCircleOutline size={40} color="red" id='addToInvoice' />

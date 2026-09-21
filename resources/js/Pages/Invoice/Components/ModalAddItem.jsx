@@ -22,7 +22,6 @@ function ModalAddItem({ invoiceType, setItems }) {
         product_id: '',
         name: '',
         unit_price: '',
-        final_price: '',
         stock: 0,
         unit: 'کارتن',
         quantity: 1,

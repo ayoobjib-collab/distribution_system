@@ -31,13 +31,14 @@ function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
         setIsOpen(false);
     }
 
-
     function addFormData(e) {
         const { name, value } = e.target;
         let v = value;
+        
         if (name === 'quantity') {
             v = Math.min(v, (item.stock || item.product.stock))
         }
+
         setcopiedItem(prev => {
             return {
                 ...prev,

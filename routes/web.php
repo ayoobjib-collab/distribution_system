@@ -2,11 +2,11 @@
 
 use App\Enums\RoutesName;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\InfinitePage\ProductController as IPProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoicePublicPreviewController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\InvoiceProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\TransactionController;
@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/list', [ProductListController::class, 'run']);
 
+    Route::post('/invoice/products', [InvoiceProductController::class, 'getProducts']);
     Route::patch('/invoice/{invoice}/status', [InvoiceController::class, 'updateStatus'])
         ->name('invoice.update-status');
 

@@ -16,7 +16,11 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
     }
 
     function getItemTotal(item) {
-        return (item.unit_price * (1 - (item.discount / 100)) * item.quantity);
+        return Math.round(
+            item.unit_price *
+            (1 - item.discount / 100) *
+            item.quantity
+        );
     }
 
     return (
@@ -37,42 +41,44 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map((item) => (
-                        <tr key={item.id}>
+                    {items &&
+                        items.map((item) => (
 
-                            <td>{item.name || item.product.name}</td>
+                            <tr key={item.id} >
 
-                            <td>{formatAmount((item.sale_price ?? item.unit_price))}</td>
+                                <td>{item.name || item.product.name}</td>
 
-                            <td>{item.quantity}</td>
-                            <td>{item.discount}</td>
+                                <td>{formatAmount((item.unit_price ?? ''))}</td>
 
-                            <td className='total'>
-                                {
-                                    formatAmount(getItemTotal(item))
-                                }
-                            </td>
+                                <td>{item.quantity}</td>
+                                <td>{item.discount}</td>
 
-                            {/* show action link if only is in edit mode */}
-                            {!readOnly &&
-                                <td className="flex gap-2 justify-center">
-
-                                    <span className='icon-wrap ml-2' onClick={() => modalEditItem(item)}>
-                                        <AiOutlineEdit size={24} />
-                                    </span>
-
+                                <td className='total'>
                                     {
-                                        removeItem !== undefined &&
-                                        <span className='icon-wrap ml-2' onClick={() => removeItem(item.id)}>
-                                            <FaRegTrashAlt size={24} fill="inherit" />
-                                        </span>
+                                        formatAmount(getItemTotal(item))
                                     }
-
                                 </td>
-                            }
 
-                        </tr>
-                    ))}
+                                {/* show action link if only is in edit mode */}
+                                {!readOnly &&
+                                    <td className="flex gap-2 justify-center">
+
+                                        <span className='icon-wrap ml-2' onClick={() => modalEditItem(item)}>
+                                            <AiOutlineEdit size={24} />
+                                        </span>
+
+                                        {
+                                            removeItem !== undefined &&
+                                            <span className='icon-wrap ml-2' onClick={() => removeItem(item.id)}>
+                                                <FaRegTrashAlt size={24} fill="inherit" />
+                                            </span>
+                                        }
+
+                                    </td>
+                                }
+
+                            </tr>
+                        ))}
 
                     <tr>
                         <td></td>
@@ -94,7 +100,7 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
 
                     </tr>
                 </tbody>
-            </table>
+            </table >
 
             <ModalEditItem
                 isOpen={editIsOpen}

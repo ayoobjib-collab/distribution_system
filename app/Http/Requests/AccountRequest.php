@@ -56,8 +56,8 @@ class AccountRequest extends FormRequest
             'national_code' => ['nullable', 'string', 'digits:10'],
             'economic_code' => ['nullable', 'string', 'max:50'],
             'address'       => ['nullable', 'string'],
-            'lat'           => ['nullable', 'string', 'max:50'],
-            'long'          => ['nullable', 'string', 'max:50'],
+            'latitude'      => ['nullable', 'string', 'max:50'],
+            'longitude'     => ['nullable', 'string', 'max:50'],
             'credit_limit'  => ['nullable', 'integer', 'min:0'],
             'is_active'     => ['nullable', 'boolean'],
         ];

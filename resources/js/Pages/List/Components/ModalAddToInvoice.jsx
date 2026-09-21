@@ -1,15 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ConfigProvider, Button, Drawer } from 'antd';
 import { formatAmount } from '@/functions/helper.js';
 import Quantity from './Quantity';
 
 function ModalAddToInvoice({ product, open, childClosed }) {
 
-    if (product == null) return "";
+    const key = 'invoice_products';
 
     const [discount, setDiscount] = useState(0);
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(0);
+    const [btnText, setBtnText] = useState('افزودن به فاکتور');
     const [placement, setPlacement] = useState('bottom');
+
+    /**
+     * Sync quantity and discount by localstorage
+     */
+    useEffect(() => {
+        const products = JSON.parse(
+            localStorage.getItem(key) || '[]'
+        );
+
+        const existingProduct = products.find(
+            (item) => item.product_id === product?.id
+        );
+
+        if(existingProduct !== undefined)
+            setBtnText('ویرایش (موجود در فاکتور)');
+
+        setDiscount(existingProduct?.discount ?? 0);
+        setQuantity(existingProduct?.quantity ?? 0);
+    }, [product]);
+
+    if (product == null) return null;
 
     const productImgs = product?.image_urls ?? [];
 
@@ -22,8 +44,6 @@ function ModalAddToInvoice({ product, open, childClosed }) {
     };
 
     function addToInvoice() {
-
-        const key = 'invoice_products';
 
         const products = JSON.parse(
             localStorage.getItem(key) || '[]'
@@ -54,7 +74,9 @@ function ModalAddToInvoice({ product, open, childClosed }) {
     }
 
     return (
+
         <ConfigProvider
+
             theme={{
                 token: {
                     fontFamily: 'inherit',
@@ -72,7 +94,7 @@ function ModalAddToInvoice({ product, open, childClosed }) {
 
                 footer={
                     <button className="ant-btn ant-btn-primary" onClick={addToInvoice}>
-                        افزودن به فاکتور
+                        {btnText}
                     </button>
                 }
             >

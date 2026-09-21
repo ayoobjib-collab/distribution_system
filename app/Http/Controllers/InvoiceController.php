@@ -6,17 +6,10 @@ use App\Actions\Invoice\InvoiceStoreAction;
 use App\Enums\InvoiceStatus;
 use App\Enums\RoutesName;
 use App\Http\Requests\InvoiceRequest;
-use App\Models\Account;
 use App\Models\Invoice;
 use App\Models\Product;
-use App\Services\Sms\SmsManager;
-use App\Support\InvoiceHash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Enum;
 
 class InvoiceController extends Controller
 {
@@ -82,11 +75,14 @@ class InvoiceController extends Controller
      */
     public function create()
     {
+        $csrf = csrf_token();
+
         return $this->render(
             'Create',
             [
-                'h1'        => 'ایجاد فاکتور',
-                'sendUrl' => RoutesName::CreateInvoice->value,
+                'h1'      => 'ایجاد فاکتور',
+                'sendUrl' => route('invoice.store'),
+                'csrf'    => $csrf
             ]
         );
     }
@@ -97,13 +93,12 @@ class InvoiceController extends Controller
             $request->validated()
         );
 
-        $this->back('فاکتور با موفقیت ثتب شد');
+        return $this->back('فاکتور با موفقیت ثبت شد');
     }
 
 
     public function update(InvoiceRequest $request, Invoice $invoice, InvoiceStoreAction $action)
     {
-
         $this->validateUser($request, $invoice);
 
         if ($invoice->status !== InvoiceStatus::Draft)
@@ -111,7 +106,7 @@ class InvoiceController extends Controller
 
         $action->executeUpdate($request->validated(), $invoice);
 
-        $this->back('فاکتور بروز رسانی شد');
+        return $this->back('فاکتور بروز رسانی شد');
     }
 
     public function edit(int $id)

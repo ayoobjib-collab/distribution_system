@@ -14,6 +14,7 @@ import ModalAddPayMethod from './Components/ModalAddPayMethod';
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
 
+import useInvoiceItems from './Hooks/useInvoiceItems';
 
 /**
  * Invoice create and update
@@ -21,9 +22,6 @@ import { SiDatabricks } from "react-icons/si";
 function InvoiceCreate({ invoice, h1 }) {
 
 	const isCreateMode = invoice == undefined;
-
-	//States
-	const [items, setItems] = useState(invoice?.items ?? []);
 
 	const defualtData = {
 		type: '',
@@ -33,6 +31,16 @@ function InvoiceCreate({ invoice, h1 }) {
 		pay_method: '',
 		items: []
 	};
+
+	//States
+	const {
+		items,
+		setItems,
+		removeItem,
+		updateItem,
+		calcSubtotal
+	} = useInvoiceItems(invoice?.items ?? []);
+
 	const { data, setData, processing, post, put, errors } = useForm(defualtData);
 
 	useEffect(() => {
@@ -45,24 +53,14 @@ function InvoiceCreate({ invoice, h1 }) {
 
 	useEffect(() => {
 
-		const calculatedsubtotal = items.reduce((acc, item) => {
-
-			const qty = Number(item.quantity) || 0;
-			const price = item.unit_price * (1 - (item.discount / 100));
-
-			return acc + (qty * price);
-		}, 0);
-
-
 		setData(prev => {
-
-			//Prevent re render
+			//Prevent rerender
 			if (prev.items === items) return prev;
-
+			
 			return {
 				...prev,
 				items,
-				subtotal: calculatedsubtotal
+				subtotal: calcSubtotal
 			};
 		});
 
@@ -137,25 +135,6 @@ function InvoiceCreate({ invoice, h1 }) {
 		});
 	}
 
-	//Remove invoice items
-	function removeItem(itemId) {
-		setItems(prev => {
-			let newItems = [...prev];
-			return newItems.filter(i => i.id !== itemId);
-		});
-	}
-
-	//Update invoice item
-	function updateItem(id, key, value) {
-		setItems(prev =>
-			prev.map(item =>
-				item.id === id
-					? { ...item, [key]: value }
-					: item
-			)
-		);
-	}
-
 	return (
 		<>
 
@@ -220,7 +199,7 @@ function InvoiceCreate({ invoice, h1 }) {
 
 			<ModalAddPayMethod
 				pay_method={data.pay_method}
-				childChanged={(e) => setData('pay_method', e.target.value) }
+				childChanged={(e) => setData('pay_method', e.target.value)}
 			/>
 
 			<div className="ii-form-wrap flex mob-fix">
@@ -239,7 +218,6 @@ function InvoiceCreate({ invoice, h1 }) {
 					همه فاکتورها
 				</button>
 			</div>
-
 		</>
 	)
 }
