@@ -4,8 +4,6 @@ import ModalBb from '@/BaseComponents/ModalBb';
 
 const ModalEditItem = memo(({ isOpen, setIsOpen, item, updateItem }) => {
 
-    console.log(item);
-
     const [copiedItem, setCopiedItem] = useState({
         quantity: item.quantity ?? '1',
         discount: item.discount ?? '0',

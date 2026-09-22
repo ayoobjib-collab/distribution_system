@@ -1,133 +1,33 @@
-/* .quantity {
-    border-bottom: 1px solid rgb(214, 214, 214);
-    align-items: center;
-}
-
-.quantity label {
-    flex: 1 0 30%;
-}
-
-.qty-input {
-    background: #c4c8d757;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 5px;
-    gap: 20px;
-    flex: 1 0 65%
-}
-
-.qty-input span {
-    text-align: center;
-    flex: 1;
-}
-
-.qty-input .product-qty,
-.qty-input .qty-count {
-    font-weight: bold;
-    font-size: inherit;
-    border: none;
-    display: inline-block;
-}
-
-.qty-input .product-qty:focus,
-.qty-input .qty-count:focus {
-    outline: none;
-}
-
-.qty-input .product-qty {
-    width: 50px;
-    min-width: 0;
-    display: inline-block;
-    text-align: center;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-.qty-input .product-qty::-webkit-outer-spin-button,
-.qty-input .product-qty::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-}
-
-.qty-input .qty-count {
-    padding: 0;
-    cursor: pointer;
-    width: 4rem;
-    font-size: 1.8em;
-    text-indent: -100px;
-    overflow: hidden;
-    position: relative;
-    margin: 0;
-}
-
-.qty-input .qty-count:before,
-.qty-input .qty-count:after {
-    content: "";
-    height: 2px;
-    width: 10px;
-    position: absolute;
-    display: block;
-    background: #000;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.qty-input .qty-count--minus {
-    border-right: 1px solid #e2e2e2;
-}
-
-.qty-input .qty-count--add {
-    border-left: 1px solid #e2e2e2;
-}
-
-.qty-input .qty-count--add:after {
-    transform: rotate(90deg);
-}
-
-.qty-input .qty-count:disabled {
-    color: #ccc;
-    background: #f2f2f2;
-    cursor: not-allowed;
-    border-color: transparent;
-}
-
-.qty-input .qty-count:disabled:before,
-.qty-input .qty-count:disabled:after {
-    background: #ccc;
-} */
-
 .quantity {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e547;
     box-sizing: border-box;
 }
 
 .quantity label {
-    flex: 0 0 70px;
+    flex: 1 0 30%;
     font-size: 13px;
     color: #444;
     margin: 0;
 }
 
 .qty-input {
-    flex: 1;
+    flex: 1 0 65%;
     height: 40px;
     display: flex;
     align-items: center;
-    background: #eef0f4;
+    background: #5e6f91;
     border-radius: 6px;
     overflow: hidden;
     gap: 0;
     box-sizing: border-box;
+}
+
+.light .qty-input {
+    background: #d6e2f9;
 }
 
 .qty-input span {

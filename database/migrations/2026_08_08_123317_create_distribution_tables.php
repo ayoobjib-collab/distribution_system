@@ -76,18 +76,13 @@ return new class extends Migration
             $table->string('type')->default('sale');
             $table->string('status')->default('draft');
 
-            $table->unsignedBigInteger('discount')->default(0);
-
             $table->unsignedBigInteger('tax')->default(0);
             $table->unsignedBigInteger('shipping_cost')->default(0);
             $table->unsignedBigInteger('subtotal')->default(0);
 
-            $table->unsignedSmallInteger('settlement_days')->default(0);
-
             $table->text('description')->nullable();
 
             $table->timestamps();
-
             $table->softDeletes();
 
             $table->index(['account_id', 'status']);
@@ -111,11 +106,8 @@ return new class extends Migration
             $table->unsignedBigInteger('tax')->default(0);
             $table->unsignedSmallInteger('discount')->default(0);
             $table->unsignedBigInteger('total');
-
             $table->text('description')->nullable();
-
             $table->timestamps();
-
             $table->index(['invoice_id', 'product_id']);
         });
 
@@ -136,21 +128,29 @@ return new class extends Migration
                 ->constrained('invoices')
                 ->nullOnDelete();
 
-            $table->string('type');
+            // Admin approved transaction
+            $table->foreignId('approved_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->string('type', 20);
+            $table->string('status', 20)->default('registered');
 
             $table->unsignedBigInteger('amount');
 
-            $table->string('payment_method')->nullable();
-
             $table->string('reference_no')->nullable();
+            $table->date('due_date')->nullable();
 
             $table->text('description')->nullable();
-
+            
+            $table->timestamp('approved_at')->nullable();
             $table->timestamps();
 
             $table->softDeletes();
 
-            $table->index(['account_id']);
+            $table->index('account_id');
+            $table->index('status');
         });
     }
 

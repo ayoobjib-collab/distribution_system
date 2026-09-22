@@ -93,7 +93,8 @@ class InvoiceController extends Controller
             $request->validated()
         );
 
-        return $this->back('فاکتور با موفقیت ثبت شد');
+        return redirect(route('invoice.index'));
+        // return $this->back('فاکتور با موفقیت ثبت شد');
     }
 
 

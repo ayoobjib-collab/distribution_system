@@ -141,7 +141,7 @@ class ProductController extends Controller
             $products->map(fn($product) => [
                 'id' => $product->id,
                 'name' => $product->name,
-                'sale_price' => $product->sale_price,
+                'unit_price' => $product->sale_price,
                 'stock' => $product->stock,
                 'unit' => $product->unit,
             ])

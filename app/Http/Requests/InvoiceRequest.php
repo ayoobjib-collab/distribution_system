@@ -2,17 +2,71 @@
 
 namespace App\Http\Requests;
 
-use App\Domain\ValuesObject\Bank;
-use App\Domain\ValuesObject\ChequeType;
+use App\Models\Product;
 use App\Support\Number;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class InvoiceRequest extends FormRequest
 {
+
     public function authorize(): bool
     {
         return auth()->check();
+    }
+
+    protected function passedValidation(): void
+    {
+        $items = collect($this->validated('items'));
+
+        $productIds = $items
+            ->pluck('product_id')
+            ->unique();
+
+        $products = Product::query()
+            ->whereIn('id', $productIds)
+            ->get(['id', 'name', 'stock'])
+            ->keyBy('id');
+
+        $invoice = $this->route('invoice');
+
+        $oldQuantities = collect();
+
+        if ($invoice) {
+            $oldQuantities = $invoice->items()
+                ->whereIn('product_id', $productIds)
+                ->get(['product_id', 'quantity'])
+                ->groupBy('product_id')
+                ->map(fn($items) => $items->sum('quantity'));
+        }
+
+
+        foreach ($items as $index => $item) {
+
+            $product = $products->get($item['product_id']);
+
+            if (!$product) {
+                throw ValidationException::withMessages([
+                    "items.$index.product_id" =>
+                    'محصول انتخاب شده وجود ندارد.',
+                ]);
+            }
+
+            $oldQuantity = $oldQuantities->get(
+                $item['product_id'],
+                0
+            );
+
+            $availableStock = $product->stock + $oldQuantity;
+
+            if ($item['quantity'] > $availableStock) {
+                throw ValidationException::withMessages([
+                    "items.$index.quantity" =>
+                    "موجودی محصول «{$product->name}» کافی نیست. " .
+                        "موجودی قابل استفاده: {$availableStock}",
+                ]);
+            }
+        }
     }
 
     protected function prepareForValidation(): void
@@ -49,12 +103,11 @@ class InvoiceRequest extends FormRequest
 
             # Invoice Items
             'items'                 => ['required', 'array', 'min:1'],
-            'items.*.product_id'    => ['required', 'exists:products,id'],
+            'items.*.product_id'    => ['required'],
             'items.*.quantity'      => ['required', 'integer', 'min:1', 'max:65535'],
             'items.*.unit_price'    => ['required', 'integer', 'min:0'],
-            'items.*.discount'      => ['required', 'integer', 'min:0', 'max:40'],
+            'items.*.discount'      => ['required', 'integer', 'min:0', 'max:100'],
             'items.*.description'   => ['nullable', 'string'],
-
         ];
     }
 
@@ -63,6 +116,7 @@ class InvoiceRequest extends FormRequest
         return [
             'account_id' => 'طرف حساب',
             'items' => 'اقلام فاکتور',
+            'items.*.quantity' => 'تعداد محصول'
         ];
     }
 }

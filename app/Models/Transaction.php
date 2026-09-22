@@ -2,52 +2,58 @@
 
 namespace App\Models;
 
-use App\Domain\ValuesObject\TransactionType;
-use App\Models\Trait\PersianDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Cheque;
 
 class Transaction extends Model
 {
-    use HasFactory, PersianDate;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'price',
-        'transaction_id',
-        'cheque_id',
-        'payer_id',
-        'receiver_id',
-        'comment',
-        'type'
-    ];
-
-    protected $appends = [
-        'type_label',
+        'account_id',
+        'user_id',
+        'invoice_id',
+        'approved_by',
+        'type',
+        'status',
+        'amount',
+        'reference_no',
+        'due_date',
+        'description',
+        'approved_at',
     ];
 
     protected $casts = [
-        'type' => TransactionType::class
+        'amount' => 'integer',
+        'due_date' => 'date',
+        'approved_at' => 'datetime',
     ];
 
-    public function payer(): BelongsTo
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function account(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'payer_id', 'id');
+        return $this->belongsTo(Account::class);
     }
 
-    public function receiver(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'receiver_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function cheque(): BelongsTo
+    public function invoice(): BelongsTo
     {
-        return $this->belongsTo(Cheque::class, 'cheque_id', 'id');
+        return $this->belongsTo(Invoice::class);
     }
 
-    public function getTypeLabelAttribute(): ?string
+    public function approver(): BelongsTo
     {
-        return $this->type?->label();
+        return $this->belongsTo(User::class, 'approved_by');
     }
 }

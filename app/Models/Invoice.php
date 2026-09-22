@@ -16,13 +16,10 @@ class Invoice extends Model
         'account_id',
         'user_id',
         'type',
-        'mobile',
         'status',
-        'discount',
         'tax',
         'shipping_cost',
         'subtotal',
-        'settlement_days',
         'description',
     ];
 

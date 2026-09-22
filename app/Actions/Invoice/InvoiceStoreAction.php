@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class InvoiceStoreAction
 {
@@ -132,6 +133,19 @@ class InvoiceStoreAction
                 throw new \Exception(
                     "موجودی کالای {$product->name} کافی نیست."
                 );
+            }
+        }
+
+
+        foreach ($items as $index => $item) {
+
+            $product = $products->get($item['product_id']);
+
+            if (!$product->hasEnoughStock($item['quantity'])) {
+                throw ValidationException::withMessages([
+                    "items.$index.quantity" =>
+                    "موجودی کالای {$product->name} کافی نیست. موجودی فعلی: {$product->stock}",
+                ]);
             }
         }
 

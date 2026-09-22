@@ -8,7 +8,7 @@
     }
 
     .app-content {
-        padding:5px 5px 55px 5px;
+        padding: 5px 5px 55px 5px;
     }
 
     .sidebar {
@@ -49,6 +49,11 @@
         padding: 0
     }
 
+    nav.mobile-menu svg {
+        width: 21px;
+        height: 21px;
+    }
+
     .sidebar-overlay {
         background: rgba(0, 0, 0, 0.185);
         position: fixed;
@@ -61,8 +66,8 @@
         transition: all .3s;
     }
 
-    .cards>*{
-        width:100%;
+    .cards>* {
+        width: 100%;
     }
 
 }

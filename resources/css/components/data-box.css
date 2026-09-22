@@ -4,18 +4,19 @@
     padding: 20px;
 }
 
-/* کارت‌های مدرن */
 .info-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 20px;
+    padding: 10px;
     flex: 1;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .info-card:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.info-card * {
+    font-family: 'iransans';
 }
 
 .card-header {
@@ -23,7 +24,7 @@
     font-weight: 700;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #bdbdbd52
 }
 
 .info-row {
@@ -31,17 +32,14 @@
     justify-content: space-between;
     margin-bottom: 8px;
     padding: 8px;
-    background-color: #f8fafc;
     border-radius: 8px;
 }
 
 .info-row span {
-    color: #64748b;
     font-size: 0.85rem;
 }
 
 .info-row b {
-    color: #1e293b;
     font-weight: 600;
 }
 
@@ -49,13 +47,31 @@
     .container-wrapper {
         gap: 10px;
         padding: 2px;
-    }
-
-    .info-row span {
-        display: none;
+        flex-direction: column;
     }
 
     .info-card {
         padding: 5px
     }
 }
+
+.ant-collapse {
+    overflow: hidden;
+}
+
+html:not(.light) .info-card .ant-collapse-body {
+    background-color: #30365c;
+    color: white;
+}
+
+html:not(.light) span.ant-collapse-title {
+    color: white;
+}
+
+html:not(.light) .info-card .ant-collapse-header {
+    background-color: #232844;
+}
+
+/* .info-card .ant-collapse-header {
+    flex-direction: row-reverse;
+} */

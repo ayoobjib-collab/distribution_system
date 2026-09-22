@@ -6,7 +6,7 @@ import MobItemsTable from './MobItemsTable';
 import useIsMobile from '../Hooks/useIsMobile';
 import { AiOutlineEdit } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
-
+import Tooltip from '@/BaseComponents/Tooltip';
 
 function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem }) {
 
@@ -43,11 +43,13 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
                         removeItem={removeItem}
                         modalEditItem={modalEditItem}
                         getItemTotal={getItemTotal}
+                        subtotal={subtotal}
                     />
                     :
                     <table className="responsive-table desk">
                         <thead>
                             <tr>
+                                <th>ر</th>
                                 <th>نام</th>
                                 <th>قیمت فروش</th>
                                 <th>تعداد</th>
@@ -61,12 +63,14 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
                         </thead>
                         <tbody>
                             {items &&
-                                items.map((item) => (
+                                items.map((item, index) => (
 
                                     <tr key={item.id} >
-
+                                        <td>
+                                            {index + 1}
+                                        </td>
                                         <td data-label="نام">
-                                            {item.name || item.product.name}
+                                            {item.name ?? item.product.name ?? ''}
                                         </td>
 
                                         <td data-label="قیمت فروش">
@@ -88,20 +92,25 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
                                         {!readOnly && (
                                             <td data-label="عملیات" className="flex gap-2 justify-center">
 
-                                                <span
-                                                    className="icon-wrap ml-2"
-                                                    onClick={() => modalEditItem(item)}
-                                                >
-                                                    <AiOutlineEdit size={24} />
-                                                </span>
-
-                                                {removeItem !== undefined && (
+                                                <Tooltip text="ویرایش">
                                                     <span
                                                         className="icon-wrap ml-2"
-                                                        onClick={() => removeItem(item.id)}
+                                                        onClick={() => modalEditItem(item)}
                                                     >
-                                                        <FaRegTrashAlt size={24} fill="inherit" />
+                                                        <AiOutlineEdit size={23} />
                                                     </span>
+                                                </Tooltip>
+
+
+                                                {removeItem !== undefined && (
+                                                    <Tooltip text="حذف">
+                                                        <span
+                                                            className="icon-wrap ml-2"
+                                                            onClick={() => removeItem(item.id)}
+                                                        >
+                                                            <FaRegTrashAlt size={20} fill="inherit" />
+                                                        </span>
+                                                    </Tooltip>
                                                 )}
 
                                             </td>
@@ -111,6 +120,7 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
                                 ))}
 
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

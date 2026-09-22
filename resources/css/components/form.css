@@ -507,11 +507,6 @@ button.secondary svg {
         border-radius: 0 !important;
     }
 
-    nav.mobile-menu svg {
-        width: 21px;
-        height: 21px;
-    }
-
     .modal .mob-fix button {
         width: 100%;
     }

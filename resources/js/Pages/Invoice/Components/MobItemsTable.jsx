@@ -2,24 +2,22 @@ import { formatAmount } from "@/functions/helper";
 import { AiOutlineEdit } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTotal }) {
+function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTotal, subtotal }) {
 
     return (
 
         <div className="mobile-items-list">
 
-            {items.map((item) => (
-
+            {items.map((item, index) => (
                 <div className="mobile-item" key={item.id}>
 
                     <div className="mobile-item-header">
                         <div className="mobile-item-name">
-                            {item.name}
+                            {index + 1 + '- ' + (item.name ?? item.product.name  ?? '') }
                         </div>
 
                         {!readOnly && (
                             <div className="mobile-item-actions">
-
 
                                 <span
                                     className="icon-wrap ml-2"
@@ -76,6 +74,13 @@ function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTota
 
                 </div>
             ))}
+
+            <div className="subtotal flex gap-8">
+                جمع کل فاکتور:
+                <b>
+                    {formatAmount(subtotal)}
+                </b>
+            </div>
 
         </div>
     )

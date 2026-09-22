@@ -1,0 +1,22 @@
+@import url(../components/data-box.css);
+
+.subtotal {
+    background-color: brown;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.mai-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mai-content .form-group.tel {
+    margin-bottom: 10px;
+}
+
+.mai-content .form-group {
+    margin-bottom:15px;
+}

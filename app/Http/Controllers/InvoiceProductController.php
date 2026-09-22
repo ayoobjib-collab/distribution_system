@@ -41,7 +41,7 @@ class InvoiceProductController
 
                 $quantity = (int) ($storedItem['quantity'] ?? 1);
 
-                $quantity = min($quantity, (int) $product->stock);
+                $quantity = max(1, min($quantity, (int) $product->stock));
 
                 return [
                     'id' => $product->id,

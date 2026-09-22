@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { router, useForm, usePage } from "@inertiajs/react";
+import { useEffect } from 'react';
+import { router, useForm } from "@inertiajs/react";
 import { toast } from 'react-toastify';
 
 import Button from "@/BaseComponents/Button";
@@ -14,8 +14,9 @@ import ModalAddPayMethod from './Components/ModalAddPayMethod';
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
 
-import useIsMobile 		from './Hooks/useIsMobile';
-import useInvoiceItems 	from './Hooks/useInvoiceItems';
+import useInvoiceItems from './Hooks/useInvoiceItems';
+
+import '@/../css/page/invoice-create.css';
 
 /**
  * Invoice create and update
@@ -57,7 +58,7 @@ function InvoiceCreate({ invoice, h1 }) {
 		setData(prev => {
 			//Prevent rerender
 			if (prev.items === items) return prev;
-			
+
 			return {
 				...prev,
 				items,
@@ -211,14 +212,15 @@ function InvoiceCreate({ invoice, h1 }) {
 					/>
 				</form>
 
-				<button
+				< button
 					className='secondary'
-					onClick={() => router.get('/invoice')}
+					onClick={() => router.get('/list')}
 				>
 					<MdSave />
-					همه فاکتورها
+					لیست محصولات
 				</button>
-			</div>
+			
+			</div >
 		</>
 	)
 }
