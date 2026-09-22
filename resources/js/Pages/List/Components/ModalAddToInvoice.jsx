@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { ConfigProvider, Button, Drawer } from 'antd';
 import { formatAmount } from '@/functions/helper.js';
-import Quantity from './Quantity';
+import Quantity from '@/BaseComponents/Quantity';
 
 function ModalAddToInvoice({ product, open, childClosed }) {
 
     const key = 'invoice_products';
 
     const [discount, setDiscount] = useState(0);
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const [btnText, setBtnText] = useState('افزودن به فاکتور');
     const [placement, setPlacement] = useState('bottom');
 

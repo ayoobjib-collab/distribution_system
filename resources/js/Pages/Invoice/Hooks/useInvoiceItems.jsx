@@ -18,6 +18,8 @@ export default function useInvoiceItems(initialItems = []) {
             return;
         }
 
+        document.body.classList.add('loading');
+
         fetch('/invoice/products', {
             method: 'POST',
             headers: {
@@ -45,7 +47,9 @@ export default function useInvoiceItems(initialItems = []) {
                 });
 
                 setItems(invoiceItems);
-            });
+            }).finally(() => {
+                document.body.classList.remove('loading');
+            });;
 
     }, []);
 

@@ -14,7 +14,8 @@ import ModalAddPayMethod from './Components/ModalAddPayMethod';
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
 
-import useInvoiceItems from './Hooks/useInvoiceItems';
+import useIsMobile 		from './Hooks/useIsMobile';
+import useInvoiceItems 	from './Hooks/useInvoiceItems';
 
 /**
  * Invoice create and update
@@ -32,7 +33,7 @@ function InvoiceCreate({ invoice, h1 }) {
 		items: []
 	};
 
-	//States
+	//Hooks
 	const {
 		items,
 		setItems,

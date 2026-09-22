@@ -469,6 +469,11 @@ button.secondary svg {
     opacity: 0;
 }
 
+.form-group.ic-search-wrap {
+    padding: 0;
+    height: auto;
+}
+
 @media (width <=800px) {
     .mob-fix {
         position: fixed;

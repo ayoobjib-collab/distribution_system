@@ -4,6 +4,7 @@
 
 /* Base */
 @import url(./base/ready.css);
+@import url(./base/loading.css);
 
 
 /* Responsive */
@@ -18,6 +19,7 @@
 @import url(./components/button.css);
 @import url(./components/pagination.css);
 @import url(./components/table.css);
+@import url(./components/quantity.css);
 
 
 @font-face {

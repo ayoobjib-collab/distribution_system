@@ -1,51 +1,50 @@
-import ModalBb from "@/BaseComponents/ModalBb";
-import FormField from "@/BaseComponents/FormField";
-import { MdFileDownloadDone } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
+import Quantity from '@/BaseComponents/Quantity';
+import ModalBb from '@/BaseComponents/ModalBb';
 
-// import { memo } from "react";
+const ModalEditItem = memo(({ isOpen, setIsOpen, item, updateItem }) => {
 
-function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
+    console.log(item);
 
-    // if (!isOpen) return '';
-
-    const [copiedItem, setcopiedItem] = useState({
-        quantity: '1',
-        discount: '0'
+    const [copiedItem, setCopiedItem] = useState({
+        quantity: item.quantity ?? '1',
+        discount: item.discount ?? '0',
     });
 
+    // Product information
+    const productName = item?.name ?? item?.product?.name ?? '';
+    const productStock = item?.stock ?? item?.product?.stock ?? 0;
 
-    let productName = item.name || item?.product?.name;
-    let productStock = item.stock || item?.product?.stock;
+    // Update local form
+    function addFormData(name, value) {
+        setCopiedItem(prev => ({
+            ...prev,
+            [name]: value,
+        }));
+    }
 
-    useEffect(() => {
-        if (item) {
-            setcopiedItem({ ...item });
-        }
-    }, [item]);
-
-
+    // Save changes
     function handleSave() {
-        updateItem(item.id, 'discount', copiedItem.discount);
-        updateItem(item.id, 'quantity', copiedItem.quantity);
+
+        if (!item) return;
+
+        updateItem(
+            item.id,
+            'quantity',
+            copiedItem.quantity
+        );
+
+        updateItem(
+            item.id,
+            'discount',
+            copiedItem.discount
+        );
+
         setIsOpen(false);
     }
 
-    function addFormData(e) {
-        const { name, value } = e.target;
-        let v = value;
-        
-        if (name === 'quantity') {
-            v = Math.min(v, (item.stock || item.product.stock))
-        }
-
-        setcopiedItem(prev => {
-            return {
-                ...prev,
-                [name]: v
-            };
-        });
-    }
+    // Don't render without an item
+    if (!item) return null;
 
     return (
 
@@ -55,28 +54,22 @@ function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
             onClose={() => setIsOpen(false)}
         >
 
-            <FormField
-                name='quantity'
+            <Quantity
                 label={`تعداد (حداکثر ${productStock} )`}
-                onChange={addFormData}
                 value={copiedItem.quantity ?? ''}
-                isRequired={true}
-                type="tel"
-                errors
+                onChange={(value) => addFormData('quantity', value)}
+                max={productStock}
             />
 
-            <FormField
-                name='discount'
+            <Quantity
                 label='درصد تخفیف'
                 value={copiedItem.discount ?? ''}
-                onChange={addFormData}
-                type="tel"
-                errors
+                onChange={(value) => addFormData('discount', value)}
+                max={100}
             />
 
             <div className="mob-fix">
                 <button onClick={handleSave}>
-                    <MdFileDownloadDone />
                     <span>
                         تایید تغییرات
                     </span>
@@ -86,5 +79,6 @@ function ModalEditItem({ isOpen, setIsOpen, item, updateItem }) {
         </ModalBb>
     )
 }
+); //end memo
 
 export default ModalEditItem;

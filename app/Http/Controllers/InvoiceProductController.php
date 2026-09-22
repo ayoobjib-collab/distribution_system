@@ -23,34 +23,36 @@ class InvoiceProductController
 
         $products = Product::whereIn('id', $productIds)->get();
 
-        $result = $products->map(function ($product) use ($items) {
+        $result = $products
+            ->filter(fn($product) => $product->stock > 0) //remove outofstock products
+            ->map(function ($product) use ($items) {
 
-            $storedItem = collect($items)->firstWhere(
-                'product_id',
-                $product->id
-            );
+                if ($product->stock <= 0)
+                    return;
 
-            $discount = intval($storedItem['discount'] ?? 0);
+                $storedItem = collect($items)->firstWhere(
+                    'product_id',
+                    $product->id
+                );
 
-            $discount = max(0, min(100, $discount));
+                $discount = intval($storedItem['discount'] ?? 0);
 
-            $quantity = (int) ($storedItem['quantity'] ?? 1);
+                $discount = max(0, min(100, $discount));
 
-            $quantity = max(
-                1,
-                min($quantity, (int) $product->stock)
-            );
+                $quantity = (int) ($storedItem['quantity'] ?? 1);
 
-            return [
-                'id' => $product->id,
-                'name' => $product->name,
-                'unit_price' => intval($product->sale_price),
-                'stock' => (int) $product->stock,
-                'unit' => $product->unit,
-                'quantity' => $quantity,
-                'discount' => $discount,
-            ];
-        })->values();
+                $quantity = min($quantity, (int) $product->stock);
+
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'unit_price' => intval($product->sale_price),
+                    'stock' => (int) $product->stock,
+                    'unit' => $product->unit,
+                    'quantity' => $quantity,
+                    'discount' => $discount,
+                ];
+            })->values();
 
         return response()->json($result);
     }

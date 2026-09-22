@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const Quantity = ({ value, label, onChange, min = 0, max = 999 }) => {
 
     const increase = () => {
