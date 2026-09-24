@@ -1,0 +1,95 @@
+
+.jalali-date-picker {
+    width: 100%;
+}
+
+.date-wheel-columns {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.date-wheel-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.date-wheel-label {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.date-wheel {
+    position: relative;
+    height: 126px;
+    overflow: hidden;
+}
+
+.date-wheel-scroll {
+    height: 126px;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.date-wheel-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.date-wheel-space {
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.date-wheel-item {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        color 0.15s ease,
+        font-size 0.15s ease;
+}
+
+.date-wheel-item.selected {
+    color: #222;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.date-wheel-selection {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 42px;
+    height: 42px;
+    pointer-events: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.date-result {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    direction: rtl;
+}
+
+.date-wheel-scroll {
+    height: 126px;
+    overflow-y: auto;
+
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+}

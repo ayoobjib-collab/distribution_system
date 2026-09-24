@@ -142,7 +142,7 @@ html {
     height: 100%;
     width: 100%;
     font-size: clamp(14px, 3vw, 15px);
-    --ant-font-family:'iransans' !important;
+    --ant-font-family: 'iransans' !important;
 }
 
 body {

@@ -1,12 +1,13 @@
+import { useState, memo } from "react";
+
 import ModalBb from "@/BaseComponents/ModalBb";
 import FormField from "@/BaseComponents/FormField";
 import Quantity from "@/BaseComponents/Quantity";
+import { createRandomId } from '@/functions/helper.js';
 
-import { useState } from "react";
 import { LuCircleFadingPlus } from "react-icons/lu";
 import { MdFileDownloadDone } from "react-icons/md";
 
-import { memo } from "react";
 
 /**
  * Packages
@@ -43,14 +44,11 @@ const getPorducts = async (inputValue) => {
     }));
 };
 
+
 function ModalAddItem({ invoiceType, setItems }) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [invoiceItem, setInvoiceItem] = useState(baseInvoiceItem);
-
-    function createRandomId() {
-        return crypto.randomUUID();
-    }
 
     /**
      */
@@ -128,9 +126,9 @@ function ModalAddItem({ invoiceType, setItems }) {
         <div className="modal-add-item">
 
             <div className="add">
-                <button className="secondary" onClick={() => setIsOpen(true)}>
+                <button className="small secondary" onClick={() => setIsOpen(true)}>
                     <LuCircleFadingPlus />
-                    افزودن ردیف
+                    افزودن محصول
                 </button>
             </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Invoice\InvoiceStoreAction;
+use App\Actions\Invoice\InvoiceUpdateAction;
 use App\Enums\InvoiceStatus;
 use App\Enums\RoutesName;
 use App\Http\Requests\InvoiceRequest;
@@ -93,19 +94,24 @@ class InvoiceController extends Controller
             $request->validated()
         );
 
-        return redirect(route('invoice.index'));
-        // return $this->back('فاکتور با موفقیت ثبت شد');
+        return redirect(route('invoice.index'))->with(
+            'flash',
+            [
+                'msg' => 'فاکتور با موفقیت ثبت شد',
+                'status' => true
+            ]
+        );
     }
 
 
-    public function update(InvoiceRequest $request, Invoice $invoice, InvoiceStoreAction $action)
+    public function update(InvoiceRequest $request, Invoice $invoice, InvoiceUpdateAction $action)
     {
         $this->validateUser($request, $invoice);
 
         if ($invoice->status !== InvoiceStatus::Draft)
             return back()->with('msg', 'فاکتور کامل شده و شما قادر به ویرایش آن نیستید');
 
-        $action->executeUpdate($request->validated(), $invoice);
+        $action->execute($request->validated(), $invoice);
 
         return $this->back('فاکتور بروز رسانی شد');
     }
@@ -123,6 +129,7 @@ class InvoiceController extends Controller
                 'items.product:id,name,stock',
                 'account:id,name',
                 'user:id,full_name,mobile',
+                'transactions:id,invoice_id,type,amount,due_date', //invoice_id need for work
             ])
             ->findOrFail($id);
 

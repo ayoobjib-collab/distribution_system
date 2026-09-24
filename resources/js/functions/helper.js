@@ -48,7 +48,7 @@ export function getUrl(path) {
 export const faToEn = (str) => {
 
     if (typeof str !== 'string') return str;
-    
+
     return str
 
         // Persian digits ۰۱۲۳۴۵۶۷۸۹
@@ -57,6 +57,10 @@ export const faToEn = (str) => {
         // Arabic-Indic digits ٠١٢٣٤٥٦٧٨٩
         .replace(/[\u0660-\u0669]/g, (d) => String(d.charCodeAt(0) - 0x0660));
 };
+
+export const createRandomId = () => {
+    return crypto.randomUUID();
+}
 
 
 // VITE_APP_NAME="${APP_NAME}"

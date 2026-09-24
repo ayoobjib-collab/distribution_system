@@ -8,6 +8,8 @@ export default function useInvoiceItems(initialItems = []) {
 
     useEffect(() => {
 
+        return;
+
         if (items.length > 0) return;//exit in edit mode
 
         const stored = JSON.parse(

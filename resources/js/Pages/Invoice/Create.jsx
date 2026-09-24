@@ -1,27 +1,44 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { router, useForm } from "@inertiajs/react";
 import { toast } from 'react-toastify';
+
+import DashboardLayout from "@/Layouts/Dashboard/Layout"
 
 import Button from "@/BaseComponents/Button";
 import AsyncSelect from "react-select/async";
 import ModalAddItem from "./Components/ModalAddItem";
 import CustomerData from './Components/CustomerData';
 import ItemsTable from './Components/ItemsTable';
-
-import DashboardLayout from "@/Layouts/Dashboard/Layout"
-import ModalAddPayMethod from './Components/ModalAddPayMethod';
+import TransactionShowEdit from './Components/TransactionShowEdit';
 
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
-
 import useInvoiceItems from './Hooks/useInvoiceItems';
 
 import '@/../css/page/invoice-create.css';
+
+
+const getCustomers = async (inputValue) => {
+
+	if (!inputValue) return [];
+
+	const res = await fetch(
+		`/api/v1/accounts?search=${encodeURIComponent(inputValue)}`
+	);
+
+	const data = await res.json();
+
+	return data.map(customer => ({
+		value: customer.id,
+		label: customer.name,
+	}));
+};
 
 /**
  * Invoice create and update
  */
 function InvoiceCreate({ invoice, h1 }) {
+
 
 	const isCreateMode = invoice == undefined;
 
@@ -31,7 +48,8 @@ function InvoiceCreate({ invoice, h1 }) {
 		account_name: invoice?.account.name ?? '',
 		subtotal: invoice?.subtotal ?? '',
 		pay_method: '',
-		items: []
+		items: [],
+		transactions: invoice?.transactions ?? []
 	};
 
 	//Hooks
@@ -54,7 +72,6 @@ function InvoiceCreate({ invoice, h1 }) {
 	}, [errors]);
 
 	useEffect(() => {
-
 		setData(prev => {
 			//Prevent rerender
 			if (prev.items === items) return prev;
@@ -108,26 +125,8 @@ function InvoiceCreate({ invoice, h1 }) {
 
 	};
 
-	const getCustomers = async (inputValue) => {
-
-		if (!inputValue) return [];
-
-		const res = await fetch(
-			`/api/v1/accounts?search=${encodeURIComponent(inputValue)}`
-		);
-
-		const data = await res.json();
-
-		return data.map(customer => ({
-			value: customer.id,
-			label: customer.name,
-		}));
-	};
-
 	function addCustomer(selectObject) {
-
 		let val = selectObject?.value;
-
 		setData(prev => {
 			return {
 				...prev,
@@ -139,12 +138,11 @@ function InvoiceCreate({ invoice, h1 }) {
 
 	return (
 		<>
-
 			<div className="flex flex-col gap2" style={{ marginBottom: 5 }}>
 				<h3>
 					<SiDatabricks size={24} />
 					<span className="ml-2">
-						اطلاعات فاکتور
+						طرف فاکتور
 					</span>
 				</h3>
 			</div >
@@ -199,28 +197,31 @@ function InvoiceCreate({ invoice, h1 }) {
 				setItems={setItems}
 			/>
 
-			<ModalAddPayMethod
-				pay_method={data.pay_method}
-				childChanged={(e) => setData('pay_method', e.target.value)}
+			<TransactionShowEdit
+				dataTransactions={data.transactions}
+				setData={setData}
 			/>
 
-			<div className="ii-form-wrap flex mob-fix">
-				<form onSubmit={handleSubmit}>
-					<Button
-						isLoading={processing}
-						text="ذخیره فاکتور"
-					/>
-				</form>
+			{
+				data.account_id && items.length > 0 &&
+				<div className="ii-form-wrap flex mob-fix">
+					<form onSubmit={handleSubmit}>
+						<Button
+							isLoading={processing}
+							text="ذخیره فاکتور"
+						/>
+					</form>
 
-				< button
-					className='secondary'
-					onClick={() => router.get('/list')}
-				>
-					<MdSave />
-					لیست محصولات
-				</button>
-			
-			</div >
+					< button
+						className='secondary'
+						onClick={() => router.get('/list')}
+					>
+						<MdSave />
+						لیست محصولات
+					</button>
+				</div >
+			}
+
 		</>
 	)
 }

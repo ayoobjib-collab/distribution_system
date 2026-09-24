@@ -40,3 +40,7 @@ button:hover:not(.second, .mode-switch.active, .not-btn) {
 .logout button {
     margin: auto;
 }
+
+button.small {
+    font-size: .7rem;
+}

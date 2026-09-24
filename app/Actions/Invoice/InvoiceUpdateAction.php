@@ -4,39 +4,55 @@ namespace App\Actions\Invoice;
 
 use App\Models\Invoice;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
-class InvoiceStoreAction
+class InvoiceUpdateAction
 {
 
-    public function execute(array $data)
+    public function execute(array $data, Invoice $invoice)
     {
-        return DB::transaction(function () use ($data) {
+        return DB::transaction(function () use ($invoice, $data) {
 
+            # Remvoe old items and stock
+            $oldItems = $invoice->items()->get();
+
+            foreach ($oldItems as $item) {
+                Product::where('id', $item->product_id)
+                    ->increment('stock', $item->quantity);
+            }
+
+            $invoice->items()->delete();
+
+            # Remove old transactions
+            $invoice->transactions()->delete();
+
+            # Add new stock
             $products = $this->checkProductStock($data['items']);
 
             $subtotal = 0;
-            $itemsData = $this->addTotalAndSubtotalToData($products, $data['items'], $subtotal);
+            $itemsData = $this->addTotalAndSubtotalToData(
+                $products,
+                $data['items'],
+                $subtotal
+            );
 
-            # Create invoice
-            $invoice = Invoice::create([
-                'account_id'      => $data['account_id'],
-                'user_id'         => Auth::id(),
-                'subtotal'        => $subtotal,
-                'description'     => $data['description'] ?? '',
+            $invoice->update([
+                'subtotal'    => $subtotal,
+                'description' => $validated['description'] ?? '',
             ]);
 
+            /*
+            * Create new items and decrease stock.
+            */
             foreach ($itemsData as $item) {
                 $invoice->items()->create($item);
-                $products->get($item['product_id'])
+                $products
+                    ->get($item['product_id'])
                     ->decrementStock($item['quantity']);
             }
 
             $this->addTransactions($invoice, $data);
-
-            return $invoice->load('items', 'transactions');
         });
     }
 
@@ -116,12 +132,12 @@ class InvoiceStoreAction
 
     private function addTransactions(Invoice $invoice, array $data)
     {
-
+        // Create new transactions
         foreach ($data['transactions'] ?? [] as $transaction) {
 
             $invoice->transactions()->create([
                 'account_id'   => $data['account_id'],
-                'user_id'      => Auth::id(),
+                'user_id'      => $invoice->user->id,
                 'type'         => $transaction['type'],
                 'reference_no' => $transaction['reference_no'] ?? null,
                 'amount'       => $transaction['amount'],

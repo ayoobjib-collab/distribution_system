@@ -41,3 +41,7 @@
 .align-center {
     align-items: center;
 }
+
+.mb-8 {
+    margin-bottom: 10px;
+}

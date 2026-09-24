@@ -15,6 +15,9 @@ class InvoiceRequest extends FormRequest
         return auth()->check();
     }
 
+    /**
+     * Check product stock after validation
+     */
     protected function passedValidation(): void
     {
         $items = collect($this->validated('items'));
@@ -77,6 +80,7 @@ class InvoiceRequest extends FormRequest
         $needToChangeFiedls = ['quantity', 'unit_price', 'discount'];
 
         if (isset($input['items']) && is_array($input['items'])) {
+
             foreach ($input['items'] as $key => $item) {
                 foreach ($needToChangeFiedls as $fname) {
                     if (isset($item[$fname])) {
@@ -108,6 +112,16 @@ class InvoiceRequest extends FormRequest
             'items.*.unit_price'    => ['required', 'integer', 'min:0'],
             'items.*.discount'      => ['required', 'integer', 'min:0', 'max:100'],
             'items.*.description'   => ['nullable', 'string'],
+
+            # Invoice Transaction
+            'transactions'                  => ['nullable', 'array'],
+            'transactions.*.id'             => ['required'],
+            'transactions.*.type'           => ['required', 'string', 'in:cash,cheque'],
+            'transactions.*.amount'         => ['required', 'numeric', 'min:0'],
+
+            'transactions.*.reference_no'   => ['nullable', 'string', 'max:255'],
+            'transactions.*.due_date'       => ['nullable', 'date'],
+            'transactions.*.description'    => ['nullable', 'string', 'max:1000'],
         ];
     }
 
@@ -116,7 +130,8 @@ class InvoiceRequest extends FormRequest
         return [
             'account_id' => 'طرف حساب',
             'items' => 'اقلام فاکتور',
-            'items.*.quantity' => 'تعداد محصول'
+            'items.*.quantity' => 'تعداد محصول',
+            'transactions.*.amount' => 'مبلغ تراکنش'
         ];
     }
 }

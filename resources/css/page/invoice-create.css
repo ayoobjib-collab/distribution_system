@@ -18,5 +18,54 @@
 }
 
 .mai-content .form-group {
-    margin-bottom:15px;
+    margin-bottom: 15px;
+}
+
+.ant-segmented-group *,
+.ant-collapse * {
+    font-family: 'iransans';
+}
+
+.due-date {
+    background-color: #a52a2a;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.light .due-date {
+    background-color: #fbebeb;
+}
+
+.due-date span {
+    padding-right: 10px;
+}
+
+.date-result {
+    display: none;
+}
+
+.d-result.flex {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 1px dashed #cdc5c5;
+}
+
+.ant-collapse {
+    overflow: hidden;
+}
+
+html:not(.light) .ant-collapse-body {
+    background-color: #30365c;
+    color: white;
+}
+
+html:not(.light) .ant-collapse-title {
+    color: white;
+}
+
+html:not(.light) .ant-collapse-header {
+    background-color: #232844;
 }
