@@ -17,8 +17,7 @@ function LinkToInvoice() {
             <div className="lt-right flex gap-1 align-center">
                 <PiInvoiceBold />
                 <span>
-                    کالا در فاکتور:
-                    {count}
+                    {`کالا در فاکتور ${count} عدد`}
                 </span>
             </div>
             <div className="lt-left">

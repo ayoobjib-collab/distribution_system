@@ -3,33 +3,52 @@ import { ConfigProvider, Button, Drawer } from 'antd';
 import { formatAmount } from '@/functions/helper.js';
 import Quantity from '@/BaseComponents/Quantity';
 
-function ModalAddToInvoice({ product, open, childClosed }) {
 
-    const key = 'invoice_products';
+function getInvoiceProducts(key = 'invoice_products') {
+    return JSON.parse(
+        localStorage.getItem(key) || '[]'
+    );
+}
 
-    const [discount, setDiscount] = useState(0);
-    const [quantity, setQuantity] = useState(1);
-    const [btnText, setBtnText] = useState('افزودن به فاکتور');
+function saveInvoiceProducts(
+    products,
+    key = 'invoice_products'
+) {
+    localStorage.setItem(
+        key,
+        JSON.stringify(products)
+    );
+}
+
+function getInvoiceProduct(
+    productId,
+    key = 'invoice_products'
+) {
+    const products = getInvoiceProducts(key);
+
+    return products.find(
+        item => item.product_id === productId
+    );
+}
+
+function ModalAddToInvoice({
+    product,
+    open,
+    childClosed
+}) {
+
+    const existingProduct = getInvoiceProduct(product?.id);
+    const btnText = existingProduct !== undefined ? 'ویرایش محصول' : 'افزودن به فاکتور';
+
+    const [discount, setDiscount] = useState(
+        existingProduct?.discount ?? 0
+    );
+
+    const [quantity, setQuantity] = useState(
+        existingProduct?.quantity ?? 1
+    );
+
     const [placement, setPlacement] = useState('bottom');
-
-    /**
-     * Sync quantity and discount by localstorage
-     */
-    useEffect(() => {
-        const products = JSON.parse(
-            localStorage.getItem(key) || '[]'
-        );
-
-        const existingProduct = products.find(
-            (item) => item.product_id === product?.id
-        );
-
-        if(existingProduct !== undefined)
-            setBtnText('ویرایش (موجود در فاکتور)');
-
-        setDiscount(existingProduct?.discount ?? 0);
-        setQuantity(existingProduct?.quantity ?? 0);
-    }, [product]);
 
     if (product == null) return null;
 
@@ -45,9 +64,7 @@ function ModalAddToInvoice({ product, open, childClosed }) {
 
     function addToInvoice() {
 
-        const products = JSON.parse(
-            localStorage.getItem(key) || '[]'
-        );
+        const products = getInvoiceProducts();
 
         const newProduct = {
             product_id: product.id,
@@ -60,18 +77,35 @@ function ModalAddToInvoice({ product, open, childClosed }) {
         );
 
         if (index !== -1) {
-            products[index].discount = discount;
+            // update
+            products[index] = {
+                ...products[index],
+                quantity: quantity,
+                discount: discount
+            };
         } else {
+            // add
             products.push(newProduct);
         }
 
-        localStorage.setItem(
-            key,
-            JSON.stringify(products)
-        );
+        saveInvoiceProducts(products);
 
         childClosed();
     }
+
+
+    function removeProduct() {
+
+        const products = getInvoiceProducts();
+
+        const newProducts = products.filter(
+            item => item.product_id !== product.id
+        );
+
+        saveInvoiceProducts(newProducts);
+        childClosed();
+    }
+
 
     return (
 
@@ -128,6 +162,7 @@ function ModalAddToInvoice({ product, open, childClosed }) {
                         label="تعداد"
                         value={quantity}
                         onChange={setQuantity}
+                        onRemove={removeProduct}
                         min={1}
                     />
                 </div>

@@ -1,3 +1,5 @@
+import DashboardLayout from "@/Layouts/Dashboard/Layout"
+
 
 function CreateTrans({ sendUrl, transactionType, msg }) {
 

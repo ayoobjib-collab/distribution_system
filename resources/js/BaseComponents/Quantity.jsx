@@ -1,4 +1,6 @@
-const Quantity = ({ value, label, onChange, min = 0, max = 999 }) => {
+import { AiOutlineDelete } from "react-icons/ai";
+
+const Quantity = ({ value, label, onChange, onRemove, min = 0, max = 999 }) => {
 
     const increase = () => {
         if (value < max) {
@@ -32,14 +34,26 @@ const Quantity = ({ value, label, onChange, min = 0, max = 999 }) => {
 
                 <span>{value}</span>
 
-                <button
-                    type="button"
-                    onClick={decrease}
-                    disabled={value <= min}
-                    className='qty-count qty-count--minus'
-                >
-                    −
-                </button>
+                {
+                    value <= 1 && onRemove
+                        ?
+                        <button
+                            onClick={onRemove}
+                            className='qty-remove'
+                        >
+                            <AiOutlineDelete size={20} />
+                        </button>
+                        :
+                        <button
+                            type="button"
+                            onClick={decrease}
+                            disabled={value <= min}
+                            className='qty-count qty-count--minus'
+                        >
+                            −
+                        </button>
+
+                }
 
             </div>
         </div>

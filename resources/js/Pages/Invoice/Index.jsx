@@ -68,6 +68,7 @@ function Index({ invoices }) {
                             <th>طرف حساب</th>
                             <th>مبلغ کل</th>
                             <th>وضعیت</th>
+                            <th>تراکنش‌ها</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -82,6 +83,17 @@ function Index({ invoices }) {
 
                                 <td className={item.status}>
                                     {item.status_label}
+                                </td>
+
+                                <td>
+                                    <Tooltip text="تراکنش‌های فاکتور">
+                                        <Link
+                                            href={`/transaction/?invoiceId=${item.id}`}
+                                            className="ml-2"
+                                        >
+                                            <AiOutlineEdit size={24} />
+                                        </Link>
+                                    </Tooltip>
                                 </td>
 
                                 <td className="flex gap-2 justify-center">
