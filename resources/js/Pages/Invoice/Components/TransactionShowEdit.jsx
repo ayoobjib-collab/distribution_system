@@ -24,11 +24,6 @@ const TransactionShowEdit = memo(({ dataTransactions, setData }) => {
                 transaction={editingTransaction}
                 childChanged={(trans) => {
 
-                    console.table(trans + '-');
-
-                    //console.log(editingTransaction);
-                    
-
                     if (editingTransaction) {
 
                         setData(

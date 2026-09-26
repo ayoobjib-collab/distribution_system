@@ -1,8 +1,12 @@
 export function formatAmount(amount) {
     // return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    const num = amount.toString().replace(/,/g, "");
-    return num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // const num = amount.toString().replace(/,/g, "");
+    // return num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return amount == null
+        ? ''
+        : amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 

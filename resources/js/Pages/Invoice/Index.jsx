@@ -15,20 +15,12 @@ import { LiaSmsSolid } from "react-icons/lia";
 import { toast } from 'react-toastify';
 import Tooltip from "@/BaseComponents/Tooltip";
 
+const currentPath = window.location.href;
+
 function Index({ invoices }) {
 
-    const { isAdmin, msg } = usePage().props;
-
-    useEffect(() => {
-        if (msg.status)
-            toast.success(msg.text);
-        else
-            toast.error(msg.text);
-    }, [msg]);
-
+    const { isAdmin } = usePage().props;
     const [hideExpire, setHideExpire] = useState(false);
-
-    const currentPath = window.location.href;
 
     function addQuery(key, value) {
         router.get(
@@ -57,7 +49,6 @@ function Index({ invoices }) {
 
     return (
         <>
-
             <section className="table-container">
 
                 <table className="responsive-table">
@@ -85,15 +76,20 @@ function Index({ invoices }) {
                                     {item.status_label}
                                 </td>
 
-                                <td>
-                                    <Tooltip text="تراکنش‌های فاکتور">
-                                        <Link
-                                            href={`/transaction/?invoiceId=${item.id}`}
-                                            className="ml-2"
-                                        >
-                                            <AiOutlineEdit size={24} />
-                                        </Link>
-                                    </Tooltip>
+                                <td d={item.transactions.length}>
+                                    {
+                                        item.transactions?.length > 0 &&
+
+                                        <Tooltip text="تراکنش‌های فاکتور">
+                                            <Link
+                                                href={`/transaction/?invoiceId=${item.id}`}
+                                                className="ml-2"
+                                            >
+                                                <AiOutlineEdit size={22} />
+                                            </Link>
+                                        </Tooltip>
+                                    }
+
                                 </td>
 
                                 <td className="flex gap-2 justify-center">
@@ -103,17 +99,16 @@ function Index({ invoices }) {
                                             href={`/invoice/${item.id}/edit`}
                                             className="ml-2"
                                         >
-                                            <AiOutlineEdit size={24} />
+                                            <AiOutlineEdit size={22} />
                                         </Link>
                                     </Tooltip>
-
 
                                     <Tooltip text="حذف">
                                         <span
                                             onClick={() => deleteItem(item.id)}
                                             className="ml-2"
                                         >
-                                            <FaRegTrashAlt size={24} fill="inherit" />
+                                            <FaRegTrashAlt size={19} fill="inherit" />
                                         </span>
                                     </Tooltip>
 
@@ -122,7 +117,7 @@ function Index({ invoices }) {
                                             onClick={() => sendSms(item.id)}
                                             className="ml-2"
                                         >
-                                            <LiaSmsSolid size={24} fill="inherit" />
+                                            <LiaSmsSolid size={22} fill="inherit" />
                                         </span>
                                     </Tooltip>
 
@@ -133,7 +128,7 @@ function Index({ invoices }) {
                                                 onClick={() => completeStatus(item.id)}
                                                 className="ml-2"
                                             >
-                                                <GrCompliance size={24} />
+                                                <GrCompliance size={19} />
                                             </span>
                                         </Tooltip>
                                     }

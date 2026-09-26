@@ -2,16 +2,10 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 
 import { formatAmount } from '@/functions/helper.js';
-
-import { LiaTrashAlt } from "react-icons/lia";
-import { CiSquareCheck } from "react-icons/ci";
 import { AiOutlineEdit } from "react-icons/ai";
 
 import { Link } from "@inertiajs/react";
-
-import FormField from "@/BaseComponents/FormField";
 import { router } from "@inertiajs/react";
-import { useEffect, useState } from "react";
 
 function Index({ accounts, h1 }) {
 
@@ -45,7 +39,7 @@ function Index({ accounts, h1 }) {
                     </thead>
 
                     <tbody>
-                        {accounts.data.length > 0 ? (
+                        {accounts?.data.length > 0 ? (
                             accounts.data.map((item) => (
                                 <tr key={item.id}>
                                     <td data-label="آیدی">{item.id}</td>

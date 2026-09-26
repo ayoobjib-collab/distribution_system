@@ -13,15 +13,8 @@ trait PersianDate
         );
     }
 
-    public function formatDate($date)
+    public function formatDate(string $date)
     {
-        // $format = str_replace(
-        //     ['A', 'a', 'Y', 'M', 'j', 'g', 'G', 'h', 'H', 'l', 'D', 'm', 'n', 'F'],
-        //     ['', '', 'yyyy', 'M', 'dd', 'H', 'H', 'HH', 'HH', 'M', 'dd', 'M', 'mm', 'MMMM'],
-        //     $format
-        // );
-
-        // $format = str_replace('i', 'mm', $format);
 
         $timestamp = strtotime($date);
 
@@ -36,7 +29,6 @@ trait PersianDate
             \IntlDateFormatter::TRADITIONAL,
             $format
         );
-
 
         return $formatter->format($timestamp);
     }

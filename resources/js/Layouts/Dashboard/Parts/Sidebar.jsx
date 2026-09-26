@@ -19,8 +19,8 @@ const Sidebar = ({ isOpen, childClicked }) => {
             label: 'فاکتورها'
         },
         {
-            href: '/product',
-            label: 'محصولات'
+            href: '/list',
+            label: 'لیست محصولات'
         },
         {
             href: '/invoice/create',
@@ -54,7 +54,10 @@ const Sidebar = ({ isOpen, childClicked }) => {
                 href: '/user/create',
                 label: 'ایجاد ویزیتور(مدیر)'
             },
-
+            {
+                href: '/product',
+                label: 'جدول محصولات(مدیر)'
+            },
         );
     }
 

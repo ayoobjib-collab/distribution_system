@@ -93,7 +93,6 @@ function ModalAddToInvoice({
         childClosed();
     }
 
-
     function removeProduct() {
 
         const products = getInvoiceProducts();
@@ -105,7 +104,6 @@ function ModalAddToInvoice({
         saveInvoiceProducts(newProducts);
         childClosed();
     }
-
 
     return (
 

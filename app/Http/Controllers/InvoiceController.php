@@ -32,6 +32,7 @@ class InvoiceController extends Controller
                 'items.product:id,name',
                 'account:id,name',
                 'user:id,full_name,mobile',
+                'transactions:id',
             ])
             ->findOrFail($id);
 
@@ -53,7 +54,8 @@ class InvoiceController extends Controller
         $invoices = Invoice::query()
             ->with([
                 'user:id,full_name,mobile',
-                'account:id,name'
+                'account:id,name',
+                'transactions:id,invoice_id',
             ])
             ->when(
                 !$user?->hasRole('admin'),
@@ -95,9 +97,9 @@ class InvoiceController extends Controller
         );
 
         return redirect(route('invoice.index'))->with(
-            'flash',
+            'msg',
             [
-                'msg' => 'فاکتور با موفقیت ثبت شد',
+                'text' => 'فاکتور با موفقیت ثبت شد',
                 'status' => true
             ]
         );

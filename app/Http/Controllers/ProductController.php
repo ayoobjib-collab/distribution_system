@@ -49,6 +49,11 @@ class ProductController extends Controller
         );
     }
 
+    public function show()
+    {
+        return redirect('/list');
+    }
+
     public function store(ProductRequest $request, UpdateProductImages $updateProductImages)
     {
         $data = $request->validated();

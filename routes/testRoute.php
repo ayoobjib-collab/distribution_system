@@ -5,18 +5,21 @@ use App\Facades\MyLogFacades;
 use App\Services\Sms\SmsManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Morilog\Jalali\Jalalian;
 
-// Route::get('/clear-cache', function () {
 
-//     //dd(public_path());
-//     $exitCode = //Artisan::call('optimize:clear');
-//     // return what you want
-// });
+Route::get('/clear-cache', function () {
+
+    // $exitCode = Artisan::call('optimize:clear');
+    $exitCode = Artisan::call('storage:link');
+
+    // return what you want
+});
 
 Route::get('/t', function (Request $request) {
 

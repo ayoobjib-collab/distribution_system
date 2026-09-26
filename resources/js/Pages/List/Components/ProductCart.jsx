@@ -35,6 +35,7 @@ function ProductCart({ product, showMoalAdd }) {
                         <span className="price"><b>{price}</b></span>
                         <span className="currency">ریال</span>
                     </div>
+                    
                 </div>
             </div>
         </div>

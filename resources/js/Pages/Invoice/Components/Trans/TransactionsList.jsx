@@ -59,13 +59,14 @@ const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
                 <h3>
                     <SiDatabricks size={24} />
                     <span className="ml-2">
-                         تراکنش‌های فاکتور
+                        تراکنش‌های فاکتور
                     </span>
                 </h3>
             </div >
 
             <section>
                 <Collapse
+                    size="small"
                     items={
                         [
                             {

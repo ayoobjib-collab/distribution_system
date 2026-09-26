@@ -66,7 +66,7 @@ function Index({ h1, transactions }) {
                                 </td>
 
                                 <td>
-                                    {item.due_date ?? '-'}
+                                    {item.due_date_fa ?? '-'}
                                 </td>
 
                                 <td>

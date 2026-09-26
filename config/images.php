@@ -30,7 +30,7 @@ return [
         /*
         | Small/mobile image width.
         */
-        'small' => 500,
+        'small' => 300,
         'medium' => 800
     ],
 
