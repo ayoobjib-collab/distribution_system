@@ -39,7 +39,6 @@ const getCustomers = async (inputValue) => {
  */
 function InvoiceCreate({ invoice, h1 }) {
 
-
 	const isCreateMode = invoice == undefined;
 
 	const defualtData = {

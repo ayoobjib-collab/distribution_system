@@ -117,7 +117,7 @@ function ModalAddToInvoice({
         >
 
             <Drawer
-                title="افزودن به فاکتور"
+                title={btnText}
                 placement={placement}
                 size={500}
                 onClose={onClose}

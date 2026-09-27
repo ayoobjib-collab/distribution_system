@@ -5,47 +5,37 @@ import { formatAmount } from '@/functions/helper.js';
 import { Link, usePage } from "@inertiajs/react";
 
 import { router } from "@inertiajs/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GrCompliance } from "react-icons/gr";
 import { LiaSmsSolid } from "react-icons/lia";
 
-import { toast } from 'react-toastify';
 import Tooltip from "@/BaseComponents/Tooltip";
 
 const currentPath = window.location.href;
 
+function deleteItem($itemId) {
+    if (confirm('آیا از حذف فاکتور اطمینان دارید؟'))
+        router.delete('/invoice/' + $itemId);
+}
+
+function sendSms($itemId) {
+    if (confirm('پیامکی حاوی لینک پیش فاکتور برای مشتری ارسال خواهد شد؟'))
+        router.post(`/invoice/${$itemId}/send-invoice`);
+}
+
+function completeStatus($itemId) {
+    if (confirm('فاکتور کامل شده؟'))
+        router.patch(`/invoice/${$itemId}/status`, {
+            status: 'complete',
+        });
+}
+
 function Index({ invoices }) {
 
     const { isAdmin } = usePage().props;
-    const [hideExpire, setHideExpire] = useState(false);
-
-    function addQuery(key, value) {
-        router.get(
-            currentPath,
-            { [key]: value },
-            { preserveState: true }
-        );
-    }
-
-    function deleteItem($itemId) {
-        if (confirm('آیا از حذف فاکتور اطمینان دارید؟'))
-            router.delete('/invoice/' + $itemId);
-    }
-
-    function sendSms($itemId) {
-        if (confirm('پیامکی حاوی لینک پیش فاکتور برای مشتری ارسال خواهد شد؟'))
-            router.post(`/invoice/${$itemId}/send-invoice`);
-    }
-
-    function completeStatus($itemId) {
-        if (confirm('فاکتور کامل شده؟'))
-            router.patch(`/invoice/${$itemId}/status`, {
-                status: 'complete',
-            });
-    }
 
     return (
         <>
@@ -59,7 +49,10 @@ function Index({ invoices }) {
                             <th>طرف حساب</th>
                             <th>مبلغ کل</th>
                             <th>وضعیت</th>
-                            <th>تراکنش‌ها</th>
+                            {
+                                isAdmin &&
+                                <th>تراکنش‌ها</th>
+                            }
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -76,24 +69,24 @@ function Index({ invoices }) {
                                     {item.status_label}
                                 </td>
 
-                                <td d={item.transactions.length}>
-                                    {
-                                        item.transactions?.length > 0 &&
-
-                                        <Tooltip text="تراکنش‌های فاکتور">
-                                            <Link
-                                                href={`/transaction/?invoiceId=${item.id}`}
-                                                className="ml-2"
-                                            >
-                                                <AiOutlineEdit size={22} />
-                                            </Link>
-                                        </Tooltip>
-                                    }
-
-                                </td>
+                                {
+                                    isAdmin &&
+                                    <td d={item.transactions.length}>
+                                        {
+                                            item.transactions?.length > 0 &&
+                                            <Tooltip text="تراکنش‌های فاکتور">
+                                                <Link
+                                                    href={`/transaction/?invoiceId=${item.id}`}
+                                                    className="ml-2"
+                                                >
+                                                    <AiOutlineEdit size={22} />
+                                                </Link>
+                                            </Tooltip>
+                                        }
+                                    </td>
+                                }
 
                                 <td className="flex gap-2 justify-center">
-
                                     <Tooltip text="ویرایش">
                                         <Link
                                             href={`/invoice/${item.id}/edit`}
