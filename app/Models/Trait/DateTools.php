@@ -22,11 +22,11 @@ trait DateTools
 
         $formatter = new \IntlDateFormatter(
             // "en_US@calendar=persian",
-            "fa_IR@calendar=english",
-            \IntlDateFormatter::FULL,
-            \IntlDateFormatter::FULL,
+            "en_US@calendar=persian", //Use fa_IR for persian numbers calendar=persian 
+            \IntlDateFormatter::FULL, //$datetype: format for example 25 شهریور 1405
+            \IntlDateFormatter::FULL, //$typeType: Use none for remove time
             'Asia/Tehran',
-            \IntlDateFormatter::TRADITIONAL,
+            \IntlDateFormatter::TRADITIONAL, //  'persian',
             $format
         );
 
