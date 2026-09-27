@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Trait\PersianDate;
+use App\Models\Trait\DateTools;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory,
-        PersianDate,
+        DateTools,
         SoftDeletes;
 
     protected $fillable = [

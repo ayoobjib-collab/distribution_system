@@ -1,7 +1,7 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import Pagination from "@/BaseComponents/Pagination";
 import { usePage } from "@inertiajs/react";
-import {formatAmount} from "@/functions/helper.js"
+import { formatAmount } from "@/functions/helper.js"
 
 function Index({ h1, transactions }) {
 
@@ -20,17 +20,17 @@ function Index({ h1, transactions }) {
                             <th>نوع</th>
                             <th>وضعیت</th>
                             <th>مبلغ</th>
-                            <th>شماره مرجع</th>
                             <th>تاریخ سررسید</th>
                             <th>توضیحات</th>
 
                             {isAdmin && (
-                                <th>تأیید توسط</th>
+                                <>
+                                    <th>تأیید توسط</th>
+                                    <th>تاریخ تایید</th>
+                                    <th>عملیات</th>
+                                </>
                             )}
 
-                            {isAdmin && (
-                                <th>عملیات</th>
-                            )}
                         </tr>
                     </thead>
 
@@ -62,10 +62,6 @@ function Index({ h1, transactions }) {
                                 </td>
 
                                 <td>
-                                    {item.reference_no ?? '-'}
-                                </td>
-
-                                <td>
                                     {item.due_date_fa ?? '-'}
                                 </td>
 
@@ -74,18 +70,21 @@ function Index({ h1, transactions }) {
                                 </td>
 
                                 {isAdmin && (
-                                    <td>
-                                        {item.approved_by
-                                            ? item.approvedBy?.name ?? '-'
-                                            : '-'
-                                        }
-                                    </td>
-                                )}
+                                    <>
+                                        <td>
+                                            {item.approved_by
+                                                ? item.approvedBy?.name ?? '-'
+                                                : '-'
+                                            }
+                                        </td>
 
-                                {isAdmin && (
-                                    <td>
-                                        {/* عملیات */}
-                                    </td>
+                                        <td>
+                                            {item.approved_at_fa ?? '-'}
+                                        </td>
+                                        <td>
+                                            {/* عملیات */}
+                                        </td>
+                                    </>
                                 )}
 
                             </tr>

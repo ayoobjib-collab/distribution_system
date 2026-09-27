@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Trait\DateTools;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 class Transaction extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, DateTools;
 
     protected $fillable = [
         'account_id',
@@ -42,6 +41,7 @@ class Transaction extends Model
 
     protected $appends = [
         'due_date_fa', //presian date
+        'approved_at_fa'
     ];
 
     /*
@@ -80,21 +80,37 @@ class Transaction extends Model
     {
         return Attribute::make(
             //get: fn($value) => //add new attribute for show persian date
-            set: fn($value) => Jalalian::fromFormat('Y/m/d', $value)->toCarbon(),
+
+            # Change persian date to carbon format without package
+            // set: fn($value) => Jalalian::fromFormat('Y/m/d', $value)->toCarbon(),
+            set: function ($value) {
+                return $this->toGregory($value);
+            },
         );
     }
 
+    protected function approvedAt(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                return $this->toGregory($value);
+            },
+        );
+    }
 
     public function getDueDateFaAttribute(): string
     {
-        if ($this->due_date === null) {
+        if ($this->due_date === null)
             return '-';
-        }
 
-        return $this->fromDateTime($this->due_date);
+        return $this->toJalali($this->due_date, 'yyyy/M/d');
+    }
 
-        $date = Carbon::parse($this->due_date);
+    public function getApprovedAtFaAttribute()
+    {
+        if ($this->approved_at === null)
+            return '-';
 
-        return $this->fromDateTime($date);
+        return $this->toJalali($this->approved_at, 'yyyy/M/d');
     }
 }
