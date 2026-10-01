@@ -474,7 +474,7 @@ button.secondary svg {
     height: auto;
 }
 
-@media (width <=800px) {
+@media (width <=1000px) {
     .mob-fix {
         position: fixed;
         bottom: 0;
@@ -500,16 +500,7 @@ button.secondary svg {
         width: 47vw;
     }
 
-    .modal {
-        inset: 0;
-        width: 100% !important;
-        height: 100%;
-        border-radius: 0 !important;
-    }
-
-    .modal .mob-fix button {
-        width: 100%;
-    }
+  
 }
 
 @media (width >=900px) {

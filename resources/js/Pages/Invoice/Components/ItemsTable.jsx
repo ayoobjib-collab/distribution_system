@@ -8,7 +8,9 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Tooltip from '@/BaseComponents/Tooltip';
 
-function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem }) {
+function ItemsTableFunc({ readOnly = false, items, subtotal, updateItem, removeItem }) {
+
+    console.log('ItemsTable');
 
     const [editIsOpen, setEditOpen] = useState(false);
     const [itemForUpdate, setItemForUpdate] = useState(null);
@@ -155,4 +157,7 @@ function ItemsTable({ readOnly = false, items, subtotal, updateItem, removeItem 
     )
 }
 
-export default memo(ItemsTable);
+
+const ItemsTable = memo(ItemsTableFunc);
+
+export default ItemsTable;

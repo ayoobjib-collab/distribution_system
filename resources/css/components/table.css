@@ -59,7 +59,7 @@ td.img img {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
     .items-table {
         display: none;
@@ -86,7 +86,7 @@ td.img img {
 
     .mobile-item-name {
         flex: 1;
-        font-size: 14px;
+        font-size: 1.05rem;
         font-weight: 600;
         line-height: 1.8;
     }
@@ -123,23 +123,4 @@ td.img img {
         flex-direction: column;
         gap: 3px;
     }
-
-    .mobile-detail span {
-        font-size: 11px;
-        color: #888;
-    }
-
-    .mobile-detail strong {
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-
-    .mobile-total {}
-
-    .mobile-total strong {
-        font-size: 15px;
-        font-weight: 700;
-    }
-
 }

@@ -9,7 +9,8 @@
 
 .modal {
     background: var(--app-bg);
-    width: 400px;
+    min-width: 400px;
+    width: fit-content;
     margin: auto;
     padding: 20px;
     border-radius: 10px;
@@ -71,6 +72,19 @@ body:has(.modal-wrap) {
 .modal-wrap .modal {
     animation: modalIn 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     transform-origin: center;
+}
+
+@media (width < 1000px) {
+    .modal {
+        inset: 0;
+        width: 100% !important;
+        height: 100%;
+        border-radius: 0 !important;
+    }
+
+    .modal .mob-fix button {
+        width: 100%;
+    }
 }
 
 

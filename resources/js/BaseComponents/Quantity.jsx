@@ -14,8 +14,15 @@ const Quantity = ({ value, label, onChange, onRemove, min = 0, max = 999 }) => {
         }
     };
 
+    const setValue = (e) => {
+        const value = Number(e.target.value);
+        if (Number.isNaN(value)) return;
+        const v = Math.min(Math.max(value, min), max);
+        onChange(v);
+    }
+
     return (
-        <div className="quantity flex gap-1">
+        <div className="quantity flex">
 
             <label>
                 {label}
@@ -32,7 +39,7 @@ const Quantity = ({ value, label, onChange, onRemove, min = 0, max = 999 }) => {
                     +
                 </button>
 
-                <span>{value}</span>
+                <input type="tel" name="" value={value} onChange={setValue} />
 
                 {
                     value <= 1 && onRemove

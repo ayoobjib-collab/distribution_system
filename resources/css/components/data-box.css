@@ -43,7 +43,7 @@
     font-weight: 600;
 }
 
-@media (width < 800px) {
+@media (width < 1000px) {
     .container-wrapper {
         gap: 0;
         padding: 0;

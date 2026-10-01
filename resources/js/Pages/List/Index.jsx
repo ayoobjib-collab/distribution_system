@@ -39,7 +39,6 @@ function ListIndex({ cats, products }) {
 
             {
                 selectedProduct !== null ?
-
                     <ModalAddToInvoice
                         product={selectedProduct}
                         childClosed={() => setSelectedProduct(null)}

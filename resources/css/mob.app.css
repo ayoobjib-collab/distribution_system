@@ -1,4 +1,4 @@
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .mob-hide {
         display: none !important;
     }
@@ -50,8 +50,8 @@
     }
 
     nav.mobile-menu svg {
-        width: 21px;
-        height: 21px;
+        width: 19px;
+        height: 19px;
     }
 
     .sidebar-overlay {
@@ -70,4 +70,8 @@
         width: 100%;
     }
 
+    span.small {
+        font-size: 11px;
+        color: #888;
+    }
 }

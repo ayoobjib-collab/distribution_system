@@ -49,7 +49,7 @@ export default function useInvoiceItems(initialItems = []) {
                 setItems(invoiceItems);
             }).finally(() => {
                 document.body.classList.remove('loading');
-            });;
+            });
 
     }, []);
 

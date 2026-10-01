@@ -39,16 +39,14 @@ const getCustomers = async (inputValue) => {
  */
 function InvoiceCreate({ invoice, h1 }) {
 
+	console.log('invoicecreate');
 
 	const isCreateMode = invoice == undefined;
-
 	const defualtData = {
 		type: '',
 		account_id: invoice?.account.id ?? '',
 		account_name: invoice?.account.name ?? '',
-		subtotal: invoice?.subtotal ?? '',
 		pay_method: '',
-		items: [],
 		transactions: invoice?.transactions ?? []
 	};
 
@@ -61,7 +59,12 @@ function InvoiceCreate({ invoice, h1 }) {
 		calcSubtotal
 	} = useInvoiceItems(invoice?.items ?? []);
 
-	const { data, setData, processing, post, put, errors } = useForm(defualtData);
+	/**
+	 * Create subtotal when component reRender
+	 */
+	const subtotal = calcSubtotal;
+
+	const { data, setData, processing, post, put, errors, transform } = useForm(defualtData);
 
 	useEffect(() => {
 		if (errors && Object.keys(errors).length > 0) {
@@ -71,25 +74,11 @@ function InvoiceCreate({ invoice, h1 }) {
 		}
 	}, [errors]);
 
-	useEffect(() => {
-		setData(prev => {
-			//Prevent rerender
-			if (prev.items === items) return prev;
-
-			return {
-				...prev,
-				items,
-				subtotal: calcSubtotal
-			};
-		});
-
-	}, [items]);
-
 	const handleSubmit = (e) => {
 
 		e.preventDefault();
 
-		if (!data.items.length) {
+		if (!items.length) {
 			toast.error('فاکتور هیچ محصولی ندارد');
 			return;
 		}
@@ -98,6 +87,11 @@ function InvoiceCreate({ invoice, h1 }) {
 			toast.error('یک طرف حساب انتخاب کنید');
 			return;
 		}
+
+		transform((data) => ({
+			...data,
+			items,
+		}));
 
 		if (isCreateMode) {
 
@@ -186,7 +180,7 @@ function InvoiceCreate({ invoice, h1 }) {
 			<section className='invoice-items table-container'>
 				<ItemsTable
 					items={items}
-					subtotal={data.subtotal}
+					subtotal={subtotal}
 					updateItem={updateItem}
 					removeItem={removeItem}
 				/>

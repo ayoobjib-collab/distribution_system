@@ -13,7 +13,7 @@ function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTota
 
                     <div className="mobile-item-header">
                         <div className="mobile-item-name">
-                            {index + 1 + '- ' + (item.name ?? item.product.name  ?? '') }
+                            {index + 1 + '- ' + (item.name ?? item.product.name ?? '')}
                         </div>
 
                         {!readOnly && (
@@ -43,28 +43,28 @@ function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTota
                     <div className="mobile-item-details">
 
                         <div className="mobile-detail">
-                            <span>قیمت فروش</span>
+                            <span className="small">قیمت فروش</span>
                             <strong>
                                 {formatAmount(item.unit_price)} ریال
                             </strong>
                         </div>
 
                         <div className="mobile-detail">
-                            <span>تعداد</span>
+                            <span className="small">تعداد</span>
                             <strong>
                                 {item.quantity} عدد
                             </strong>
                         </div>
 
                         <div className="mobile-detail">
-                            <span>تخفیف</span>
+                            <span className="small">تخفیف</span>
                             <strong>
                                 {item.discount}٪
                             </strong>
                         </div>
 
                         <div className="mobile-detail mobile-total">
-                            <span>جمع با تخفیف</span>
+                            <span className="small">جمع با تخفیف</span>
                             <strong>
                                 {formatAmount(getItemTotal(item))} ریال
                             </strong>

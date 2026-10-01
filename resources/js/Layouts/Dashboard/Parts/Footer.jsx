@@ -16,10 +16,10 @@ const Footer = ({ toggleSidebar }) => {
                 </div>
 
                 <div>
-                    <Link href={'/product'}>
+                    <Link href={'/list'}>
                         <TfiLayoutGrid2 />
                     </Link>
-                    <span>موجودی</span>
+                    <span>محصولات</span>
                 </div>
 
                 <div>

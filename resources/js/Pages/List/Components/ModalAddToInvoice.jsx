@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { ConfigProvider, Button, Drawer } from 'antd';
 import { formatAmount } from '@/functions/helper.js';
 import Quantity from '@/BaseComponents/Quantity';
+import ModalBb from "@/BaseComponents/ModalBb";
 
 
+/**
+ * Static functions
+ */
 function getInvoiceProducts(key = 'invoice_products') {
     return JSON.parse(
         localStorage.getItem(key) || '[]'
@@ -31,6 +34,9 @@ function getInvoiceProduct(
     );
 }
 
+/**
+ * Component modalAddToInvoice
+ */
 function ModalAddToInvoice({
     product,
     open,
@@ -45,10 +51,8 @@ function ModalAddToInvoice({
     );
 
     const [quantity, setQuantity] = useState(
-        existingProduct?.quantity ?? 1
+        existingProduct?.quantity ?? product.stock ?? 1
     );
-
-    const [placement, setPlacement] = useState('bottom');
 
     if (product == null) return null;
 
@@ -107,66 +111,58 @@ function ModalAddToInvoice({
 
     return (
 
-        <ConfigProvider
-
-            theme={{
-                token: {
-                    fontFamily: 'inherit',
-                },
-            }}
+        <ModalBb
+            id="errors"
+            head={btnText}
+            isOpen={open}
+            onClose={childClosed}
         >
+            <div className="flex flex-col gap-8">
 
-            <Drawer
-                title="افزودن به فاکتور"
-                placement={placement}
-                size={500}
-                onClose={onClose}
-                open={open}
-                className='modal-add-to-invoice'
-
-                footer={
-                    <button className="ant-btn ant-btn-primary" onClick={addToInvoice}>
-                        {btnText}
-                    </button>
-                }
-            >
-                <div className="flex flex-col gap-8">
-
-                    <div className="ma-img-wrap flex overflow-auto gap-1">
-                        {
-                            productImgs.map((img, index) => (
-                                <img src={img.small} loading="lazy" key={index} />
-                            ))
-                        }
-                    </div>
-
-                    <div className="mp-content">
-                        <b>
-                            {product?.name}
-                        </b>
-
-                        <div className="mp-price">
-                            {formatAmount(product?.sale_price)}
-                        </div>
-                    </div>
-
-                    <Quantity
-                        label="درصد تخفیف"
-                        value={discount}
-                        onChange={setDiscount}
-                    />
-
-                    <Quantity
-                        label="تعداد"
-                        value={quantity}
-                        onChange={setQuantity}
-                        onRemove={removeProduct}
-                        min={1}
-                    />
+                <div className="ma-img-wrap flex overflow-auto gap-1">
+                    {
+                        productImgs.map((img, index) => (
+                            <img src={img.medium} loading="lazy" key={index} />
+                        ))
+                    }
                 </div>
-            </Drawer >
 
-        </ConfigProvider>
+                <div className="mp-content">
+                    <b>
+                        {product?.name}
+                    </b>
+
+                    <div className="mp-price">
+                        {formatAmount(product?.sale_price)}
+                    </div>
+                </div>
+
+                <Quantity
+                    label="درصد تخفیف"
+                    value={discount}
+                    onChange={setDiscount}
+                />
+
+                <Quantity
+                    label={`تعداد (حداکثر ${product.stock})`}
+                    value={quantity}
+                    onChange={setQuantity}
+                    onRemove={removeProduct}
+                    min={1}
+                    max={product?.stock}
+                />
+
+                <div className="mob-fix">
+                    <button onClick={addToInvoice}>
+                        <span>
+                            تایید محصول
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+
+        </ModalBb>
     );
 }
 

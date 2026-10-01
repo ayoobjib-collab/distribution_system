@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 function useIsMobile() {
 
+    console.log('use mobile');
+
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width:900px)");
+        const mediaQuery = window.matchMedia("(max-width:1000px)");
 
         const handleChange = (e) => {
             setIsMobile(e.matches);
