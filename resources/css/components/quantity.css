@@ -38,14 +38,10 @@
     width: 66%;
     font-size: 1.1rem;
     text-align: center;
-<<<<<<< HEAD
     background: transparent;
     border: none;
     outline: none;
     box-shadow: none;
-=======
-    font-size:1.2rem;
->>>>>>> add1220883ffc1b91a8f9f21a17c318ed4ad06e1
 }
 
 .qty-remove {

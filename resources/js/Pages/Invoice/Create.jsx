@@ -39,11 +39,8 @@ const getCustomers = async (inputValue) => {
  */
 function InvoiceCreate({ invoice, h1 }) {
 
-<<<<<<< HEAD
 	console.log('invoicecreate');
 
-=======
->>>>>>> add1220883ffc1b91a8f9f21a17c318ed4ad06e1
 	const isCreateMode = invoice == undefined;
 	const defualtData = {
 		type: '',
