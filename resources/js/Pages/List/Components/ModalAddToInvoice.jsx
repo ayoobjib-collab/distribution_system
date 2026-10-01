@@ -119,12 +119,62 @@ function ModalAddToInvoice({
         >
             <div className="flex flex-col gap-8">
 
+<<<<<<< HEAD
                 <div className="ma-img-wrap flex overflow-auto gap-1">
                     {
                         productImgs.map((img, index) => (
                             <img src={img.medium} loading="lazy" key={index} />
                         ))
                     }
+=======
+            <Drawer
+                title={btnText}
+                placement={placement}
+                size={500}
+                onClose={onClose}
+                open={open}
+                className='modal-add-to-invoice'
+
+                footer={
+                    <button className="ant-btn ant-btn-primary" onClick={addToInvoice}>
+                        {btnText}
+                    </button>
+                }
+            >
+                <div className="flex flex-col gap-8">
+
+                    <div className="ma-img-wrap flex overflow-auto gap-1">
+                        {
+                            productImgs.map((img, index) => (
+                                <img src={img.small} loading="lazy" key={index} />
+                            ))
+                        }
+                    </div>
+
+                    <div className="mp-content">
+                        <b>
+                            {product?.name}
+                        </b>
+
+                        <div className="mp-price">
+                            {formatAmount(product?.sale_price)}
+                        </div>
+                    </div>
+
+                    <Quantity
+                        label="درصد تخفیف"
+                        value={discount}
+                        onChange={setDiscount}
+                    />
+
+                    <Quantity
+                        label="تعداد"
+                        value={quantity}
+                        onChange={setQuantity}
+                        onRemove={removeProduct}
+                        min={1}
+                    />
+>>>>>>> add1220883ffc1b91a8f9f21a17c318ed4ad06e1
                 </div>
 
                 <div className="mp-content">
