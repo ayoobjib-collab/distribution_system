@@ -1,35 +1,36 @@
+import { memo, useCallback } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 
-const Quantity = ({ value, label, onChange, onRemove, min = 0, max = 999 }) => {
+const Quantity = memo(({
+    name,
+    value,
+    label,
+    onChange,
+    onRemove,
+    min = 0,
+    max = 999
+}
+) => {
 
-    const increase = () => {
-        if (value < max) {
-            onChange(value + 1);
-        }
-    };
+    const increase = useCallback(() => {
+        if (value < max) onChange(name, value + 1);
+    }, [value, max, onChange]);
 
-    const decrease = () => {
-        if (value > min) {
-            onChange(value - 1);
-        }
-    };
+    const decrease = useCallback(() => {
+        if (value > min) onChange(name, value - 1);
+    }, [value, min, onChange]);
 
-    const setValue = (e) => {
-        const value = Number(e.target.value);
-        if (Number.isNaN(value)) return;
-        const v = Math.min(Math.max(value, min), max);
-        onChange(v);
-    }
+    const setValue = useCallback((e) => {
+        const val = Number(e.target.value);
+        if (Number.isNaN(val)) return;
+        const v = Math.min(Math.max(val, min), max);
+        onChange(name, v);
+    }, [min, max, onChange]);
 
     return (
         <div className="quantity flex">
-
-            <label>
-                {label}
-            </label>
-
-            <div className="qty-input flex ">
-
+            <label>{label}</label>
+            <div className="qty-input flex">
                 <button
                     type="button"
                     onClick={increase}
@@ -39,32 +40,28 @@ const Quantity = ({ value, label, onChange, onRemove, min = 0, max = 999 }) => {
                     +
                 </button>
 
-                <input type="tel" name="" value={value} onChange={setValue} />
+                <input type="tel" value={value} onChange={setValue} />
 
-                {
-                    value <= 1 && onRemove
-                        ?
-                        <button
-                            onClick={onRemove}
-                            className='qty-remove'
-                        >
-                            <AiOutlineDelete size={20} />
-                        </button>
-                        :
-                        <button
-                            type="button"
-                            onClick={decrease}
-                            disabled={value <= min}
-                            className='qty-count qty-count--minus'
-                        >
-                            −
-                        </button>
-
-                }
-
+                {value <= 1 && onRemove ? (
+                    <button
+                        onClick={onRemove}
+                        className='qty-remove'
+                    >
+                        <AiOutlineDelete size={20} />
+                    </button>
+                ) : (
+                    <button
+                        type="button"
+                        onClick={decrease}
+                        disabled={value <= min}
+                        className='qty-count qty-count--minus'
+                    >
+                        −
+                    </button>
+                )}
             </div>
         </div>
     );
-};
+});
 
 export default Quantity;

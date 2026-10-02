@@ -1,8 +1,9 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react"; 
 
 import ModalBb from "@/BaseComponents/ModalBb";
 import FormField from "@/BaseComponents/FormField";
 import Quantity from "@/BaseComponents/Quantity";
+
 import { createRandomId } from '@/functions/helper.js';
 
 import { LuCircleFadingPlus } from "react-icons/lu";
@@ -51,25 +52,6 @@ function ModalAddItem({ invoiceType, setItems }) {
     const [invoiceItem, setInvoiceItem] = useState(baseInvoiceItem);
 
     /**
-     */
-    function addFormData(e) {
-
-        const { name, value } = e.target;
-
-        let v = value;
-        if (name === 'quantity') {
-            v = Math.min(v, invoiceItem.stock)
-        }
-
-        setInvoiceItem(prev => {
-            return {
-                ...prev,
-                [name]: v
-            };
-        });
-    }
-
-    /**
      * Fix inputs by selected product
      * @param {*} selectObject 
      */
@@ -106,7 +88,6 @@ function ModalAddItem({ invoiceType, setItems }) {
         )
             return;
 
-
         setItems(prev => [
             ...prev,
             {
@@ -120,7 +101,14 @@ function ModalAddItem({ invoiceType, setItems }) {
         setIsOpen(false);
     }
 
-
+    const handleUpdateField = useCallback((name, value) => {
+        setInvoiceItem(prev => {
+            return {
+                ...prev,
+                [name]: value
+            };
+        });
+    }, []);
 
     return (
         <div className="modal-add-item">
@@ -162,7 +150,7 @@ function ModalAddItem({ invoiceType, setItems }) {
                         isAmount={true}
                         label={`قیمت محصول برای هر ${invoiceItem.unit}`}
                         value={invoiceItem.unit_price}
-                        onChange
+                        onChange={(val) => handleUpdateField('quantity', val)}
                         type="tel"
                         readOnly={true}
                         errors
@@ -171,29 +159,15 @@ function ModalAddItem({ invoiceType, setItems }) {
                     <Quantity
                         label={`تعداد (حداکثر ${invoiceItem.stock})`}
                         value={invoiceItem.quantity}
-                        onChange={(value) =>
-                            addFormData({
-                                target: {
-                                    name: 'quantity',
-                                    value
-                                }
-                            })
-                        }
+                        onChange={(val) => handleFieldChange(invoiceItem.id, 'quantity', val)}
                         max={invoiceItem.stock}
                     />
 
                     <Quantity
                         label='درصد تخفیف'
                         value={invoiceItem.discount}
-                        onChange={(value) =>
-                            addFormData({
-                                target: {
-                                    name: 'discount',
-                                    value
-                                }
-                            })
-                        }
-                        max={10}
+                        onChange={(val) => handleFieldChange(invoiceItem.id, 'discount', val)}
+                        max={40}
                     />
                 </div>
 
