@@ -1,26 +1,20 @@
 import { useEffect, useState } from 'react';
 import { router, useForm } from "@inertiajs/react";
 import { toast } from 'react-toastify';
-
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
-
 import Button from "@/BaseComponents/Button";
 import AsyncSelect from "react-select/async";
 import ModalAddItem from "./Components/ModalAddItem";
 import CustomerData from './Components/CustomerData';
 import ItemsTable from './Components/ItemsTable';
 import TransactionShowEdit from './Components/TransactionShowEdit';
-
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
 import useInvoiceItems from './Hooks/useInvoiceItems';
-
 import '@/../css/page/invoice-create.css';
 
 
 const getCustomers = async (inputValue) => {
-
-	if (!inputValue) return [];
 
 	const res = await fetch(
 		`/api/v1/accounts?search=${encodeURIComponent(inputValue)}`
@@ -38,8 +32,6 @@ const getCustomers = async (inputValue) => {
  * Invoice create and update
  */
 function InvoiceCreate({ invoice, h1 }) {
-
-	console.log('invoicecreate');
 
 	const isCreateMode = invoice == undefined;
 	const defualtData = {
@@ -148,7 +140,7 @@ function InvoiceCreate({ invoice, h1 }) {
 						<div className="form-group ic-search-wrap" style={{ marginBottom: "0" }}>
 							<AsyncSelect
 								classNamePrefix="react-select"
-								defaultOptions={false}
+								defaultOptions={true}
 								loadOptions={getCustomers}
 								onChange={addCustomer}
 								placeholder="انتخاب فروشگاه"

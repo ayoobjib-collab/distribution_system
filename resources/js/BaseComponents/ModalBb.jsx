@@ -1,9 +1,9 @@
 import { createPortal } from "react-dom";
 import { useMemo, memo } from "react";
 
-const CloseIcon = () => (
-    <div className="close" onClick={onClose}>
-        <svg width="20" height="20" viewBox="0 0 20 20"
+const CloseIcon = ({ onClick }) => (
+    <div className="close" onClick={onClick}>
+        <svg width="35" height="35" viewBox="0 0 20 20"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
             className="icon">
@@ -22,7 +22,7 @@ const TipsIcon = () => (
 );
 
 
-const ModalBb = memo(({ head, tip = null, children, isOpen = true, onClose }) => {
+const ModalBb = memo(({ head, footer, tip = null, children, isOpen = true, onClose }) => {
 
     const modalRoot = useMemo(() => document.getElementById("modalWrap"), []);
 
@@ -32,14 +32,16 @@ const ModalBb = memo(({ head, tip = null, children, isOpen = true, onClose }) =>
 
         <div className="modal-wrap" onClick={onClose}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
+
                 <header>
                     <h2>{head}</h2>
-                    <CloseIcon />
+                    <CloseIcon onClick={onClose} />
                 </header>
+
                 <div className="m-content">
-                    <br />
-                    <div>{children}</div>
+                    {children}
                 </div>
+
                 <br />
 
                 {tip !== null &&
@@ -50,6 +52,10 @@ const ModalBb = memo(({ head, tip = null, children, isOpen = true, onClose }) =>
                         </small>
                     </div>
                 }
+
+                <footer className="mob-fix">
+                    {footer}
+                </footer>
             </div>
         </div>,
         modalRoot

@@ -1,4 +1,4 @@
-import { useState, memo, useCallback } from "react"; 
+import { useState, memo, useCallback } from "react";
 
 import ModalBb from "@/BaseComponents/ModalBb";
 import FormField from "@/BaseComponents/FormField";
@@ -9,12 +9,11 @@ import { createRandomId } from '@/functions/helper.js';
 import { LuCircleFadingPlus } from "react-icons/lu";
 import { MdFileDownloadDone } from "react-icons/md";
 
-
-/**
- * Packages
- */
 import AsyncSelect from "react-select/async";
 
+/**
+ * Static
+ */
 const baseInvoiceItem = {
     id: '',
     product_id: '',
@@ -46,6 +45,9 @@ const getPorducts = async (inputValue) => {
 };
 
 
+/**
+ * Component
+ */
 function ModalAddItem({ invoiceType, setItems }) {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -101,7 +103,7 @@ function ModalAddItem({ invoiceType, setItems }) {
         setIsOpen(false);
     }
 
-    const handleUpdateField = useCallback((name, value) => {
+    const handleFieldChange = useCallback((name, value) => {
         setInvoiceItem(prev => {
             return {
                 ...prev,
@@ -150,7 +152,7 @@ function ModalAddItem({ invoiceType, setItems }) {
                         isAmount={true}
                         label={`قیمت محصول برای هر ${invoiceItem.unit}`}
                         value={invoiceItem.unit_price}
-                        onChange={(val) => handleUpdateField('quantity', val)}
+                        onChange
                         type="tel"
                         readOnly={true}
                         errors
@@ -159,14 +161,16 @@ function ModalAddItem({ invoiceType, setItems }) {
                     <Quantity
                         label={`تعداد (حداکثر ${invoiceItem.stock})`}
                         value={invoiceItem.quantity}
-                        onChange={(val) => handleFieldChange(invoiceItem.id, 'quantity', val)}
+                        name='quantity'
+                        onChange={handleFieldChange}
                         max={invoiceItem.stock}
                     />
 
                     <Quantity
+                        name='discount'
                         label='درصد تخفیف'
                         value={invoiceItem.discount}
-                        onChange={(val) => handleFieldChange(invoiceItem.id, 'discount', val)}
+                        onChange={handleFieldChange}
                         max={40}
                     />
                 </div>

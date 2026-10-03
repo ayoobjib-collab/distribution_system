@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 
 import '@/../css/page/list-index.css';
@@ -15,6 +15,10 @@ function ListIndex({ cats, products }) {
     function showMoalAdd(p) {
         setSelectedProduct(p);
     }
+
+    const childClosed = useCallback(() => {
+        setSelectedProduct(null);
+    }, []);
 
     return (
         <section>
@@ -41,7 +45,7 @@ function ListIndex({ cats, products }) {
                 selectedProduct !== null ?
                     <ModalAddToInvoice
                         product={selectedProduct}
-                        childClosed={() => setSelectedProduct(null)}
+                        childClosed={childClosed}
                         open={selectedProduct !== null}
                     />
                     :

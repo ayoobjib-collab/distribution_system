@@ -25,11 +25,13 @@ const Quantity = memo(({
         if (Number.isNaN(val)) return;
         const v = Math.min(Math.max(val, min), max);
         onChange(name, v);
-    }, [min, max, onChange]);
+    }, [name, min, max, onChange]);
 
     return (
         <div className="quantity flex">
+
             <label>{label}</label>
+
             <div className="qty-input flex">
                 <button
                     type="button"

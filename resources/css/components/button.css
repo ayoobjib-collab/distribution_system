@@ -1,7 +1,7 @@
 button:not(.not-btn, .Toastify__close-button) {
     background-color: #007bff;
     color: white;
-    padding: 0.6rem 1.2rem;
+    padding: 1rem 1.2rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -43,4 +43,5 @@ button:hover:not(.second, .mode-switch.active, .not-btn) {
 
 button.small {
     font-size: .7rem;
+    padding: .8rem;
 }

@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import Quantity from '@/BaseComponents/Quantity';
 import ModalBb from '@/BaseComponents/ModalBb';
 
@@ -14,12 +14,12 @@ const ModalEditItem = memo(({ isOpen, setIsOpen, item, updateItem }) => {
     const productStock = item?.stock ?? item?.product?.stock ?? 0;
 
     // Update local form
-    function addFormData(name, value) {
+    const updateItemData = useCallback((name, value) => {
         setCopiedItem(prev => ({
             ...prev,
             [name]: value,
         }));
-    }
+    }, []);
 
     // Save changes
     function handleSave() {
@@ -53,16 +53,18 @@ const ModalEditItem = memo(({ isOpen, setIsOpen, item, updateItem }) => {
         >
 
             <Quantity
+                name='quantity'
                 label={`تعداد (حداکثر ${productStock} )`}
                 value={copiedItem.quantity ?? ''}
-                onChange={(value) => addFormData('quantity', value)}
+                onChange={updateItemData}
                 max={productStock}
             />
 
             <Quantity
+                name='discount'
                 label='درصد تخفیف'
                 value={copiedItem.discount ?? ''}
-                onChange={(value) => addFormData('discount', value)}
+                onChange={updateItemData}
                 max={100}
             />
 

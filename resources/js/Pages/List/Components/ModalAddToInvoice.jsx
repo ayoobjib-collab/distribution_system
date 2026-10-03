@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { formatAmount } from '@/functions/helper.js';
 import Quantity from '@/BaseComponents/Quantity';
 import ModalBb from "@/BaseComponents/ModalBb";
@@ -58,14 +58,6 @@ function ModalAddToInvoice({
 
     const productImgs = product?.image_urls ?? [];
 
-    const onChange = (e) => {
-        setPlacement(e.target.value);
-    };
-
-    const onClose = () => {
-        childClosed();
-    };
-
     function addToInvoice() {
 
         const products = getInvoiceProducts();
@@ -97,17 +89,32 @@ function ModalAddToInvoice({
         childClosed();
     }
 
-    function removeProduct() {
-
+    const removeProduct = useCallback(() => {
         const products = getInvoiceProducts();
-
         const newProducts = products.filter(
             item => item.product_id !== product.id
         );
-
         saveInvoiceProducts(newProducts);
         childClosed();
-    }
+    }, [product, childClosed]);
+
+    const handleChange = useCallback((name, value) => {
+        if (name === 'discount')
+            setDiscount(value);
+
+
+        if (name === 'quantity')
+            setQuantity(value);
+
+    }, []);
+
+    const modalFooter = (
+        <button onClick={addToInvoice}>
+            <span>
+                تایید محصول
+            </span>
+        </button>
+    );
 
     return (
 
@@ -116,6 +123,7 @@ function ModalAddToInvoice({
             head={btnText}
             isOpen={open}
             onClose={childClosed}
+            footer={modalFooter}
         >
             <div className="flex flex-col gap-8">
 
@@ -138,27 +146,21 @@ function ModalAddToInvoice({
                 </div>
 
                 <Quantity
+                    name='discount'
                     label="درصد تخفیف"
                     value={discount}
-                    onChange={setDiscount}
+                    onChange={handleChange}
                 />
 
                 <Quantity
+                    name="quantity"
                     label={`تعداد (حداکثر ${product.stock})`}
                     value={quantity}
-                    onChange={setQuantity}
+                    onChange={handleChange}
                     onRemove={removeProduct}
                     min={1}
                     max={product?.stock}
                 />
-
-                <div className="mob-fix">
-                    <button onClick={addToInvoice}>
-                        <span>
-                            تایید محصول
-                        </span>
-                    </button>
-                </div>
 
             </div>
 
