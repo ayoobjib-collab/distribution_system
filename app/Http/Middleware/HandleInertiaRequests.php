@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\Breadcrumbs;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -53,6 +54,8 @@ class HandleInertiaRequests extends Middleware
                 : null,
 
             'isAdmin' => fn() => $request->user()?->hasRole('admin') ?? false,
+
+            'breadcrumbs' => fn() => app(Breadcrumbs::class)->all(),
         ]);
     }
 }

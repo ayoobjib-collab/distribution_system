@@ -15,8 +15,6 @@ const DashboardLayout = ({ children, h1 }) => {
     const p = usePage().props;
     const { msg, url } = usePage().props;
 
-    console.log(p);
-
     useEffect(() => {
         if (msg.status)
             toast.success(msg.text);
