@@ -1,7 +1,13 @@
 import { Link } from "@inertiajs/react";
-import { TfiLayoutGrid2 } from "react-icons/tfi";
+import { FiAlignRight } from "react-icons/fi";
+import { MdChecklistRtl } from "react-icons/md";
+import { BsPersonPlus } from "react-icons/bs";
+import { BsCloudPlus } from "react-icons/bs";
 
 const Footer = ({ toggleSidebar }) => {
+
+    console.log('footer');
+
     return (
         <>
 
@@ -11,27 +17,27 @@ const Footer = ({ toggleSidebar }) => {
 
             <nav className="mobile-menu desk-hide">
                 <div onClick={toggleSidebar}>
-                    <TfiLayoutGrid2 />
+                    <FiAlignRight />
                     <span>منو</span>
                 </div>
 
                 <div>
                     <Link href={'/list'}>
-                        <TfiLayoutGrid2 />
+                        <MdChecklistRtl />
                     </Link>
                     <span>محصولات</span>
                 </div>
 
                 <div>
                     <Link href={'/account/create'}>
-                        <TfiLayoutGrid2 />
+                        <BsPersonPlus />
                     </Link>
                     <span>ایجاد حساب</span>
                 </div>
 
-                <div>
+                <div className="badge-wrap">
                     <Link href={'/invoice/create'}>
-                        <TfiLayoutGrid2 />
+                        <BsCloudPlus />
                     </Link>
                     <span>ایجاد فاکتور</span>
                 </div>

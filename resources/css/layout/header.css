@@ -5,7 +5,7 @@
 }
 
 .title h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: normal;
 }
 
@@ -46,4 +46,12 @@
     padding: 0 16px;
     transition: 0.2s;
     cursor: pointer;
+}
+
+nav#breadcrumbs ol {
+    list-style: none;
+}
+
+nav#breadcrumbs li span {
+    font-size:.7rem;
 }

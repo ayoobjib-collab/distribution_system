@@ -1,5 +1,3 @@
-import { TfiWallet } from "react-icons/tfi";
-import { FiPlusCircle } from "react-icons/fi";
 import { usePage, Link } from "@inertiajs/react";
 import NewDarkSwitch from "../Components/NewDarkSwitch";
 

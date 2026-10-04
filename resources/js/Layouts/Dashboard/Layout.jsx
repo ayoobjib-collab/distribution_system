@@ -5,13 +5,17 @@ import Footer from '@/Layouts/Dashboard/Parts/Footer';
 import { useState, useEffect } from 'react';
 import { Head, usePage } from "@inertiajs/react";
 import { toast, ToastContainer } from 'react-toastify';
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const DashboardLayout = ({ children, h1 }) => {
 
     /**
      * Handle show msg when page load.
      */
-    const { msg } = usePage().props;
+    const p = usePage().props;
+    const { msg, url } = usePage().props;
+
+    console.log(p);
 
     useEffect(() => {
         if (msg.status)
@@ -42,10 +46,23 @@ const DashboardLayout = ({ children, h1 }) => {
                     <DashboardHeader />
 
                     <div className="title">
-                        <h1>
-                            {h1}
-                        </h1>
+
+                        <nav id="breadcrumbs" aria-label="breadcrumbs">
+                            <ol className="flex gap-1 items-center">
+                                <li><span className="text">داشبورد</span></li>
+                                <li>
+                                    <MdKeyboardArrowLeft />
+                                </li>
+                                <li>
+                                    <h1>
+                                        {h1}
+                                    </h1>
+                                </li>
+                            </ol>
+                        </nav>
+
                     </div>
+
                     <main className="area-wrapper">
                         {children}
                     </main>

@@ -1,12 +1,8 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
-import { useForm, usePage } from "@inertiajs/react";
-import { useState, useEffect } from 'react'
+import { useForm } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
 
-import { toast } from 'react-toastify';
-
-import Select from 'react-select';
 
 function CreateUser({ sendUrl, account }) {
 
@@ -24,8 +20,6 @@ function CreateUser({ sendUrl, account }) {
             is_active: account?.is_active ?? true,
         }
     );
-
-    // const selectedBank = banks.find(i => i.value == data.bank) || null;
 
     function addFormData(e) {
         const { id, type, value, checked } = e.target;

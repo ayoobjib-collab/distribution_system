@@ -51,6 +51,13 @@
     background-color: var(--s-light);
     -webkit-box-shadow: none;
     box-shadow: none;
-    left:100%;
+    left: 100%;
     transform: translateX(-100%);
+}
+
+@media (width <=800px) {
+    .toggle-switch {
+        --s-height: 25px;
+        --s-width: 50px;
+    }
 }

@@ -13,20 +13,28 @@ function LinkToInvoice() {
     );
 
     return (
-        <div className="link-to-invoice flex">
-            <div className="lt-right flex gap-1 align-center">
-                <PiInvoiceBold />
-                <span>
-                    {`کالا در فاکتور ${count} عدد`}
+        <>
+            <div className="link-to-invoice_mob badge-wrap desk-hide">
+                <span className="badge">
+                    {count}
                 </span>
             </div>
-            <div className="lt-left">
-                <Link href="/invoice/create">
-                    صدور فاکتور
-                    <HiMiniChevronLeft />
-                </Link>
+            <div className="link-to-invoice flex mob-hide">
+                <div className="lt-right flex gap-1 items-center">
+                    <PiInvoiceBold />
+                    <span>
+                        {`کالا در فاکتور ${count} عدد`}
+                    </span>
+                </div>
+                <div className="lt-left">
+                    <Link href="/invoice/create">
+                        صدور فاکتور
+                        <HiMiniChevronLeft />
+                    </Link>
+                </div>
             </div>
-        </div>
+        </>
+
     );
 }
 

@@ -3,7 +3,7 @@ import { useMemo, memo } from "react";
 
 const CloseIcon = ({ onClick }) => (
     <div className="close" onClick={onClick}>
-        <svg width="35" height="35" viewBox="0 0 20 20"
+        <svg width="28" height="28" viewBox="0 0 20 20"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
             className="icon">
@@ -31,7 +31,7 @@ const ModalBb = memo(({ head, footer, tip = null, children, isOpen = true, onClo
     return createPortal(
 
         <div className="modal-wrap" onClick={onClose}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal flex flex-col" onClick={(e) => e.stopPropagation()}>
 
                 <header>
                     <h2>{head}</h2>
@@ -53,7 +53,7 @@ const ModalBb = memo(({ head, footer, tip = null, children, isOpen = true, onClo
                     </div>
                 }
 
-                <footer className="mob-fix">
+                <footer>
                     {footer}
                 </footer>
             </div>

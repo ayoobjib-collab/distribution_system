@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { formatAmount } from '@/functions/helper.js';
 import Quantity from '@/BaseComponents/Quantity';
 import ModalBb from "@/BaseComponents/ModalBb";
-
+import ImgSlider from './ImgSlider';
 
 /**
  * Static functions
@@ -111,10 +111,14 @@ function ModalAddToInvoice({
     const modalFooter = (
         <button onClick={addToInvoice}>
             <span>
-                تایید محصول
+                تایید
             </span>
         </button>
     );
+
+    const addLoading = useCallback(() => {
+        document.body.classList.add('loading');
+    }, []);
 
     return (
 
@@ -127,18 +131,15 @@ function ModalAddToInvoice({
         >
             <div className="flex flex-col gap-8">
 
-                <div className="ma-img-wrap flex overflow-auto gap-1">
-                    {
-                        productImgs.map((img, index) => (
-                            <img src={img.medium} loading="lazy" key={index} />
-                        ))
-                    }
-                </div>
+                {
+                    (productImgs?.length > 0) &&
+                    <ImgSlider imgs={productImgs} />
+                }
 
                 <div className="mp-content">
-                    <b>
+                    <h3>
                         {product?.name}
-                    </b>
+                    </h3>
 
                     <div className="mp-price">
                         {formatAmount(product?.sale_price)}

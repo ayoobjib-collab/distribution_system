@@ -9,14 +9,14 @@
 
 .modal {
     background: var(--app-bg);
-    min-width: 400px;
-    width: fit-content;
+    width: clamp(400px, 500px, 100%);
     margin: auto;
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 12px 0px, rgba(0, 0, 0, 0.62) 0px 0px 1px 0px;
     border: 1px solid rgba(13, 13, 13, 0.05);
     color: inherit;
+    overflow: auto;
 }
 
 .modal h2 {
@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 @keyframes fadeIn {
@@ -74,16 +75,39 @@ body:has(.modal-wrap) {
     transform-origin: center;
 }
 
-@media (width < 1000px) {
+.modal footer button {
+    margin: 0;
+    width: 100%;
+}
+
+@media (width < 850px) {
     .modal {
         inset: 0;
         width: 100% !important;
         height: 100%;
         border-radius: 0 !important;
+        min-width: auto;
+        padding: 0;
     }
 
     .modal .mob-fix button {
         width: 100%;
+    }
+
+    .modal header,
+    .m-content {
+        padding: 10px;
+    }
+
+    .modal footer {
+        position: sticky;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        background: var(--sidebar);
+        padding: 8px;
+        margin-top:auto
     }
 }
 

@@ -1,4 +1,9 @@
 @media (max-width: 1000px) {
+
+    button:not(.not-btn, .Toastify__close-button) {
+        padding: .6rem .9rem !important;
+    }
+
     .mob-hide {
         display: none !important;
     }

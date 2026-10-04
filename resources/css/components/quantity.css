@@ -1,21 +1,21 @@
 .quantity {
     display: flex;
     align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #e5e5e547;
+    border-bottom: 1px dashed #e5e5e547;
     box-sizing: border-box;
+    padding-bottom: 3px;
+    border-radius: 4px;
 }
 
 .quantity label {
     flex: 1 0 35%;
     font-size: 13px;
-    color: #444;
     margin: 0;
+    opacity: .8;
 }
 
 .qty-input {
     flex: 1 0 65%;
-    height: 4.6vh;
     align-items: center;
     background: #5e6f91;
     border-radius: 6px;
@@ -28,9 +28,9 @@
 .qty-input button {
     width: 17%;
     height: 100%;
-    padding: 0;
     margin: 0;
     border: 0;
+    padding: .5rem;
 }
 
 .qty-input input {
