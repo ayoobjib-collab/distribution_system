@@ -6,9 +6,11 @@ use App\Actions\Invoice\InvoiceStoreAction;
 use App\Actions\Invoice\InvoiceUpdateAction;
 use App\Enums\InvoiceStatus;
 use App\Enums\RoutesName;
+use App\Facades\BreadcrumbFacades;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use App\Models\Product;
+use App\Support\Breadcrumbs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +23,10 @@ class InvoiceController extends Controller
 
     public function show(int $id)
     {
+        $this->breadcrumbs
+            ->add('فاکتورها', route('invoice.index'))
+            ->add('مشاهده فاکتور شماره ' . $id);
+
         $user = auth()->user();
 
         $invoice = Invoice::query()
@@ -49,6 +55,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+        $this->breadcrumbs
+            ->add('فاکتورها');
+
         $user = auth()->user();
 
         $invoices = Invoice::query()
@@ -80,10 +89,13 @@ class InvoiceController extends Controller
     {
         $csrf = csrf_token();
 
+        $this->breadcrumbs
+            ->add('فاکتورها', route('invoice.index'))
+            ->add('ایجاد فاکتور');
+
         return $this->render(
             'Create',
             [
-                'h1'      => 'ایجاد فاکتور',
                 'sendUrl' => route('invoice.store'),
                 'csrf'    => $csrf
             ]
@@ -105,7 +117,6 @@ class InvoiceController extends Controller
         );
     }
 
-
     public function update(InvoiceRequest $request, Invoice $invoice, InvoiceUpdateAction $action)
     {
         $this->validateUser($request, $invoice);
@@ -120,6 +131,10 @@ class InvoiceController extends Controller
 
     public function edit(int $id)
     {
+        $this->breadcrumbs
+            ->add('فاکتورها', route('invoice.index'))
+            ->add('ویرایش فاکتور شماره ' . $id);
+
         $user = auth()->user();
 
         $invoice = Invoice::query()

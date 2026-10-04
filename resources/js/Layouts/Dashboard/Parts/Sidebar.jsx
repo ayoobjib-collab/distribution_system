@@ -1,11 +1,11 @@
+import { memo } from "react";
 import { Link } from "@inertiajs/react";
 import UserInfo from "../Components/UserInfo";
 import { usePage } from "@inertiajs/react";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { HiOutlineArrowSmLeft } from "react-icons/hi";
 
-
-const Sidebar = ({ isOpen, childClicked }) => {
+const Sidebar = memo(({ isOpen, childClicked }) => {
 
     const { auth, isAdmin } = usePage().props
 
@@ -96,6 +96,6 @@ const Sidebar = ({ isOpen, childClicked }) => {
             </div>
         </aside>
     )
-}
+});
 
 export default Sidebar;

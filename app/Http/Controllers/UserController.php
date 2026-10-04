@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\RoutesName;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -15,8 +16,10 @@ class UserController extends Controller
         return 'User';
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $this->abortIfIsNotAdmin($request);
+
         $h1 = "لیست تمام کاربران";
 
         $users = User::with('roles')
@@ -38,12 +41,16 @@ class UserController extends Controller
         );
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $this->abortIfIsNotAdmin($request);
+
+        $this->breadcrumbs->add('کاربران', route('user.index'));
+
         return $this->render(
             'Create',
             [
-                'sendUrl' => RoutesName::CreateUser->value,
+                'sendUrl' => route('user.store'),
                 // 'userType' => 
             ]
         );
@@ -51,6 +58,8 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
+        $this->abortIfIsNotAdmin($request);
+
         $validated = $request->validated();
 
         $user = User::create([
@@ -70,7 +79,7 @@ class UserController extends Controller
         return $this->render(
             'Create',
             [
-                'sendUrl' => RoutesName::CreateUser->value . '/' . $user->id,
+                'sendUrl' => route('user.update', [$user->id]),
                 'user' => $user
             ]
         );
@@ -78,6 +87,8 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
+        $this->abortIfIsNotAdmin($request);
+
         $validated = $request->validated();
 
         $user->update($validated);

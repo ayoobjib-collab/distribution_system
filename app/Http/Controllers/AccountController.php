@@ -17,6 +17,8 @@ class AccountController extends Controller
 
     public function index(Request $request)
     {
+        $this->breadcrumbs->add('لیست همه حساب‌ها');
+
         $user = $request->user();
 
         $accounts = Account::query()
@@ -40,7 +42,6 @@ class AccountController extends Controller
             ->withQueryString();
 
         return $this->render('Index', [
-            'h1' => 'لیست همه طرف حساب‌ها',
             'accounts' => $accounts,
             'filters'  => $request->only(['search'])
         ]);
@@ -48,11 +49,14 @@ class AccountController extends Controller
 
     public function create()
     {
+        $this->breadcrumbs
+            ->add('فروشگاه‌ها', route('account.index'))
+            ->add('ایجاد فروشگاه');
+
         return $this->render(
             'Create',
             [
-                'sendUrl' => RoutesName::CreateAccount->value,
-                // 'userType' => 
+                'sendUrl' => route('account.store'),
             ]
         );
     }
@@ -64,18 +68,21 @@ class AccountController extends Controller
 
         Account::create($data);
 
-        $this->back('حساب کاربری تغریف شد');
+        $this->back('حساب کاربری تعریف شد');
     }
 
     public function edit(Account $account, Request $request)
     {
+        $this->breadcrumbs
+            ->add('فروشگاه‌ها', route('account.index'))
+            ->add('ویرایش فروشگاه ' . $account->name);
 
         $this->validateUser($request, $account);
 
         return $this->render(
             'Create',
             [
-                'sendUrl' => RoutesName::CreateAccount->value . '/' . $account->id,
+                'sendUrl' => route('account.update', [$account->id]),
                 'account' => $account
             ]
         );

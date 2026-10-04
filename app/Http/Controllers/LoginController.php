@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         return $this->render(
             'Index',
-            ['sendUrl' => RoutesName::Login->value]
+            ['sendUrl' => route('login')]
         );
     }
 

@@ -1,12 +1,9 @@
-import { usePage, Link } from "@inertiajs/react";
 import NewDarkSwitch from "../Components/NewDarkSwitch";
 
 import Logo from "../Components/Logo";
 
 
 export default function DashboardHeader({ h1 }) {
-
-    const { auth } = usePage().props;
 
     // let walletBalance = auth.user !== null ? auth.user.wallet_balance : 0;
 

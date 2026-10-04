@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/invoice');
-});
+})->name('home');
 
 /**
  * Public invoice url
@@ -83,7 +83,7 @@ Route::group(
     ['middleware' => ['guest']],
     function () {
         // User login
-        Route::get(RoutesName::Login->value, [LoginController::class, 'loginForm'])->name('login');
-        Route::post(RoutesName::Login->value, [LoginController::class, 'login']);
+        Route::get('login', [LoginController::class, 'loginForm'])->name('login');
+        Route::post('login', [LoginController::class, 'login']);
     }
 );

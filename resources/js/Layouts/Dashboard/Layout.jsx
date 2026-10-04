@@ -3,17 +3,27 @@ import DashboardHeader from '@/Layouts/Dashboard/Parts/DashboardHeader';
 import Footer from '@/Layouts/Dashboard/Parts/Footer';
 
 import { useState, useEffect } from 'react';
-import { Head, usePage } from "@inertiajs/react";
+import { Head, usePage, Link } from "@inertiajs/react";
 import { toast, ToastContainer } from 'react-toastify';
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
-const DashboardLayout = ({ children, h1 }) => {
+function getBreadcrumbData(breadcrumbs) {
+    const items = Array.isArray(breadcrumbs) ? breadcrumbs : [];
+
+    return {
+        h1: items.at(-1)?.label ?? 'Title',
+        items: items.slice(0, -1),
+    };
+}
+
+const DashboardLayout = ({ children }) => {
 
     /**
      * Handle show msg when page load.
      */
-    const p = usePage().props;
-    const { msg, url } = usePage().props;
+    const { msg, breadcrumbs } = usePage().props;
+
+    const { h1, items } = getBreadcrumbData(breadcrumbs);
 
     useEffect(() => {
         if (msg.status)
@@ -33,7 +43,7 @@ const DashboardLayout = ({ children, h1 }) => {
     return (
         <>
             <Head>
-                <title>{h1}</title>
+                <title>{`${h1} | پخش روناتیس`}</title>
             </Head>
 
             <div className="app-container">
@@ -44,21 +54,23 @@ const DashboardLayout = ({ children, h1 }) => {
                     <DashboardHeader />
 
                     <div className="title">
-
                         <nav id="breadcrumbs" aria-label="breadcrumbs">
                             <ol className="flex gap-1 items-center">
-                                <li><span className="text">داشبورد</span></li>
-                                <li>
-                                    <MdKeyboardArrowLeft />
-                                </li>
-                                <li>
-                                    <h1>
-                                        {h1}
-                                    </h1>
-                                </li>
+                                {
+                                    items?.length > 0 && items.map((breadcrumb, index) => (
+                                        <li key={index}>
+                                            <Link href={breadcrumb?.url}>
+                                                <span className="text">{breadcrumb.label}</span>
+                                                <MdKeyboardArrowLeft />
+                                            </Link>
+                                        </li>
+                                    ))
+                                }
                             </ol>
                         </nav>
-
+                        <h1>
+                            {h1}
+                        </h1>
                     </div>
 
                     <main className="area-wrapper">

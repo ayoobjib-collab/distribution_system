@@ -17,6 +17,9 @@ class CategoryController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
+        $this->breadcrumbs
+            ->add('جدول دسته‌ها');
+
         $categories = Category::query()
             ->latest()
             ->paginate(self::$paginateCount);
@@ -47,6 +50,10 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $this->abortIfIsNotAdmin($request);
+
+        $this->breadcrumbs
+            ->add('دسته‌ها', route('category.index'))
+            ->add('ایجاد دسته');
 
         return $this->render(
             'Create',

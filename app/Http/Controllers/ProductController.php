@@ -18,6 +18,9 @@ class ProductController extends Controller
 
     public function index()
     {
+        $this->breadcrumbs
+            ->add('جدول محصولات');
+
         $user = auth()->user();
 
         $products = Product::query()
@@ -40,11 +43,14 @@ class ProductController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
+        $this->breadcrumbs
+            ->add('محصولات', route('product.index'))
+            ->add('ایجاد محصول');
+
         return $this->render(
             'Create',
             [
-                'sendUrl' => RoutesName::CreateProduct->value,
-                // 'userType' => 
+                'sendUrl' => route('product.store')
             ]
         );
     }
@@ -93,6 +99,10 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product, UpdateProductImages $updateProductImages)
     {
         $this->abortIfIsNotAdmin($request);
+
+        $this->breadcrumbs
+            ->add('محصولات', route('product.index'))
+            ->add('ویرایش ' . $product->name);
 
         $validated = $request->validated();
 

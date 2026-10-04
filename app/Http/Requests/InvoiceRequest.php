@@ -10,9 +10,20 @@ use Illuminate\Validation\ValidationException;
 class InvoiceRequest extends FormRequest
 {
 
+    /**
+     * Each use can edit self invoice
+     */
     public function authorize(): bool
     {
-        return auth()->check();
+        if (!auth()->check()) return false;
+
+        $invoice = $this->route('invoice');
+
+        // Create
+        if (!$invoice) return true;
+
+        // Update
+        return $invoice->user_id === auth()->id();
     }
 
     /**
@@ -74,7 +85,6 @@ class InvoiceRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-
         $input = $this->all();
 
         $needToChangeFiedls = ['quantity', 'unit_price', 'discount'];

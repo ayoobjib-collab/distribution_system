@@ -75,7 +75,7 @@ function MobItemsTable({ items, readOnly, removeItem, modalEditItem, getItemTota
                 </div>
             ))}
 
-            <div className="subtotal flex gap-8">
+            <div className="subtotal flex gap-8 justify-center">
                 جمع کل فاکتور:
                 <b>
                     {formatAmount(subtotal)}

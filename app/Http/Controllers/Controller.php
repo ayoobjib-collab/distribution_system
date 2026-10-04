@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\Breadcrumbs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,6 +14,11 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     public static $paginateCount = 15;
+
+    public function __construct(public Breadcrumbs $breadcrumbs)
+    {
+        $this->breadcrumbs->add('داشبورد', route('home'));
+    }
 
     public function getViewPath(): string
     {

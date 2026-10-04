@@ -18,6 +18,10 @@ class ProductListController extends Controller
 
     public function run()
     {
+        $this->breadcrumbs
+            ->add('فاکتورها', route('invoice.index'))
+            ->add('لیست محصولات');
+
         return $this->render(
             'Index',
             [
