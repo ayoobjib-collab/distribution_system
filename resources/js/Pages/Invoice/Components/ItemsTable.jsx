@@ -10,8 +10,6 @@ import Tooltip from '@/BaseComponents/Tooltip';
 
 function ItemsTableFunc({ readOnly = false, items, subtotal, updateItem, removeItem }) {
 
-    console.log('ItemsTable');
-
     const [editIsOpen, setEditOpen] = useState(false);
     const [itemForUpdate, setItemForUpdate] = useState(null);
 

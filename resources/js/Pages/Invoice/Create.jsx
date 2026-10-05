@@ -212,5 +212,5 @@ function InvoiceCreate({ invoice, h1 }) {
 	)
 }
 
-InvoiceCreate.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
+InvoiceCreate.layout = page => <DashboardLayout children={page}/>
 export default InvoiceCreate;

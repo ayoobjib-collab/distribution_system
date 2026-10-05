@@ -85,7 +85,6 @@ function Index({ categories }) {
 Index.layout = page => (
     <DashboardLayout
         children={page}
-        h1="لیست دسته‌بندی‌ها"
     />
 );
 

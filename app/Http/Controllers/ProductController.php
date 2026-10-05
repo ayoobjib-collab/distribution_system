@@ -84,6 +84,10 @@ class ProductController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
+        $this->breadcrumbs
+            ->add('محصولات', route('product.index'))
+            ->add('ویرایش ' . $product->name);
+
         $product->load('categories:id,name');
 
         return $this->render(
@@ -91,7 +95,6 @@ class ProductController extends Controller
             [
                 'sendUrl' => route('product.update', ['product' => $product]),
                 'product' => $product,
-                'h1'      => 'ویرایش محصول'
             ]
         );
     }
@@ -99,10 +102,6 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product, UpdateProductImages $updateProductImages)
     {
         $this->abortIfIsNotAdmin($request);
-
-        $this->breadcrumbs
-            ->add('محصولات', route('product.index'))
-            ->add('ویرایش ' . $product->name);
 
         $validated = $request->validated();
 

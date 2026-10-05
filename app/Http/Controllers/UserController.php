@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
-        $h1 = "لیست تمام کاربران";
+        $this->breadcrumbs->add('لیست کاربران');
 
         $users = User::with('roles')
             ->paginate(10)
@@ -36,7 +36,6 @@ class UserController extends Controller
             'Index',
             [
                 'users' => $users,
-                'h1'    => $h1
             ]
         );
     }
@@ -45,7 +44,9 @@ class UserController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
-        $this->breadcrumbs->add('کاربران', route('user.index'));
+        $this->breadcrumbs
+            ->add('کاربران', route('user.index'))
+            ->add('ایجاد ویزیتور');
 
         return $this->render(
             'Create',
@@ -74,8 +75,14 @@ class UserController extends Controller
         $this->back('با موفقیت ایجاد شد');
     }
 
-    public function edit(User $user)
+    public function edit(User $user, Request $request)
     {
+        $this->abortIfIsNotAdmin($request);
+
+        $this->breadcrumbs
+            ->add('کاربران', route('user.index'))
+            ->add('ویرایش کاربر');
+
         return $this->render(
             'Create',
             [

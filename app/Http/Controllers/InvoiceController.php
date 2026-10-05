@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use App\Actions\Invoice\InvoiceStoreAction;
 use App\Actions\Invoice\InvoiceUpdateAction;
 use App\Enums\InvoiceStatus;
-use App\Enums\RoutesName;
-use App\Facades\BreadcrumbFacades;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use App\Models\Product;
-use App\Support\Breadcrumbs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -76,7 +73,6 @@ class InvoiceController extends Controller
         return $this->render(
             'Index',
             [
-                'h1'        => 'لیست تمام فاکتورها',
                 'invoices'  => $invoices,
             ]
         );
@@ -153,7 +149,6 @@ class InvoiceController extends Controller
         return $this->render(
             'Create',
             [
-                'h1'        => 'ویرایش فاکتور شماره ' . $invoice->id,
                 'invoice' => $invoice,
             ]
         );

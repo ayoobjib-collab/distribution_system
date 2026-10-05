@@ -133,6 +133,6 @@ function CreateUser({ sendUrl, account }) {
     )
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد طرف حساب(فروشگاه شخص یا ...)" />
+CreateUser.layout = page => <DashboardLayout children={page} />
 
 export default CreateUser;

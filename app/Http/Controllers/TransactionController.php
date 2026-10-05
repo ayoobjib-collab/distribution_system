@@ -19,7 +19,7 @@ class TransactionController extends Controller
     {
         $this->abortIfIsNotAdmin($request);
 
-        $h1 = "لیست تمام تراکنش‌ها";
+        $this->breadcrumbs->add('تراکنش‌ها');
 
         $invoiceId = $request->get('invoiceId');
 
@@ -42,7 +42,6 @@ class TransactionController extends Controller
             'Index',
             [
                 'transactions' => $transactions,
-                'h1'            => $h1
             ]
         );
     }

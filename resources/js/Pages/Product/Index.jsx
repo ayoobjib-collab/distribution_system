@@ -1,15 +1,12 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
+import Tooltip from "@/BaseComponents/Tooltip"
 
 import { formatAmount } from '@/functions/helper.js';
-import { Link, usePage } from "@inertiajs/react";
-
-import { router } from "@inertiajs/react";
+import { router, Link, usePage } from "@inertiajs/react";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { CiSquareCheck } from "react-icons/ci";
-
-import Tooltip from "@/BaseComponents/Tooltip"
 
 
 function Index({ products }) {
@@ -106,6 +103,6 @@ function Index({ products }) {
     )
 }
 
-Index.layout = page => <DashboardLayout children={page} h1="لیست محصولات و تعداد موجودی" />
+Index.layout = page => <DashboardLayout children={page} />
 
 export default Index;

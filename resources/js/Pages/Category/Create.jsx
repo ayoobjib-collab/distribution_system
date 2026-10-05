@@ -102,7 +102,6 @@ function CreateCategory({ category, sendUrl }) {
 CreateCategory.layout = page => (
     <DashboardLayout
         children={page}
-        h1="ایجاد دسته‌بندی"
     />
 );
 

@@ -2,7 +2,7 @@ import Sidebar from "@/Layouts/Dashboard/Parts/Sidebar";
 import DashboardHeader from '@/Layouts/Dashboard/Parts/DashboardHeader';
 import Footer from '@/Layouts/Dashboard/Parts/Footer';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Head, usePage, Link } from "@inertiajs/react";
 import { toast, ToastContainer } from 'react-toastify';
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -18,22 +18,24 @@ function getBreadcrumbData(breadcrumbs) {
 
 const DashboardLayout = ({ children }) => {
 
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+
     /**
      * Handle show msg when page load.
      */
     const { msg, breadcrumbs } = usePage().props;
-
     const { h1, items } = getBreadcrumbData(breadcrumbs);
 
     useEffect(() => {
+        if (!msg) return;
+
         if (msg.status)
             toast.success(msg.text);
         else
             toast.error(msg.text);
     }, [msg]);
 
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
-    const toggleSidebar = () => setSidebarOpen(prev => !prev);
+    const toggleSidebar = useCallback(() => setSidebarOpen(prev => !prev), []);
 
     function closeSidebar(e) {
         if (e.target.closest('a'))
@@ -59,7 +61,7 @@ const DashboardLayout = ({ children }) => {
                                 {
                                     items?.length > 0 && items.map((breadcrumb, index) => (
                                         <li key={index}>
-                                            <Link href={breadcrumb?.url}>
+                                            <Link href={breadcrumb?.url} className='flex items-center'>
                                                 <span className="text">{breadcrumb.label}</span>
                                                 <MdKeyboardArrowLeft />
                                             </Link>

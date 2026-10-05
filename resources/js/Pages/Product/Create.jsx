@@ -6,7 +6,7 @@ import Button from "@/BaseComponents/Button";
 import UploadBox from "./Components/UploadBox";
 import SelectCategory from "./Components/SelectCategory";
 
-function Create({ sendUrl, product, h1 }) {
+function Create({ sendUrl, product }) {
 
     const { data, setData, processing, post, reset, errors } = useForm(
         {
@@ -162,6 +162,6 @@ function Create({ sendUrl, product, h1 }) {
     )
 }
 
-Create.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
+Create.layout = page => <DashboardLayout children={page} />
 
 export default Create;

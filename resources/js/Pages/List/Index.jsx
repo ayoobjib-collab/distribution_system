@@ -61,6 +61,6 @@ function ListIndex({ cats, products }) {
     )
 }
 
-ListIndex.layout = page => <DashboardLayout children={page} h1="لیست محصولات و تعداد موجودی" />
+ListIndex.layout = page => <DashboardLayout children={page}/>
 
 export default ListIndex;

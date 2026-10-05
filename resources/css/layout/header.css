@@ -11,7 +11,7 @@
 
 .title::before {
     content: '';
-    background: white;
+    background: indianred;
     height: 100%;
     padding: 2px;
     margin: 3px;
@@ -54,4 +54,13 @@ nav#breadcrumbs ol {
 
 nav#breadcrumbs li span {
     font-size:.7rem;
+}
+
+nav#breadcrumbs a {
+    color: indianred;
+}
+
+nav#breadcrumbs a svg {
+    position: relative;
+    top: 1px;
 }

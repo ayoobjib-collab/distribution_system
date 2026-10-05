@@ -159,7 +159,6 @@ function ModalAddToInvoice({
                     value={quantity}
                     onChange={handleChange}
                     onRemove={removeProduct}
-                    min={1}
                     max={product?.stock}
                 />
 

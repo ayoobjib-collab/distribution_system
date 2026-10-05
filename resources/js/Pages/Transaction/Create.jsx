@@ -10,6 +10,6 @@ function CreateTrans({ sendUrl, transactionType, msg }) {
     )
 }
 
-CreateTrans.layout = page => <DashboardLayout children={page} h1="ایجاد یک  تراکنش" />
+CreateTrans.layout = page => <DashboardLayout children={page} />
 
 export default CreateTrans;

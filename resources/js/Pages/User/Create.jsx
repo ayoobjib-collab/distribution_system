@@ -1,15 +1,8 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
-import { useForm, usePage } from "@inertiajs/react";
-import { useState, useEffect } from 'react'
+import { useForm } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
 
-import { toast } from 'react-toastify';
-
-import Select from 'react-select';
-
-import ModalReadCheque from "./Components/ModalReadCheque";
-import ClientSearch from "./Components/ClientSearch";
 
 function CreateUser({ sendUrl, user }) {
 
@@ -21,10 +14,9 @@ function CreateUser({ sendUrl, user }) {
         }
     );
 
-    // const selectedBank = banks.find(i => i.value == data.bank) || null;
-
     function addFormData(e) {
         const { id, type, value, checked } = e.target;
+        
         setData((prevData) => {
             let val = type === 'checkbox' ? checked : value;
             return {
@@ -111,6 +103,6 @@ function CreateUser({ sendUrl, user }) {
     )
 }
 
-CreateUser.layout = page => <DashboardLayout children={page} h1="ایجاد ویزیتور" />
+CreateUser.layout = page => <DashboardLayout children={page} />
 
 export default CreateUser;

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 
 function useIsMobile() {
 
-    console.log('use mobile');
-
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {

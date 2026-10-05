@@ -6,11 +6,8 @@ import { BsCloudPlus } from "react-icons/bs";
 
 const Footer = ({ toggleSidebar }) => {
 
-    console.log('footer');
-
     return (
         <>
-
             <footer className="mob-hide">
                 کلیه حقوق این برنامه متعلق به شرکت روناک همراه تجارت پویا می‌باشد
             </footer>

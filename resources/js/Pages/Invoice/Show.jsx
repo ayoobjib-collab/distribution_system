@@ -39,6 +39,6 @@ function ShowInvoice({ invoice }) {
     )
 }
 
-ShowInvoice.layout = page => <DashboardLayout children={page} h1='مشاهده فاکتور' />
+ShowInvoice.layout = page => <DashboardLayout children={page} />
 
 export default ShowInvoice;

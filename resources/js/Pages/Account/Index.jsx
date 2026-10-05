@@ -7,7 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { Link } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 
-function Index({ accounts, h1 }) {
+function Index({ accounts }) {
 
     const currentPath = window.location.href;
 
@@ -107,6 +107,6 @@ function Index({ accounts, h1 }) {
     )
 }
 
-Index.layout = page => <DashboardLayout children={page} h1={page.props.h1} />
+Index.layout = page => <DashboardLayout children={page} />
 
 export default Index;

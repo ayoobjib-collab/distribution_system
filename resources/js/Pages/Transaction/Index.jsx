@@ -3,7 +3,7 @@ import Pagination from "@/BaseComponents/Pagination";
 import { usePage } from "@inertiajs/react";
 import { formatAmount } from "@/functions/helper.js"
 
-function Index({ h1, transactions }) {
+function Index({ transactions }) {
 
     const { isAdmin } = usePage().props;
 
@@ -103,7 +103,6 @@ function Index({ h1, transactions }) {
 Index.layout = page => (
     <DashboardLayout
         children={page}
-        h1={page.props.h1}
     />
 );
 
