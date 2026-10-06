@@ -10,7 +10,8 @@
 
 .ripple-effect {
     margin-top: 0px;
-    margin-left: 0px;
+    /*use margin-left for ltr*/
+    margin-right: 0px;
     width: 1px;
     height: 1px;
     background-color: rgba(0, 0, 0, 0.033);

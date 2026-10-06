@@ -17,9 +17,6 @@ document.body.addEventListener("mousedown", function (event) {
 
     if (target && target.classList.contains("ripple")) {
 
-
-        console.log('ripple clied');
-
         // Get necessary variables
         var rect = target.getBoundingClientRect(),
             left = rect.left,
@@ -29,6 +26,7 @@ document.body.addEventListener("mousedown", function (event) {
             offsetTop = target.offsetTop,
             offsetLeft = target.offsetLeft,
             dx = event.clientX - left,
+            dxForRtl = width - (event.clientX - left),
             dy = event.clientY - top,
             maxX = Math.max(dx, width - dx),
             maxY = Math.max(dy, height - dy),
@@ -53,7 +51,11 @@ document.body.addEventListener("mousedown", function (event) {
         rippleContainer.appendChild(ripple);
         document.body.appendChild(rippleContainer);
 
-        ripple.style.marginLeft = dx + "px";
+        //ripple.style.marginLeft = dx + "px";
+
+        //Active Rtl
+        ripple.style.marginRight = dxForRtl + "px";
+
         ripple.style.marginTop = dy + "px";
 
         rippleContainer.style.left = left + (((window.pageXOffset || document.scrollLeft) - (document.clientLeft || 0)) || 0) + "px";
@@ -69,19 +71,23 @@ document.body.addEventListener("mousedown", function (event) {
 
             ripple.style.width = radius * 2 + "px";
             ripple.style.height = radius * 2 + "px";
-            ripple.style.marginLeft = dx - radius + "px";
+
+            // ripple.style.marginLeft = dx - radius + "px";
+            //Acitve rtl
+            ripple.style.marginRight = dx - radius + "px";
+
             ripple.style.marginTop = dy - radius + "px";
         }, 0);
 
         setTimeout(function () {
 
             ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
-        }, 250);
+        }, 25000);
 
         setTimeout(function () {
 
             ripple.remove();
             rippleContainer.remove();
-        }, 650);
+        }, 65000);
     }
 });
