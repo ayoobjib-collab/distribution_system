@@ -28,7 +28,7 @@ function Index({ products }) {
 
             <section className="table-container">
 
-                <table className="responsive-table">
+                <table className="responsive-table products">
                     <thead>
                         <tr>
                             <th>تصویر</th>
@@ -37,7 +37,6 @@ function Index({ products }) {
                             <th>واحد</th>
                             <th>دسته</th>
                             <th>قیمت</th>
-                            <th>توضیحات</th>
                             {
                                 isAdmin &&
                                 <th>عملیات</th>
@@ -67,11 +66,10 @@ function Index({ products }) {
                                     <td>{item.unit}</td>
                                     <td>{cats}</td>
                                     <td>{formatAmount(item.sale_price)}</td>
-                                    <td>{item.description}</td>
 
                                     {isAdmin && (
 
-                                        <td className="flex gap-2 justify-center">
+                                        <td className="">
 
                                             <Tooltip text="ویرایش">
                                                 <Link

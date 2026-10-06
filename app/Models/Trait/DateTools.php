@@ -33,14 +33,26 @@ trait DateTools
         return $formatter->format($timestamp);
     }
 
-    public function toGregory(string $persianDate)
+    /**
+     * Change persian date to garegory date
+     * 
+     * @var string $persianDate : date in persian
+     * @var string $separator : defulat '-'
+     */
+    public function toGregory(string $persianDate, string $separator = '-')
     {
-        if (!$persianDate)
-            return null;
 
-        [$year, $month, $day] = array_map('intval', explode('/', $persianDate));
+        if (!$persianDate) return null;
 
-        $calendar = new \IntlGregorianCalendar('Asia/Tehran');
+        [$year, $month, $day] = array_map(
+            'intval',
+            explode($separator, $persianDate)
+        );
+
+        $calendar = \IntlCalendar::createInstance(
+            new \DateTimeZone('Asia/Tehran'),
+            'fa_IR@calendar=persian'
+        );
 
         $calendar->set(
             \IntlCalendar::FIELD_YEAR,
@@ -57,9 +69,8 @@ trait DateTools
             $day
         );
 
-        return date(
-            'Y-m-d',
-            $calendar->getTime()
-        );
+        return (new \DateTimeImmutable('@' . ($calendar->getTime() / 1000)))
+            ->setTimezone(new \DateTimeZone('Asia/Tehran'))
+            ->format('Y-m-d');
     }
 }

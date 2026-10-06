@@ -1,12 +1,14 @@
 import "@/../css/components/button-options.css";
-import React from "react";
+import React, { useCallback } from "react";
+import { memo } from "react";
 
-function ButtonOptions({
+const ButtonOptions = memo(({
     options = [],
+    name,
     value,
     onChange,
     className
-}) {
+}) => {
 
     let lastKey = options.length - 1;
 
@@ -23,7 +25,7 @@ function ButtonOptions({
                         <span
                             type="button"
                             className={`option-btn ${isActive ? 'active' : ''}`}
-                            onClick={() => onChange(option.value)}
+                            onClick={() => onChange(name, option.value)}
                         >
                             {option.icon && (
                                 <span className="option-btn-icon">
@@ -45,6 +47,6 @@ function ButtonOptions({
 
         </div >
     );
-}
+});
 
 export default ButtonOptions;

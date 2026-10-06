@@ -3,36 +3,7 @@ import { formatAmount } from '@/functions/helper.js';
 import Quantity from '@/BaseComponents/Quantity';
 import ModalBb from "@/BaseComponents/ModalBb";
 import ImgSlider from './ImgSlider';
-
-/**
- * Static functions
- */
-function getInvoiceProducts(key = 'invoice_products') {
-    return JSON.parse(
-        localStorage.getItem(key) || '[]'
-    );
-}
-
-function saveInvoiceProducts(
-    products,
-    key = 'invoice_products'
-) {
-    localStorage.setItem(
-        key,
-        JSON.stringify(products)
-    );
-}
-
-function getInvoiceProduct(
-    productId,
-    key = 'invoice_products'
-) {
-    const products = getInvoiceProducts(key);
-
-    return products.find(
-        item => item.product_id === productId
-    );
-}
+import { getInvoiceProducts, saveInvoiceProducts, getInvoiceProduct } from '@/functions/storageInvoiceProducts.js';
 
 /**
  * Component modalAddToInvoice
@@ -115,10 +86,6 @@ function ModalAddToInvoice({
             </span>
         </button>
     );
-
-    const addLoading = useCallback(() => {
-        document.body.classList.add('loading');
-    }, []);
 
     return (
 

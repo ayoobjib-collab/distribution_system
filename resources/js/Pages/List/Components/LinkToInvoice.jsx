@@ -1,11 +1,11 @@
 import { Link } from "@inertiajs/react";
 import { PiInvoiceBold } from "react-icons/pi";
 import { HiMiniChevronLeft } from "react-icons/hi2";
+import { getInvoiceProducts } from '@/functions/storageInvoiceProducts.js';
 
 function LinkToInvoice() {
-    const products = JSON.parse(
-        localStorage.getItem('invoice_products') || '[]'
-    );
+
+    const products = getInvoiceProducts();
 
     const count = products.reduce(
         (sum, item) => sum + Number(item.quantity || 0),

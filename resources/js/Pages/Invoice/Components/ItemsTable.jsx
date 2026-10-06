@@ -90,7 +90,7 @@ function ItemsTableFunc({ readOnly = false, items, subtotal, updateItem, removeI
                                         </td>
 
                                         {!readOnly && (
-                                            <td data-label="عملیات" className="flex gap-2 justify-center">
+                                            <td data-label="عملیات">
 
                                                 <Tooltip text="ویرایش">
                                                     <span

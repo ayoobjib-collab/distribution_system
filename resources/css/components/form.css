@@ -474,35 +474,6 @@ button.secondary svg {
     height: auto;
 }
 
-@media (width <=1000px) {
-    .mob-fix {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        z-index: 2;
-        gap: 10px;
-        width: 100%;
-        background: var(--sidebar);
-        padding: 5px 10px;
-    }
-
-    .mob-fix .form-button button[type="submit"] {
-        margin-right: 0;
-        padding: 10px;
-        width: 47vw;
-    }
-
-    .mob-fix form {
-        flex: 1 0 50%;
-    }
-
-    .mob-fix button.secondary {
-        width: 47vw;
-    }
-
-  
-}
-
 @media (width >=900px) {
     .form-group {
         height: 50px;

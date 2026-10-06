@@ -66,6 +66,7 @@ function InvoiceCreate({ invoice, h1 }) {
 		}
 	}, [errors]);
 
+
 	const handleSubmit = (e) => {
 
 		e.preventDefault();
@@ -108,7 +109,6 @@ function InvoiceCreate({ invoice, h1 }) {
 				}
 			});
 		}
-
 	};
 
 	function addCustomer(selectObject) {

@@ -86,7 +86,8 @@ function Index({ invoices }) {
                                     </td>
                                 }
 
-                                <td className="flex gap-2 justify-center">
+                                <td>
+
                                     <Tooltip text="ویرایش">
                                         <Link
                                             href={`/invoice/${item.id}/edit`}

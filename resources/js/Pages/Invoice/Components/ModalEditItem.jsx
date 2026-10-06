@@ -44,36 +44,42 @@ const ModalEditItem = memo(({ isOpen, setIsOpen, item, updateItem }) => {
     // Don't render without an item
     if (!item) return null;
 
+    const modalFooter = (
+        <button onClick={handleSave}>
+            <span>
+                تایید تغییرات
+            </span>
+        </button>
+    );
+
+    const closeModal = useCallback(() => setIsOpen(false), []);
+
     return (
 
         <ModalBb
             head={`ویرایش ${productName}`}
             isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
+            onClose={closeModal}
+            footer={modalFooter}
         >
+            <div className="flex flex-col gap-8">
 
-            <Quantity
-                name='quantity'
-                label={`تعداد (حداکثر ${productStock} )`}
-                value={copiedItem.quantity ?? ''}
-                onChange={updateItemData}
-                max={productStock}
-            />
+                <Quantity
+                    name='quantity'
+                    label={`تعداد (حداکثر ${productStock} )`}
+                    value={copiedItem.quantity ?? ''}
+                    onChange={updateItemData}
+                    max={productStock}
+                />
 
-            <Quantity
-                name='discount'
-                label='درصد تخفیف'
-                value={copiedItem.discount ?? ''}
-                onChange={updateItemData}
-                max={100}
-            />
+                <Quantity
+                    name='discount'
+                    label='درصد تخفیف'
+                    value={copiedItem.discount ?? ''}
+                    onChange={updateItemData}
+                    max={100}
+                />
 
-            <div className="mob-fix">
-                <button onClick={handleSave}>
-                    <span>
-                        تایید تغییرات
-                    </span>
-                </button>
             </div>
 
         </ModalBb>

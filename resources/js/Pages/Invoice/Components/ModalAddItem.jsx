@@ -112,11 +112,28 @@ function ModalAddItem({ invoiceType, setItems }) {
         });
     }, []);
 
+    const openModal = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const closeModal = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const modalFooter = (
+        <button onClick={addItemToInvoice}>
+            <MdFileDownloadDone />
+            <span>
+                تایید محصول
+            </span>
+        </button>
+    );
+
     return (
         <div className="modal-add-item">
 
             <div className="add">
-                <button className="small secondary" onClick={() => setIsOpen(true)}>
+                <button className="small secondary" onClick={openModal}>
                     <LuCircleFadingPlus />
                     افزودن محصول
                 </button>
@@ -126,7 +143,8 @@ function ModalAddItem({ invoiceType, setItems }) {
                 id="errors"
                 head="انتخاب محصول"
                 isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
+                onClose={closeModal}
+                footer={modalFooter}
             >
                 <div className="mai-content">
 
@@ -173,15 +191,6 @@ function ModalAddItem({ invoiceType, setItems }) {
                         onChange={handleFieldChange}
                         max={40}
                     />
-                </div>
-
-                <div className="mob-fix">
-                    <button onClick={addItemToInvoice}>
-                        <MdFileDownloadDone />
-                        <span>
-                            تایید محصول
-                        </span>
-                    </button>
                 </div>
 
             </ModalBb>

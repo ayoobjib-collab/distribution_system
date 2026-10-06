@@ -1,5 +1,7 @@
 import { usePage } from '@inertiajs/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { appLoading } from '@/functions/helper';
+import { getInvoiceProducts } from '@/functions/storageInvoiceProducts.js';
 
 export default function useInvoiceItems(initialItems = []) {
 
@@ -10,15 +12,11 @@ export default function useInvoiceItems(initialItems = []) {
 
         if (items.length > 0) return;//exit in edit mode
 
-        const stored = JSON.parse(
-            localStorage.getItem('invoice_products') || '[]'
-        );
+        const stored = getInvoiceProducts();
 
-        if (!stored.length) {
-            return;
-        }
+        if (!stored.length) return;
 
-        document.body.classList.add('loading');
+        appLoading();
 
         fetch('/invoice/products', {
             method: 'POST',
@@ -47,19 +45,20 @@ export default function useInvoiceItems(initialItems = []) {
                 });
 
                 setItems(invoiceItems);
+                
             }).finally(() => {
-                document.body.classList.remove('loading');
+                appLoading(false);
             });
 
     }, []);
 
-    const removeItem = (itemId) => {
+    const removeItem = useCallback((itemId) => {
         setItems(prev =>
             prev.filter(item => item.id !== itemId)
         );
-    };
+    }, []);
 
-    const updateItem = (id, key, value) => {
+    const updateItem = useCallback((id, key, value) => {
         setItems(prev =>
             prev.map(item =>
                 item.id === id
@@ -67,7 +66,7 @@ export default function useInvoiceItems(initialItems = []) {
                     : item
             )
         );
-    };
+    }, []);
 
     const calcSubtotal = items.reduce((acc, item) => {
 

@@ -66,6 +66,13 @@ export const createRandomId = () => {
     return crypto.randomUUID();
 }
 
+export const appLoading = (add = true) => {
+    if (add)
+        document.body.classList.add('loading');
+    else
+        document.body.classList.remove('loading');
+}
+
 
 // VITE_APP_NAME="${APP_NAME}"
 // VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"

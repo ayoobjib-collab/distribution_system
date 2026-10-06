@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import ModalBb from "@/BaseComponents/ModalBb";
 import FormField from "@/BaseComponents/FormField";
@@ -7,17 +7,29 @@ import JalaliDatePicker from '@/BaseComponents/JalaliDatePicker';
 import { LuCircleFadingPlus } from "react-icons/lu";
 import { createRandomId } from '@/functions/helper.js';
 
+const baseTransData = {
+    id: createRandomId(),
+    type: 'cash',
+    reference_no: '',
+    amount: '',
+    due_date: '',
+    description: '',
+};
+
+const typeOptions = [
+    {
+        value: 'cash',
+        label: 'نقد',
+        icon: '💵',
+    },
+    {
+        value: 'cheque',
+        label: 'چک',
+        icon: '🧾',
+    },
+];
 
 const ModalAddTranaction = ({ transaction, childChanged }) => {
-
-    const baseTransData = {
-        id: createRandomId(),
-        type: 'cash',
-        reference_no: '',
-        amount: '',
-        due_date: '',
-        description: '',
-    };
 
     const [open, setOpen] = useState(false);
     const [singleTrans, setSingleTrans] = useState(
@@ -31,60 +43,71 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
         }
     }, [transaction]);
 
-    const updateField = (name, value) => {
+    //by memo this function work is it true empty dependecy
+    const updateField = useCallback((name, value) => {
         setSingleTrans(prev => ({
             ...prev,
             [name]: value
         }));
-    };
+    }, []);
 
     const addTransaction = () => {
-
-        if (singleTrans.amount == '') alert('قیمت اجباری هست');
+        if (singleTrans.amount === '') {
+            alert('قیمت اجباری هست');
+            return;
+        }
 
         childChanged(singleTrans);
-
         setSingleTrans(baseTransData);
         setOpen(false);
-    };
+    }
+
+    const openModal = useCallback(() => {
+        setOpen(true);
+    }, []);
+
+    const closeModal = useCallback(() => {
+        setOpen(false);
+    }, []);
+
+    const updateFormFiled = useCallback((e) => {
+        const { name, value } = e.target;
+        updateField(name, value);
+    }, []);
 
     return (
         <>
-            <button className="small secondary" onClick={() => setOpen(true)}>
+            <button className="small secondary" onClick={openModal}>
                 <LuCircleFadingPlus />
                 افزودن تراکنش
             </button>
-
 
             <ModalBb
                 id="sdfsdfsdf"
                 head="افزودن تراکنش"
                 isOpen={open}
-                onClose={() => setOpen(false)}
+                onClose={closeModal}
+                footer={(
+                    <button onClick={addTransaction}>
+                        <span>
+                            تایید تراکنش
+                        </span>
+                    </button>
+                )}
             >
 
                 <ButtonOptions
+                    name='type'
                     value={singleTrans.type}
-                    onChange={(value) => updateField('type', value)}
-                    options={[
-                        {
-                            value: 'cash',
-                            label: 'نقد',
-                            icon: '💵',
-                        },
-                        {
-                            value: 'cheque',
-                            label: 'چک',
-                            icon: '🧾',
-                        },
-                    ]}
+                    onChange={updateField}
+                    options={typeOptions}
                 />
 
                 <FormField
                     name="amount"
                     label="مبلغ"
                     value={singleTrans.amount}
-                    onChange={(e) => updateField('amount', e.target.value)}
+                    onChange={updateFormFiled}
                     type="tel"
                     isAmount={true}
                     required
@@ -114,16 +137,8 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
                     name="description"
                     label="توضیح"
                     value={singleTrans.description}
-                    onChange={(e) => updateField('description', e.target.value)}
+                    onChange={updateFormFiled}
                 />
-
-                <div className="mob-fix">
-                    <button onClick={addTransaction}>
-                        <span>
-                            تایید تراکنش
-                        </span>
-                    </button>
-                </div>
 
             </ModalBb>
 
