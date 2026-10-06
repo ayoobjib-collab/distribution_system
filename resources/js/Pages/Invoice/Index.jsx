@@ -5,7 +5,6 @@ import { formatAmount } from '@/functions/helper.js';
 import { Link, usePage } from "@inertiajs/react";
 
 import { router } from "@inertiajs/react";
-import { useState } from "react";
 
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -33,6 +32,9 @@ function completeStatus($itemId) {
         });
 }
 
+/**
+ * Component 
+ */
 function Index({ invoices }) {
 
     const { isAdmin } = usePage().props;

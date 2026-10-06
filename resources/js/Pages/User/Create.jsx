@@ -2,7 +2,7 @@ import DashboardLayout from "@/Layouts/Dashboard/Layout";
 import FormField from "@/BaseComponents/FormField";
 import { useForm } from "@inertiajs/react";
 import Button from "@/BaseComponents/Button";
-
+import { useCallback } from "react";
 
 function CreateUser({ sendUrl, user }) {
 
@@ -14,9 +14,8 @@ function CreateUser({ sendUrl, user }) {
         }
     );
 
-    function addFormData(e) {
+    const addFormData = useCallback((e) => {
         const { id, type, value, checked } = e.target;
-        
         setData((prevData) => {
             let val = type === 'checkbox' ? checked : value;
             return {
@@ -24,10 +23,9 @@ function CreateUser({ sendUrl, user }) {
                 [id]: val
             }
         });
-    }
+    }, []);
 
     function submitForm(e) {
-
         e.preventDefault();
 
         //Create new
@@ -38,7 +36,6 @@ function CreateUser({ sendUrl, user }) {
 
                 }
             })
-
             //Update
         } else {
             put(sendUrl, {
@@ -50,7 +47,6 @@ function CreateUser({ sendUrl, user }) {
         }
     }
 
-
     return (
         <>
             <section>
@@ -58,7 +54,6 @@ function CreateUser({ sendUrl, user }) {
                 <div className="form-wrap">
 
                     <form action="" onSubmit={submitForm}>
-
 
                         <FormField
                             name="mobile"

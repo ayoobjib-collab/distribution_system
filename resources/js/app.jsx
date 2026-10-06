@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import '../css/app.css';
 
+import '@/vanilla/ripple.js';
+
 createInertiaApp({
     resolve: (name) => resolvePageComponent(
         `./Pages/${name}.jsx`,

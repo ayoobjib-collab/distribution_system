@@ -1,25 +1,13 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
 import { Link } from "@inertiajs/react";
-import { router } from "@inertiajs/react";
-import { useState } from "react";
 import { CiSquareCheck } from "react-icons/ci";
 import { AiOutlineEdit } from "react-icons/ai";
-
+import Tooltip from "@/BaseComponents/Tooltip";
 
 function Index({ users }) {
 
-    const [hideExpire, setHideExpire] = useState(false);
-
     const currentPath = window.location.href;
-
-    function addQuery(key, value) {
-        router.get(
-            currentPath,
-            { [key]: value },
-            { preserveState: true }
-        );
-    }
 
     return (
         <>
@@ -33,6 +21,7 @@ function Index({ users }) {
                             <th>نام</th>
                             <th>شماره موبایل</th>
                             <th>نقش</th>
+                            <th>فعال</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -51,16 +40,28 @@ function Index({ users }) {
                                     ))}
                                 </td>
 
-                                <td className="flex gap-2 justify-center">
+                                <td>
 
-                                    <Link
-                                        href={`/user/${item.id}/edit`}
-                                        className="ml-2"
-                                    >
-                                        <AiOutlineEdit size={24} />
-                                    </Link>
+                                    {item.is_active === 1 ?
+                                        <Tooltip text="فعال است">
+                                            <CiSquareCheck size={27} />
+                                        </Tooltip>
+                                        :
+                                        'خیر'
+                                    }
 
-                                    {item.is_active === 1 && <CiSquareCheck size={27} />}
+                                </td>
+
+                                <td>
+
+                                    <Tooltip text="ویرایش کاربر">
+                                        <Link
+                                            href={`/user/${item.id}/edit`}
+                                            className="ml-2"
+                                        >
+                                            <AiOutlineEdit size={24} />
+                                        </Link>
+                                    </Tooltip>
                                 </td>
                             </tr>
                         ))}

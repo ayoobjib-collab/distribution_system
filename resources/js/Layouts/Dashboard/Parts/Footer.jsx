@@ -3,8 +3,14 @@ import { FiAlignRight } from "react-icons/fi";
 import { MdChecklistRtl } from "react-icons/md";
 import { BsPersonPlus } from "react-icons/bs";
 import { BsCloudPlus } from "react-icons/bs";
+import Ripple from "@/BaseComponents/Ripple";
 
 const Footer = ({ toggleSidebar }) => {
+
+    const currentPath = window.location.pathname;
+    const isActive = (path) => currentPath.startsWith(path);
+
+    console.log('footer render');
 
     return (
         <>
@@ -13,30 +19,31 @@ const Footer = ({ toggleSidebar }) => {
             </footer>
 
             <nav className="mobile-menu desk-hide">
-                <div onClick={toggleSidebar}>
+
+                <div  className="ripple">
                     <FiAlignRight />
-                    <span>منو</span>
+                    <small>منو</small>
                 </div>
 
-                <div>
-                    <Link href={'/list'}>
+                <div className={isActive('/list') ? 'active' : ''} >
+                    <Link href={'/list'} className="ripple">
                         <MdChecklistRtl />
+                        <small>محصولات</small>
                     </Link>
-                    <span>محصولات</span>
                 </div>
 
-                <div>
-                    <Link href={'/account/create'}>
+                <div className={isActive('/account/create') ? 'active' : ''}>
+                    <Link href={'/account/create'} className="ripple">
                         <BsPersonPlus />
+                        <small>ایجاد حساب</small>
                     </Link>
-                    <span>ایجاد حساب</span>
                 </div>
 
-                <div className="badge-wrap">
+                <div className={isActive('/invoice/create') ? 'active' : ''}>
                     <Link href={'/invoice/create'}>
                         <BsCloudPlus />
+                        <small>ایجاد فاکتور</small>
                     </Link>
-                    <span>ایجاد فاکتور</span>
                 </div>
 
             </nav>
