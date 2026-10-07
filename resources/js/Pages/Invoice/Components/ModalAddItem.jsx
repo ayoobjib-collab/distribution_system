@@ -10,6 +10,7 @@ import { LuCircleFadingPlus } from "react-icons/lu";
 import { MdFileDownloadDone } from "react-icons/md";
 
 import AsyncSelect from "react-select/async";
+import { toast } from 'react-toastify';
 
 /**
  * Static
@@ -88,7 +89,10 @@ function ModalAddItem({ invoiceType, setItems }) {
             || !invoiceItem.quantity
             || !invoiceItem.unit_price
         )
+        {
+            toast.error('محصول را انتخاب کنید');
             return;
+        }
 
         setItems(prev => [
             ...prev,
@@ -117,7 +121,7 @@ function ModalAddItem({ invoiceType, setItems }) {
     }, []);
 
     const closeModal = useCallback(() => {
-        setIsOpen(true);
+        setIsOpen(false);
     }, []);
 
     const modalFooter = (

@@ -1,17 +1,13 @@
+import { Link, usePage, router } from "@inertiajs/react";
+
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
-
+import Tooltip from "@/BaseComponents/Tooltip";
 import { formatAmount } from '@/functions/helper.js';
-import { Link, usePage } from "@inertiajs/react";
-
-import { router } from "@inertiajs/react";
-
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GrCompliance } from "react-icons/gr";
 import { LiaSmsSolid } from "react-icons/lia";
-
-import Tooltip from "@/BaseComponents/Tooltip";
 
 const currentPath = window.location.href;
 
@@ -43,17 +39,18 @@ function Index({ invoices }) {
         <>
             <section className="table-container">
 
-                <table className="responsive-table">
+                <table className="responsive-table invoices">
                     <thead>
                         <tr>
-                            <th>آیدی</th>
                             <th>کاربر ثبت کننده</th>
                             <th>طرف حساب</th>
                             <th>مبلغ کل</th>
-                            <th>وضعیت</th>
                             {
                                 isAdmin &&
-                                <th>تراکنش‌ها</th>
+                                <>
+                                    <th>وضعیت</th>
+                                    <th>تراکنش‌ها</th>
+                                </>
                             }
                             <th>عملیات</th>
                         </tr>
@@ -62,30 +59,32 @@ function Index({ invoices }) {
                         {invoices.data.map((item) => (
 
                             <tr key={item.id} >
-                                <td>{item.id}</td>
                                 <td>{item.user.full_name}</td>
                                 <td>{item.account.name}</td>
                                 <td>{formatAmount(item.subtotal)}</td>
 
-                                <td className={item.status}>
-                                    {item.status_label}
-                                </td>
+
 
                                 {
                                     isAdmin &&
-                                    <td d={item.transactions.length}>
-                                        {
-                                            item.transactions?.length > 0 &&
-                                            <Tooltip text="تراکنش‌های فاکتور">
-                                                <Link
-                                                    href={`/transaction/?invoiceId=${item.id}`}
-                                                    className="ripple"
-                                                >
-                                                    <AiOutlineEdit size={22} />
-                                                </Link>
-                                            </Tooltip>
-                                        }
-                                    </td>
+                                    <>
+                                        <td className={item.status}>
+                                            {item.status_label}
+                                        </td>
+                                        <td d={item.transactions.length}>
+                                            {
+                                                item.transactions?.length > 0 &&
+                                                <Tooltip text="تراکنش‌های فاکتور">
+                                                    <Link
+                                                        href={`/transaction/?invoiceId=${item.id}`}
+                                                        className="ripple"
+                                                    >
+                                                        <AiOutlineEdit size={22} />
+                                                    </Link>
+                                                </Tooltip>
+                                            }
+                                        </td>
+                                    </>
                                 }
 
                                 <td>

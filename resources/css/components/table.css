@@ -4,7 +4,6 @@ section.table-container {
 
 .responsive-table {
     width: 100%;
-    min-width: 900px;
     color: inherit
 }
 
@@ -28,16 +27,11 @@ section.table-container {
     padding: 8px 12px;
 }
 
-.responsive-table tr{
-    height:52px;
-}
-
-/* .responsive-table tbody tr:nth-child(even) {
-    background-color: var(--table-even-row);
-} */
-
-.responsive-table .tooltip {
-    margin-left:16px;
+/*
+ * Select last tooltip (last-child is last without tooltip)
+ */
+.responsive-table .tooltip:not(:last-of-type) {
+    margin-left: 16px;
 }
 
 .status-paid {
@@ -75,6 +69,10 @@ td.img img {
 
 
 @media (max-width: 1000px) {
+
+    .responsive-table tr {
+        height: 47px;
+    }
 
     .items-table {
         display: none;
@@ -138,4 +136,16 @@ td.img img {
         flex-direction: column;
         gap: 3px;
     }
+}
+
+
+@media (width > 1000px) {
+    .responsive-table {
+        min-width: 900px;
+    }
+
+    .responsive-table tr {
+        height: 52px;
+    }
+
 }

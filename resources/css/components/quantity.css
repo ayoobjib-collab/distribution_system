@@ -1,7 +1,6 @@
 .quantity {
     display: flex;
     align-items: center;
-    border-bottom: 1px dashed #e5e5e547;
     box-sizing: border-box;
     padding-bottom: 3px;
     border-radius: 4px;
@@ -17,20 +16,17 @@
 .qty-input {
     flex: 1 0 65%;
     align-items: center;
-    background: #5e6f91;
-    border-radius: 6px;
-}
-
-.light .qty-input {
-    background: #d6e2f9;
+    border-radius: 12px;
+    border: 1px solid #9eb4dd;
+    padding: 3px;
 }
 
 .qty-input button {
     width: 17%;
-    height: 100%;
     margin: 0;
     border: 0;
     padding: .5rem;
+    align-self: stretch;
 }
 
 .qty-input input {
@@ -42,6 +38,8 @@
     border: none;
     outline: none;
     box-shadow: none;
+    color: indianred;
+    font-weight: bold;
 }
 
 .qty-remove {
@@ -51,10 +49,10 @@
 
 .qty-input .qty-count {
     position: relative;
-    background: transparent;
     cursor: pointer;
     overflow: hidden;
     text-indent: -9999px;
+    background: #b4ceff;
 }
 
 
@@ -64,27 +62,16 @@
     position: absolute;
     width: 12px;
     height: 2px;
-    background: #333;
+    background: #1473E6;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* علامت + */
 .qty-input .qty-count--add::after {
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-/* جداکننده */
-.qty-input .qty-count--minus {
-    border-right: 1px solid #ddd;
-}
-
-.qty-input .qty-count--add {
-    border-left: 1px solid #ddd;
-}
-
-/* عدد */
 .qty-input .product-qty {
     width: 50px;
     min-width: 50px;
@@ -113,9 +100,16 @@
 .qty-input .qty-count:disabled {
     background: #e8e8e8;
     cursor: not-allowed;
+    opacity: .5;
 }
 
 .qty-input .qty-count:disabled::before,
 .qty-input .qty-count:disabled::after {
     background: #bbb;
+}
+
+@media (width < 780px) {
+    .qty-input button {
+        width: 19%;
+    }
 }

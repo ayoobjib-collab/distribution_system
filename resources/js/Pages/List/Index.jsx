@@ -8,9 +8,14 @@ import ProductCart from "./Components/ProductCart";
 import ModalAddToInvoice from "./Components/ModalAddToInvoice";
 import LinkToInvoice from "./Components/LinkToInvoice";
 
+import { getInvoiceProducts } from '@/functions/storageInvoiceProducts.js';
+
 function ListIndex({ cats, products }) {
 
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [addedProducts, setAddedProducts] = useState(() =>
+        getInvoiceProducts().map(item => item.product_id)
+    );
 
     function showMoalAdd(p) {
         setSelectedProduct(p);
@@ -18,6 +23,15 @@ function ListIndex({ cats, products }) {
 
     const childClosed = useCallback(() => {
         setSelectedProduct(null);
+
+        /**
+         * Update active products list
+         */
+        const products = getInvoiceProducts();
+        setAddedProducts(
+            products.map(item => item.product_id)
+        );
+
     }, []);
 
     return (
@@ -32,13 +46,17 @@ function ListIndex({ cats, products }) {
                 }
             </div>
             <div className="product-grid">
-                {products.data.map((p) => (
-                    <ProductCart
-                        key={p.id}
-                        product={p}
-                        showMoalAdd={() => showMoalAdd(p)}
-                    />
-                ))}
+
+                {products.data.map((p) => {
+                    return (
+                        <ProductCart
+                            key={p.id}
+                            product={p}
+                            showMoalAdd={showMoalAdd}
+                            added={addedProducts.includes(p.id)}
+                        />
+                    )
+                })}
             </div>
 
             {
@@ -54,13 +72,13 @@ function ListIndex({ cats, products }) {
 
 
             <div style={{ display: "none" }}>
-                <IoAddCircleOutline size={40} color="red" id='addToInvoice' />
+                <IoAddCircleOutline size={30} id='addToInvoice' />
             </div>
 
         </section>
     )
 }
 
-ListIndex.layout = page => <DashboardLayout children={page}/>
+ListIndex.layout = page => <DashboardLayout children={page} />
 
 export default ListIndex;
