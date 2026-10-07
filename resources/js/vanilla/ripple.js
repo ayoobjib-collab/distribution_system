@@ -17,16 +17,21 @@ document.body.addEventListener("mousedown", function (event) {
 
     if (target && target.classList.contains("ripple")) {
 
+        let isLight = document.querySelector('html').classList.contains('light');
+
         // Get necessary variables
         var rect = target.getBoundingClientRect(),
             left = rect.left,
             top = rect.top,
             width = target.offsetWidth,
             height = target.offsetHeight,
+
             offsetTop = target.offsetTop,
             offsetLeft = target.offsetLeft,
+
             dx = event.clientX - left,
             dxForRtl = width - (event.clientX - left),
+
             dy = event.clientY - top,
             maxX = Math.max(dx, width - dx),
             maxY = Math.max(dy, height - dy),
@@ -38,10 +43,9 @@ document.body.addEventListener("mousedown", function (event) {
             rippleContainer = document.createElement("div");
 
         // Add optional classes
-        if (target.classList.contains("light")) {
+        if (!isLight) {
             ripple.classList.add("light");
-        }
-        else if (target.classList.contains("dark")) {
+        } else {
             ripple.classList.add("dark");
         }
 
@@ -51,9 +55,8 @@ document.body.addEventListener("mousedown", function (event) {
         rippleContainer.appendChild(ripple);
         document.body.appendChild(rippleContainer);
 
-        //ripple.style.marginLeft = dx + "px";
-
         //Active Rtl
+        //ripple.style.marginLeft = dx + "px";
         ripple.style.marginRight = dxForRtl + "px";
 
         ripple.style.marginTop = dy + "px";
@@ -82,12 +85,12 @@ document.body.addEventListener("mousedown", function (event) {
         setTimeout(function () {
 
             ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
-        }, 25000);
+        }, 250);
 
         setTimeout(function () {
 
             ripple.remove();
             rippleContainer.remove();
-        }, 65000);
+        }, 650);
     }
 });

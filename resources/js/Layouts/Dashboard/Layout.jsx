@@ -61,7 +61,7 @@ const DashboardLayout = ({ children }) => {
                                 {
                                     items?.length > 0 && items.map((breadcrumb, index) => (
                                         <li key={index}>
-                                            <Link href={breadcrumb?.url} className='flex items-center'>
+                                            <Link href={breadcrumb?.url} className='ripple flex items-center'>
                                                 <span className="text">{breadcrumb.label}</span>
                                                 <MdKeyboardArrowLeft />
                                             </Link>

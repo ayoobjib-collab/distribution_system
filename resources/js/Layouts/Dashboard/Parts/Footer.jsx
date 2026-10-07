@@ -20,26 +20,26 @@ const Footer = ({ toggleSidebar }) => {
 
             <nav className="mobile-menu desk-hide">
 
-                <div  className="ripple">
+                <div className="ripple" onClick={toggleSidebar}>
                     <FiAlignRight />
                     <small>منو</small>
                 </div>
 
-                <div className={isActive('/list') ? 'active' : ''} >
-                    <Link href={'/list'} className="ripple">
+                <div className={(isActive('/list') ? 'active ' : '') + 'ripple'} >
+                    <Link href={'/list'}>
                         <MdChecklistRtl />
                         <small>محصولات</small>
                     </Link>
                 </div>
 
-                <div className={isActive('/account/create') ? 'active' : ''}>
-                    <Link href={'/account/create'} className="ripple">
+                <div className={(isActive('/account/create') ? 'active ' : '') + 'ripple'}>
+                    <Link href={'/account/create'}>
                         <BsPersonPlus />
                         <small>ایجاد حساب</small>
                     </Link>
                 </div>
 
-                <div className={isActive('/invoice/create') ? 'active' : ''}>
+                <div className={(isActive('/invoice/create') ? 'active ' : '') + 'ripple'}>
                     <Link href={'/invoice/create'}>
                         <BsCloudPlus />
                         <small>ایجاد فاکتور</small>

@@ -79,7 +79,7 @@ function Index({ invoices }) {
                                             <Tooltip text="تراکنش‌های فاکتور">
                                                 <Link
                                                     href={`/transaction/?invoiceId=${item.id}`}
-                                                    className="ml-2"
+                                                    className="ripple"
                                                 >
                                                     <AiOutlineEdit size={22} />
                                                 </Link>
@@ -93,7 +93,7 @@ function Index({ invoices }) {
                                     <Tooltip text="ویرایش">
                                         <Link
                                             href={`/invoice/${item.id}/edit`}
-                                            className="ml-2"
+                                            className="ripple"
                                         >
                                             <AiOutlineEdit size={22} />
                                         </Link>
@@ -102,7 +102,7 @@ function Index({ invoices }) {
                                     <Tooltip text="حذف">
                                         <span
                                             onClick={() => deleteItem(item.id)}
-                                            className="ml-2"
+                                            className="ripple"
                                         >
                                             <FaRegTrashAlt size={19} fill="inherit" />
                                         </span>
@@ -111,7 +111,7 @@ function Index({ invoices }) {
                                     <Tooltip text="ارسال پیامک">
                                         <span
                                             onClick={() => sendSms(item.id)}
-                                            className="ml-2"
+                                            className="ripple"
                                         >
                                             <LiaSmsSolid size={22} fill="inherit" />
                                         </span>
@@ -122,7 +122,7 @@ function Index({ invoices }) {
                                         <Tooltip text="کامل کردن فاکتور">
                                             <span
                                                 onClick={() => completeStatus(item.id)}
-                                                className="ml-2"
+                                                className="ripple"
                                             >
                                                 <GrCompliance size={19} />
                                             </span>

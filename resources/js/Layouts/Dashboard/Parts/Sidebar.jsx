@@ -71,7 +71,7 @@ const Sidebar = memo(({ isOpen, childClicked }) => {
 
                 <ul className="sidebar-list" onClick={childClicked}>
                     {links.map((link) => (
-                        <li className="sidebar-list-item" key={link.href}>
+                        <li className="ripple sidebar-list-item" key={link.href}>
                             <Link href={link.href} className={link.href === url ? 'active' : ''}>
                                 <CiCircleChevLeft size={21} />
                                 <span>{link.label}</span>

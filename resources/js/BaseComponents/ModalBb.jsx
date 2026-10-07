@@ -3,7 +3,7 @@ import { useMemo, memo } from "react";
 
 const CloseIcon = ({ onClick }) => (
     <div className="close" onClick={onClick}>
-        <svg width="25" height="25  " viewBox="0 0 20 20"
+        <svg width="25" height="25" viewBox="0 0 20 20"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
             className="icon">
