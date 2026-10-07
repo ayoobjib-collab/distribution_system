@@ -79,11 +79,15 @@ class Transaction extends Model
     protected function dueDate(): Attribute
     {
         return Attribute::make(
-            //get: fn($value) => //add new attribute for show persian date
 
+            get: function ($value) {
+                if ($value === null) return '-';
+                return $this->toJalali($value, 'yyyy-M-d');
+            },
             # Change persian date to carbon format without package
             // set: fn($value) => Jalalian::fromFormat('Y/m/d', $value)->toCarbon(),
             set: function ($value) {
+                if (empty($value)) return null;
                 return $this->toGregory($value);
             },
         );

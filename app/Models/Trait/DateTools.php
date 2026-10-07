@@ -4,6 +4,7 @@ namespace App\Models\Trait;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
+use SebastianBergmann\Type\TrueType;
 
 trait DateTools
 {
@@ -44,33 +45,38 @@ trait DateTools
 
         if (!$persianDate) return null;
 
-        [$year, $month, $day] = array_map(
-            'intval',
-            explode($separator, $persianDate)
-        );
+        try {
+            [$year, $month, $day] = array_map(
+                'intval',
+                explode($separator, $persianDate)
+            );
 
-        $calendar = \IntlCalendar::createInstance(
-            new \DateTimeZone('Asia/Tehran'),
-            'fa_IR@calendar=persian'
-        );
+            $calendar = \IntlCalendar::createInstance(
+                new \DateTimeZone('Asia/Tehran'),
+                'fa_IR@calendar=persian'
+            );
 
-        $calendar->set(
-            \IntlCalendar::FIELD_YEAR,
-            $year
-        );
+            $calendar->set(
+                \IntlCalendar::FIELD_YEAR,
+                $year
+            );
 
-        $calendar->set(
-            \IntlCalendar::FIELD_MONTH,
-            $month - 1
-        );
+            $calendar->set(
+                \IntlCalendar::FIELD_MONTH,
+                $month - 1
+            );
 
-        $calendar->set(
-            \IntlCalendar::FIELD_DAY_OF_MONTH,
-            $day
-        );
+            $calendar->set(
+                \IntlCalendar::FIELD_DAY_OF_MONTH,
+                $day
+            );
 
-        return (new \DateTimeImmutable('@' . ($calendar->getTime() / 1000)))
-            ->setTimezone(new \DateTimeZone('Asia/Tehran'))
-            ->format('Y-m-d');
+            return (new \DateTimeImmutable('@' . ($calendar->getTime() / 1000)))
+                ->setTimezone(new \DateTimeZone('Asia/Tehran'))
+                ->format('Y-m-d');
+        } catch (\Throwable $th) {
+
+            return null;
+        }
     }
 }

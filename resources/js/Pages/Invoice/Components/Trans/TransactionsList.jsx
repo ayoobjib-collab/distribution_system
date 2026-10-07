@@ -11,6 +11,7 @@ import { Collapse } from 'antd';
 const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
 
     const List = () => {
+
         return (
             <>
                 {Array.isArray(transactions) &&
@@ -26,10 +27,10 @@ const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
                                 </b>
 
                                 <div>
-                                    <Tooltip text="ویرایش">
+
+                                    <Tooltip text="ویرایش" onClick={() => onEdit(t)}>
                                         <span
                                             className="icon-wrap ml-2"
-                                            onClick={() => onEdit(t)}
                                         >
                                             <AiOutlineEdit size={23} />
                                         </span>

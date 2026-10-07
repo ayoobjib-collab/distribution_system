@@ -83,10 +83,13 @@ const Wheel = ({
     formatter = (item) => item,
 }) => {
 
+    console.log(value);
+
     const containerRef = useRef(null);
     const itemHeight = 42;
 
     const scrollToValue = (value, smooth = false) => {
+
         const index = items.findIndex(item => item === value);
 
         if (index === -1 || !containerRef.current) return;

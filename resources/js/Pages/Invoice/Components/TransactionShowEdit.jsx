@@ -23,7 +23,7 @@ const TransactionShowEdit = memo(({ dataTransactions, setData }) => {
             <ModalAddTranaction
                 transaction={editingTransaction}
                 childChanged={(trans) => {
-
+                    
                     if (editingTransaction) {
 
                         setData(

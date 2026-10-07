@@ -130,7 +130,7 @@ class InvoiceRequest extends FormRequest
             'transactions.*.amount'         => ['required', 'numeric', 'min:0'],
 
             'transactions.*.reference_no'   => ['nullable', 'string', 'max:255'],
-            'transactions.*.due_date'       => ['nullable', 'date'],
+            'transactions.*.due_date'       => ['nullable', 'string'],
             'transactions.*.description'    => ['nullable', 'string', 'max:1000'],
         ];
     }

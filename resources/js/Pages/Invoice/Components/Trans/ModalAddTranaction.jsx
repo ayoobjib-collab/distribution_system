@@ -7,15 +7,6 @@ import JalaliDatePicker from '@/BaseComponents/JalaliDatePicker';
 import { LuCircleFadingPlus } from "react-icons/lu";
 import { createRandomId } from '@/functions/helper.js';
 
-const baseTransData = {
-    id: createRandomId(),
-    type: 'cash',
-    reference_no: '',
-    amount: '',
-    due_date: '',
-    description: '',
-};
-
 const typeOptions = [
     {
         value: 'cash',
@@ -29,11 +20,31 @@ const typeOptions = [
     },
 ];
 
+const getBaseTransData = (id = 0) => {
+    return {
+        id: id,
+        type: 'cash',
+        reference_no: '',
+        amount: '',
+        due_date: '',
+        description: '',
+    }
+};
+
 const ModalAddTranaction = ({ transaction, childChanged }) => {
+
+    const getBaseTransData = {
+        id: createRandomId(),
+        type: 'cash',
+        reference_no: '',
+        amount: '',
+        due_date: '',
+        description: '',
+    };
 
     const [open, setOpen] = useState(false);
     const [singleTrans, setSingleTrans] = useState(
-        transaction ?? baseTransData
+        transaction ?? getBaseTransData
     );
 
     useEffect(() => {
@@ -43,7 +54,6 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
         }
     }, [transaction]);
 
-    //by memo this function work is it true empty dependecy
     const updateField = useCallback((name, value) => {
         setSingleTrans(prev => ({
             ...prev,
@@ -52,13 +62,14 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
     }, []);
 
     const addTransaction = () => {
+
         if (singleTrans.amount === '') {
             alert('قیمت اجباری هست');
             return;
         }
 
         childChanged(singleTrans);
-        setSingleTrans(baseTransData);
+        setSingleTrans(getBaseTransData);
         setOpen(false);
     }
 
@@ -67,6 +78,7 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
     }, []);
 
     const closeModal = useCallback(() => {
+        setSingleTrans(getBaseTransData);
         setOpen(false);
     }, []);
 
@@ -88,7 +100,7 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
                 isOpen={open}
                 onClose={closeModal}
                 footer={(
-                    <button onClick={addTransaction}>
+                    <button onClick={addTransaction} className="ripple">
                         <span>
                             تایید تراکنش
                         </span>
@@ -126,10 +138,10 @@ const ModalAddTranaction = ({ transaction, childChanged }) => {
                             </span>
                         </div>
 
-                        <JalaliDatePicker
+                        {/* <JalaliDatePicker
                             value={singleTrans.due_date}
                             onChange={(v) => updateField('due_date', v)}
-                        />
+                        /> */}
                     </div>
                 }
 
