@@ -10,8 +10,6 @@ const Footer = ({ toggleSidebar }) => {
     const currentPath = window.location.pathname;
     const isActive = (path) => currentPath.startsWith(path);
 
-    console.log('footer render');
-
     return (
         <>
             <footer className="mob-hide">
@@ -45,7 +43,6 @@ const Footer = ({ toggleSidebar }) => {
                         <small>ایجاد فاکتور</small>
                     </Link>
                 </div>
-
             </nav>
         </>
     )

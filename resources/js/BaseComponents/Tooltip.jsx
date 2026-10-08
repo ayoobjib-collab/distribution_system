@@ -1,9 +1,10 @@
 import '@/../css/components/tooltip.css';
 
-function Tooltip({ children, text, className = '' }) {
+function Tooltip({ onClick, children, text, className = '' }) {
     return (
         <div
             className={`tooltip ${className}`}
+            onClick={onClick}
         >
             {children}
 

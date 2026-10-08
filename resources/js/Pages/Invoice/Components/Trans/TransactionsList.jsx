@@ -28,9 +28,9 @@ const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
 
                                 <div>
 
-                                    <Tooltip text="ویرایش" onClick={() => onEdit(t)}>
+                                    <Tooltip text="ویرایش" onClick={() => onEdit(t)} >
                                         <span
-                                            className="icon-wrap ml-2"
+                                            className="icon-wrap"
                                         >
                                             <AiOutlineEdit size={23} />
                                         </span>
@@ -38,7 +38,7 @@ const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
 
                                     <Tooltip text="حذف">
                                         <span
-                                            className="icon-wrap ml-2"
+                                            className="icon-wrap"
                                             onClick={() => onRemove(t.id)}
                                         >
                                             <FaRegTrashAlt size={20} fill="inherit" />
