@@ -102,7 +102,7 @@ const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
                 isOpen={open}
                 onClose={closeModal}
                 footer={(
-                    <button onClick={addTransaction} className="ripple">
+                    <button onClick={addTransaction} >
                         <span>
                             تایید تراکنش
                         </span>
