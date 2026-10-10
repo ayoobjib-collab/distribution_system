@@ -38,8 +38,11 @@ const DashboardLayout = ({ children }) => {
     const toggleSidebar = useCallback(() => setSidebarOpen(prev => !prev), []);
 
     function closeSidebar(e) {
-        if (e.target.closest('a'))
-            setSidebarOpen(false)
+        if (e.target.closest('a')) {
+            setTimeout(() => {
+                setSidebarOpen(false);
+            }, 250);
+        }
     }
 
     return (

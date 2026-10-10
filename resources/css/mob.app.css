@@ -77,6 +77,10 @@
         flex-direction: column;
         align-items: center;
         cursor: pointer;
+        /*
+        * Deactive webkit highlight effect
+        */
+        -webkit-tap-highlight-color: transparent;
     }
 
     .mobile-menu a {
@@ -90,14 +94,61 @@
     }
 
 
-    .mobile-menu .active {
-        background: #e8f0ff85;
-        border-radius: 12px;
-        box-shadow: inset 0 0 6px 6px rgba(20, 115, 230, 0.08);
+    .mobile-menu span.svg-wrap {
+        text-align: center;
+        /* transition: all .5s;
+        interpolate-size: allow-keywords; */
+    }
+
+    .mobile-menu .active .svg-wrap {
+        width: 100%;
     }
 
     .mobile-menu .active a svg {
-        color: #1473E6;
+        fill: #38BDF8;
+    }
+
+    .mobile-menu .active span.svg-wrap {
+        background: #7e99ca85;
+        border-radius: 12px;
+    }
+
+    /* Light mode */
+    .light .mobile-menu .active span.svg-wrap {
+        background: #DCEBFA;
+    }
+
+    .light .mobile-menu .active a svg {
+        fill: #1473E6;
+    }
+
+    /*
+     * Perevent two link has bg in the same time
+     */
+    /* .nprogress-busy .mobile-menu a[data-loading],
+    .nprogress-busy .mobile-menu .active .svg-wrap {
+        background: transparent;
+    } */
+
+    .mobile-menu a[data-loading] span.svg-wrap {
+        animation: fullwidth .5s;
+        border-radius:12px;
+    }
+
+    @keyframes fullwidth {
+        0% {
+            width: auto;
+            background: #7e99ca85;
+        }
+
+        50% {
+            width: 100%;
+        }
+
+        100% {
+            width: auto;
+            background-color: transparent;
+        }
     }
 }
 
