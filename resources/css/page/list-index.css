@@ -106,13 +106,19 @@
     margin-left: 3px;
 }
 
-.add-to-invoice  small{
+.add-to-invoice small {
     color: white;
 }
 
 #addToInvoice path {
     stroke: white;
     stroke-width: 15px;
+}
+
+small.ati-pirce {
+    position: relative;
+    top: 1px;
+    margin: 0 3px;
 }
 
 @media (max-width: 900px) {

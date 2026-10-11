@@ -29,7 +29,10 @@ function ProductCart({ product, showMoalAdd, added }) {
                         <use xlinkHref="#addToInvoice"></use>
                     </svg>
                     <small>
-                        {`موجودی ${product.stock}`}
+                        موجودی
+                    </small>
+                    <small className="ati-pirce">
+                        {product.stock}
                     </small>
                 </div>
 
