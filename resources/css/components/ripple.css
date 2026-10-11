@@ -18,6 +18,7 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
     pointer-events: none;
+    border-radius: 30px;
 }
 
 .ripple-effect.light {
@@ -26,4 +27,8 @@
 
 .ripple-effect.dark {
     background-color: rgba(0, 0, 0, 0.075);
+}
+
+*:has(>.ripple) {
+    -webkit-tap-highlight-color: transparent;
 }
