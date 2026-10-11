@@ -62,6 +62,7 @@ function CreateUser({ sendUrl, user }) {
                             value={data.mobile}
                             onChange={addFormData}
                             error={errors.mobile}
+                            maxLength={11}
                             required
                         />
 
@@ -87,7 +88,7 @@ function CreateUser({ sendUrl, user }) {
                             }}
                         />
 
-                        <Button isLoading={processing} />
+                        <Button isLoading={processing} className="ripple" />
 
                     </form>
 

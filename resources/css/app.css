@@ -78,10 +78,15 @@
        Filters
     ========================= */
     --filter-reset: #273449;
-
     --filter-shadow:
         rgba(0, 0, 0, 0.35) 0px 8px 20px -5px,
         rgba(0, 0, 0, 0.25) 0px 4px 10px -5px;
+
+    /* =========================
+       contrast Bg & Color
+    ========================= */
+    --contrast-bg: #7e99ca85;
+    --contrast-color: #38BDF8;
 }
 
 
@@ -91,17 +96,14 @@
     ========================= */
     --app-bg: #F3F6FD;
 
-
     /* =========================
        Sidebar
     ========================= */
     --sidebar: #FFFFFF;
     --sidebar-main-color: #1F2937;
     --sidebar-link: #475569;
-
     --sidebar-hover-link: #EEF4FF;
     --sidebar-active-link: #DCEBFF;
-
 
     /* =========================
        Content
@@ -120,7 +122,6 @@
     --table-even-row: #F7F9FC;
     --table-hover-row: #EEF4FF;
 
-
     /* =========================
        Actions
     ========================= */
@@ -132,9 +133,14 @@
        Filters
     ========================= */
     --filter-reset: #E2E8F0;
-
     --filter-shadow:
         rgba(99, 99, 99, 0.12) 0px 4px 12px;
+
+    /* =========================
+       contrast Bg & Color
+    ========================= */
+    --contrast-bg: #DCEBFA;
+    --contrast-color: #1473E6;
 }
 
 body,

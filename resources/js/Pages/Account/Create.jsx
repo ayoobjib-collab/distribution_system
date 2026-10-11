@@ -84,6 +84,7 @@ function CreateUser({ sendUrl, account }) {
                             onChange={addFormData}
                             error={errors.mobile}
                             required={true}
+                            maxLength={11}
                         />
 
                         <FormField
@@ -122,7 +123,10 @@ function CreateUser({ sendUrl, account }) {
                             error={errors.address}
                         />
 
-                        <Button isLoading={processing} />
+                        <Button
+                            className='ripple'
+                            isLoading={processing}
+                        />
 
                     </form>
 

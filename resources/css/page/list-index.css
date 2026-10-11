@@ -4,7 +4,7 @@
 
 .cats>div {
     flex: 1 0 auto;
-    background: #0078ff;
+    background-color: var(--table-header-bg);
     padding: 5px;
     border-radius: 8px;
 }
@@ -95,7 +95,7 @@
     position: absolute;
     bottom: 3px;
     right: 3px;
-    background: #0078ff;
+    background: var(--contrast-bg);
     border-radius: 27px;
     padding-left: 5px;
 }
@@ -107,12 +107,12 @@
 }
 
 .add-to-invoice small {
-    color: white;
+    color: var(--contrast-color);
 }
 
 #addToInvoice path {
-    stroke: white;
-    stroke-width: 15px;
+    stroke: var(--contrast-color);
+    stroke-width: 20px;
 }
 
 small.ati-pirce {

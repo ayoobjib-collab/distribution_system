@@ -1,13 +1,15 @@
 import React from 'react';
 
-function Button({ isLoading, text = 'ذخیره', childClicked }) {
+function Button({ isLoading, text = 'ذخیره', childClicked, className = '' }) {
 
     return (
         <div className="form-button">
+
             <button
                 type="submit"
                 disabled={isLoading}
                 onClick={childClicked}
+                className={className}
             >
                 <span>
                     {text}

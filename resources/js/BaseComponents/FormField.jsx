@@ -14,7 +14,8 @@ const FormField = memo(function FormField({
     options = [],
     readOnly = false,
     customClass = "",
-    isAmount = false
+    isAmount = false,
+    maxLength = ''
 }) {
 
     const isSelect = type === "select";
@@ -35,8 +36,8 @@ const FormField = memo(function FormField({
             customEvent.target.value = reFromatAmount(value);
 
         onChange(customEvent);
-        
-    }, [name, isAmount, onChange]); 
+
+    }, [name, isAmount, onChange]);
 
     const commonProps = { name, id: name, required, placeholder, readOnly };
 
@@ -53,7 +54,9 @@ const FormField = memo(function FormField({
                 <textarea {...commonProps} value={displayValue ?? ""} onChange={onChangeByFilterData} />
             ) : (
                 <input {...commonProps} type={type} value={displayValue}
-                    checked={isCheckbox ? !!value : undefined} onChange={onChangeByFilterData} />
+                    checked={isCheckbox ? !!value : undefined} onChange={onChangeByFilterData}
+                    maxLength={maxLength}
+                />
             )}
 
             <label htmlFor={name}>{label + (required ? ' (*)' : '')}</label>

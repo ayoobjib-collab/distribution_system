@@ -99,23 +99,14 @@
     }
 
     .mobile-menu .active a svg {
-        fill: #38BDF8;
+        fill: var(--contrast-color);
     }
 
     .mobile-menu a[data-loading] span.svg-wrap,
     .mobile-menu .active span.svg-wrap {
-        background: #7e99ca85;
+        background: var(--contrast-bg);
         border-radius: 12px;
         width: 100%;
-    }
-
-    /* Light mode colors */
-    .light .mobile-menu .active span.svg-wrap {
-        background: #DCEBFA;
-    }
-
-    .light .mobile-menu .active a svg {
-        fill: #1473E6;
     }
 }
 
