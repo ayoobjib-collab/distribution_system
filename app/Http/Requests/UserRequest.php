@@ -12,7 +12,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->hasPermissionTo('user_permission') ?? false;
+        return $this->user()->isAdmin() ?? false;
     }
 
     /**

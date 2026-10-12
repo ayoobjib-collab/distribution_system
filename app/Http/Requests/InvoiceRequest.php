@@ -22,8 +22,10 @@ class InvoiceRequest extends FormRequest
         // Create
         if (!$invoice) return true;
 
+        $user = $this->user();
+
         // Update
-        return $invoice->user_id === auth()->id();
+        return $invoice->user_id === $user->id || $user?->isAdmin();
     }
 
     /**

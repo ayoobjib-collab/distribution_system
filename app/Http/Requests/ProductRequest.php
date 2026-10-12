@@ -10,7 +10,7 @@ class ProductRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->hasPermissionTo('product_permission') ?? false;
+        return $this->user()?->hasRole('admin');
     }
 
     public function rules(): array

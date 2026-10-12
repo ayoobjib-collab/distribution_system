@@ -101,8 +101,6 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product, UpdateProductImages $updateProductImages)
     {
-        $this->abortIfIsNotAdmin($request);
-
         $validated = $request->validated();
 
         /**

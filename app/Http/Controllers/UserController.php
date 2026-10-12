@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\RoutesName;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -59,8 +58,6 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $this->abortIfIsNotAdmin($request);
-
         $validated = $request->validated();
 
         $user = User::create([

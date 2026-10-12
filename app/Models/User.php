@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class);
     }
+
+    public function isAdmin():bool
+    {
+        return $this?->hasRole('admin');
+    }
 }

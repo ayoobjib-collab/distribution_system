@@ -48,8 +48,6 @@ class TransactionController extends Controller
 
     public function update(Transaction $transaction, TransactionRequest $request)
     {
-        $this->abortIfIsNotAdmin($request);
-
         $validated = $request->validated();
 
         $transaction->update($validated);
@@ -60,6 +58,7 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         $transaction->delete();
+        
         return back()->with('msg', 'با موفقیت انجام شد');
     }
 }

@@ -115,7 +115,6 @@ class InvoiceController extends Controller
 
     public function update(InvoiceRequest $request, Invoice $invoice, InvoiceUpdateAction $action)
     {
-        $this->validateUser($request, $invoice);
 
         if ($invoice->status !== InvoiceStatus::Draft)
             return back()->with('msg', 'فاکتور کامل شده و شما قادر به ویرایش آن نیستید');
