@@ -1,11 +1,10 @@
 import DashboardLayout from "@/Layouts/Dashboard/Layout"
 import Pagination from "@/BaseComponents/Pagination"
-
 import { formatAmount } from '@/functions/helper.js';
 import { AiOutlineEdit } from "react-icons/ai";
-
 import { Link } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
+import Tooltip from "@/BaseComponents/Tooltip";
 
 function Index({ accounts }) {
 
@@ -27,11 +26,9 @@ function Index({ accounts }) {
                 <table className="responsive-table">
                     <thead>
                         <tr>
-                            <th>آیدی</th>
                             <th>نام فروشگاه</th>
                             <th>کاربر ثبت کننده</th>
                             <th>موبایل</th>
-                            <th>تلفن</th>
                             <th>سقف اعتبار</th>
                             <th>وضعیت</th>
                             <th>عملیات</th>
@@ -41,8 +38,7 @@ function Index({ accounts }) {
                     <tbody>
                         {accounts?.data.length > 0 ? (
                             accounts.data.map((item) => (
-                                <tr key={item.id}>
-                                    <td data-label="آیدی">{item.id}</td>
+                                <tr key={item.id} data-id={item.id}>
 
                                     <td data-label="نام فروشگاه">
                                         {item.name}
@@ -54,10 +50,6 @@ function Index({ accounts }) {
 
                                     <td data-label="موبایل">
                                         {item.mobile || '-'}
-                                    </td>
-
-                                    <td data-label="تلفن">
-                                        {item.phone || '-'}
                                     </td>
 
                                     <td data-label="سقف اعتبار">
@@ -77,17 +69,15 @@ function Index({ accounts }) {
                                     </td>
 
                                     <td data-label="عملیات">
-                                        <div className="flex items-center gap-2">
-
+                                        <Tooltip text="ویرایش">
                                             <Link
                                                 href={`/account/${item.id}/edit`}
-                                                className="ml-2"
                                             >
                                                 <AiOutlineEdit size={24} />
                                             </Link>
-
-                                        </div>
+                                        </Tooltip>
                                     </td>
+
                                 </tr>
                             ))
                         ) : (

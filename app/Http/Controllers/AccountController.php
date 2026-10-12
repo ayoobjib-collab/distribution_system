@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\RoutesName;
 use App\Models\Account;
 use App\Http\Requests\AccountRequest;
 use Illuminate\Http\Request;
@@ -17,7 +16,7 @@ class AccountController extends Controller
 
     public function index(Request $request)
     {
-        $this->breadcrumbs->add('لیست همه حساب‌ها');
+        $this->breadcrumbs->add('لیست همه فروشگاه‌ها');
 
         $user = $request->user();
 
@@ -93,16 +92,20 @@ class AccountController extends Controller
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active', true);
 
+        $this->validateUser($request, $account);
+
         $account->update($data);
 
-        $this->back('حساب بروز رسانی');
+        return $this->back('حساب بروز رسانی');
     }
 
-    public function destroy(Account $account)
+    public function destroy(Request $request, Account $account)
     {
+        $this->validateUser($request, $account);
+        
         $account->delete();
-
-        $this->back('حساب موقتا حذف شد');
+        
+        return $this->back('حساب موقتا حذف شد');
     }
 
     public function search(Request $request)

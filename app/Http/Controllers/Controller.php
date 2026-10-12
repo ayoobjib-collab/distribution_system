@@ -34,7 +34,7 @@ class Controller extends BaseController
     {
         abort_unless(
             $request->user()->hasRole('admin')
-                || $model->user_id === $request->user()->id,
+            || $model->user_id === $request->user()->id,
             404
         );
     }
