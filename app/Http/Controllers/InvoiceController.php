@@ -115,7 +115,6 @@ class InvoiceController extends Controller
 
     public function update(InvoiceRequest $request, Invoice $invoice, InvoiceUpdateAction $action)
     {
-
         if ($invoice->status !== InvoiceStatus::Draft)
             return back()->with('msg', 'فاکتور کامل شده و شما قادر به ویرایش آن نیستید');
 
@@ -176,19 +175,19 @@ class InvoiceController extends Controller
 
     public function updateStatus(Request $request, Invoice $invoice)
     {
-        if (! $request->user()->hasRole('admin'))
-            $this->back('شما قادر به انجام این عملیات نیستید');
+        if (! $request->user()->isAdmin())
+            return $this->back('شما قادر به انجام این عملیات نیستید');
 
         $status = $request->status;
 
         if (!InvoiceStatus::tryFrom($status)) {
-            $this->back('مقدار وضعیت معتبر نمی‌باشد');
+            return $this->back('مقدار وضعیت معتبر نمی‌باشد');
         }
 
         $invoice->update([
             'status' => $request->status,
         ]);
 
-        $this->back('وضعیت فاکتور آپدیت شد');
+        return $this->back('وضعیت فاکتور آپدیت شد');
     }
 }

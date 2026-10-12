@@ -63,6 +63,7 @@ class AccountController extends Controller
     public function store(AccountRequest $request)
     {
         $data = $request->validated();
+
         $data['user_id'] = $request->user()->id;
 
         Account::create($data);
@@ -90,9 +91,8 @@ class AccountController extends Controller
     public function update(AccountRequest $request, Account $account)
     {
         $data = $request->validated();
+        
         $data['is_active'] = $request->boolean('is_active', true);
-
-        $this->validateUser($request, $account);
 
         $account->update($data);
 

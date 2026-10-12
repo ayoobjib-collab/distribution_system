@@ -10,14 +10,13 @@ class AccountRequest extends FormRequest
 
     public function authorize(): bool
     {
-        if (!auth()->check()) {
-            return false;
-        }
+        if (!auth()->check()) return false;
 
         $account = $this->route('account');
 
         if ($account)
-            return auth()->user()->hasRole('admin') || $account->user_id === auth()->id();
+            return $this->user()->hasRole('admin')
+                || $account->user_id === $this->user()->id();
 
         return true;
     }

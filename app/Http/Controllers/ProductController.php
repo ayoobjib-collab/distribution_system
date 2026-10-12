@@ -63,6 +63,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request, UpdateProductImages $updateProductImages)
     {
         $data = $request->validated();
+        
         $data['is_active'] = $request->boolean('is_active');
 
         /**
