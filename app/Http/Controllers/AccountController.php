@@ -68,16 +68,17 @@ class AccountController extends Controller
 
         Account::create($data);
 
-        $this->back('حساب کاربری تعریف شد');
+        return $this->back('حساب کاربری تعریف شد');
     }
 
     public function edit(Account $account, Request $request)
     {
+        $this->validateUser($request, $account);
+
         $this->breadcrumbs
             ->add('فروشگاه‌ها', route('account.index'))
             ->add('ویرایش فروشگاه ' . $account->name);
 
-        $this->validateUser($request, $account);
 
         return $this->render(
             'Create',
@@ -91,7 +92,7 @@ class AccountController extends Controller
     public function update(AccountRequest $request, Account $account)
     {
         $data = $request->validated();
-        
+
         $data['is_active'] = $request->boolean('is_active', true);
 
         $account->update($data);
@@ -102,9 +103,9 @@ class AccountController extends Controller
     public function destroy(Request $request, Account $account)
     {
         $this->validateUser($request, $account);
-        
+
         $account->delete();
-        
+
         return $this->back('حساب موقتا حذف شد');
     }
 

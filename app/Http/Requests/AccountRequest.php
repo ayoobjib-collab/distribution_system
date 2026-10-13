@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Trait\UserValidation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+
 class AccountRequest extends FormRequest
 {
+    use UserValidation;
 
     public function authorize(): bool
     {
@@ -14,21 +17,15 @@ class AccountRequest extends FormRequest
 
         $account = $this->route('account');
 
-        if ($account)
-            return $this->user()->hasRole('admin')
-                || $account->user_id === $this->user()->id();
+        $this->setErrorMsg("شما دسترسی برای ویرایش این حساب ندارید.");
 
-        return true;
+        return $this->isUserValid($account);
     }
 
     public function rules(): array
     {
         $account = $this->route('account');
         $accountId = is_object($account) ? $account->id : $account;
-
-        $ownerId = is_object($account)
-            ? $account->user_id
-            : $this->user()->id;
 
         return [
             // 'user_id' => ['required', 'integer', Rule::in([$this->user()->id])],

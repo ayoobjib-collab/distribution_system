@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Trait\UserValidation;
+
 use App\Models\Product;
 use App\Support\Number;
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,6 +11,8 @@ use Illuminate\Validation\ValidationException;
 
 class InvoiceRequest extends FormRequest
 {
+
+    use UserValidation;
 
     /**
      * Each use can edit self invoice
@@ -19,13 +23,7 @@ class InvoiceRequest extends FormRequest
 
         $invoice = $this->route('invoice');
 
-        // Create
-        if (!$invoice) return true;
-
-        $user = $this->user();
-
-        // Update
-        return $invoice->user_id === $user->id || $user?->isAdmin();
+        return $this->isUserValid($invoice);
     }
 
     /**

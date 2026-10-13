@@ -69,7 +69,7 @@ class UserController extends Controller
 
         $user->assignRole('salesman');
 
-        $this->back('با موفقیت ایجاد شد');
+        return $this->back('با موفقیت ایجاد شد');
     }
 
     public function edit(User $user, Request $request)
@@ -97,6 +97,6 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        $this->back('با موفقیت بروزرسانی شد');
+        return $this->back('با موفقیت بروزرسانی شد');
     }
 }

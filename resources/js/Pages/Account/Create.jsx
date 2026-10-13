@@ -42,7 +42,11 @@ function CreateUser({ sendUrl, account }) {
             post(sendUrl, {
                 preserveScroll: true,
                 onSuccess: () => {
-
+                },
+                onError: (e) => {
+                    console.log(e);
+                },
+                onFinish: () => {
                 }
             })
 

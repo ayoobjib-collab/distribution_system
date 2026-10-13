@@ -10,7 +10,7 @@ class CategoryRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->isAdmin();
     }
 
     public function rules(): array
@@ -31,7 +31,7 @@ class CategoryRequest extends FormRequest
                 Rule::unique('categories', 'slug')
                     ->ignore($category?->id),
             ],
-            
+
             'parent_id' => [
                 'nullable',
                 'integer',
