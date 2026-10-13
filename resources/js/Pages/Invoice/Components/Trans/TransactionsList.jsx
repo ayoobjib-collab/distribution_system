@@ -13,44 +13,60 @@ const TransactionsList = memo(({ transactions, onEdit, onRemove }) => {
     const List = () => {
 
         return (
-            <>
-                {Array.isArray(transactions) &&
+            <table className="responsive-table">
+                <tbody>
 
-                    transactions.map((t, index) => {
+                    {Array.isArray(transactions) &&
 
-                        let typeLabel = (t.type === 'cash') ? 'نقد' : 'چک';
+                        transactions.map((t, index) => {
 
-                        return (
-                            <div key={t.id} className="flex justify-between mb-8">
-                                <b>
-                                    {`${typeLabel} : ${formatAmount(t.amount)}`}
-                                </b>
+                            let typeLabel = (t.type === 'cash') ? 'نقد' : 'چک';
 
-                                <div>
+                            return (
 
-                                    <Tooltip text="ویرایش" onClick={() => onEdit(t)} >
-                                        <span
-                                            className="icon-wrap"
-                                        >
-                                            <AiOutlineEdit size={23} />
-                                        </span>
-                                    </Tooltip>
+                                <tr key={t.id}>
 
-                                    <Tooltip text="حذف">
-                                        <span
-                                            className="icon-wrap"
-                                            onClick={() => onRemove(t.id)}
-                                        >
-                                            <FaRegTrashAlt size={20} fill="inherit" />
-                                        </span>
-                                    </Tooltip>
-                                </div>
+                                    <td className="mob-hide">
+                                        {t.id}
+                                    </td>
 
-                            </div>
-                        )
-                    })
-                }
-            </>
+                                    <td>
+                                        {typeLabel}
+                                    </td>
+
+                                    <td>
+                                        {formatAmount(t.amount)}
+                                    </td>
+
+                                    <td className="mob-hide">
+                                        {t.description}
+                                    </td>
+
+                                    <td>
+                                        <Tooltip text="ویرایش" onClick={() => onEdit(t)} >
+                                            <span
+                                                className="icon-wrap"
+                                            >
+                                                <AiOutlineEdit size={23} />
+                                            </span>
+                                        </Tooltip>
+
+                                        <Tooltip text="حذف">
+                                            <span
+                                                className="icon-wrap"
+                                                onClick={() => onRemove(t.id)}
+                                            >
+                                                <FaRegTrashAlt size={20} fill="inherit" />
+                                            </span>
+                                        </Tooltip>
+                                    </td>
+
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table >
         )
     };
 

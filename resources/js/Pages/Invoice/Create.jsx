@@ -7,10 +7,11 @@ import AsyncSelect from "react-select/async";
 import ModalAddItem from "./Components/ModalAddItem";
 import CustomerData from './Components/CustomerData';
 import ItemsTable from './Components/ItemsTable';
-import TransactionShowEdit from './Components/TransactionShowEdit';
+import TransactionShowEdit from './Components/Trans/TransactionShowEdit';
 import { MdSave } from "react-icons/md";
 import { SiDatabricks } from "react-icons/si";
 import useInvoiceItems from './Hooks/useInvoiceItems';
+
 import '@/../css/page/invoice-create.css';
 
 

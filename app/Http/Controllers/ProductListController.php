@@ -22,11 +22,18 @@ class ProductListController extends Controller
             ->add('فاکتورها', route('invoice.index'))
             ->add('لیست محصولات');
 
+        $products = Inertia::scroll(function () {
+
+            // dd($page);
+
+            return Product::with('categories')->paginate();
+        });
+
         return $this->render(
             'Index',
             [
                 'cats'      => $this->categories(),
-                'products' => Inertia::scroll(fn() => Product::paginate())
+                'products' =>  $products
             ]
         );
     }

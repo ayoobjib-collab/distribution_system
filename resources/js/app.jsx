@@ -5,6 +5,8 @@ import '../css/app.css';
 
 import '@/vanilla/ripple.js';
 
+import { StrictMode } from 'react';
+
 createInertiaApp({
     resolve: (name) => resolvePageComponent(
         `./Pages/${name}.jsx`,
@@ -15,7 +17,7 @@ createInertiaApp({
         )
     ),
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />);
+        createRoot(el).render(<StrictMode><App {...props} /></StrictMode>);
     },
     progress: {
         delay: 250,

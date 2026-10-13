@@ -141,7 +141,8 @@ class InvoiceRequest extends FormRequest
             'account_id' => 'طرف حساب',
             'items' => 'اقلام فاکتور',
             'items.*.quantity' => 'تعداد محصول',
-            'transactions.*.amount' => 'مبلغ تراکنش'
+            'transactions.*.amount' => 'مبلغ تراکنش',
+            'transactions.*.id' => 'شماره تراکنش'
         ];
     }
 }

@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 
-import ModalAddTranaction from './Trans/ModalAddTranaction';
-import TransactionsList from './Trans/TransactionsList';
+import ModalAddTransaction from './ModalAddTransaction';
+import TransactionsList from './TransactionsList';
 
 const TransactionShowEdit = memo(({ dataTransactions, setData }) => {
 
@@ -21,6 +21,7 @@ const TransactionShowEdit = memo(({ dataTransactions, setData }) => {
     }, [dataTransactions, setData]);
 
     const handleTransactionChanged = useCallback((trans) => {
+
         if (editingTransaction !== null) {
             setData(
                 'transactions',
@@ -31,22 +32,24 @@ const TransactionShowEdit = memo(({ dataTransactions, setData }) => {
 
             nullEditingTrans();
         } else {
+
             setData('transactions', [
                 ...dataTransactions,
                 trans
             ]);
         }
-    }, [editingTransaction, dataTransactions, setData, nullEditingTrans]);
+
+    }, [editingTransaction, dataTransactions, setData]);
 
     return (
         <>
             <TransactionsList
                 transactions={dataTransactions}
-                onEdit={(transaction) => setEditingTransaction(transaction)}
+                onEdit={setEditingTransaction}
                 onRemove={removeTrans}
             />
 
-            <ModalAddTranaction
+            <ModalAddTransaction
                 transaction={editingTransaction}
                 childChanged={handleTransactionChanged}
                 onModalClose={nullEditingTrans}

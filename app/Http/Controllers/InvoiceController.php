@@ -140,7 +140,7 @@ class InvoiceController extends Controller
                 'items.product:id,name,stock',
                 'account:id,name',
                 'user:id,full_name,mobile',
-                'transactions:id,invoice_id,type,amount,due_date', //invoice_id need for work
+                'transactions:id,invoice_id,type,amount,due_date,description', //invoice_id need for work
             ])
             ->findOrFail($id);
 

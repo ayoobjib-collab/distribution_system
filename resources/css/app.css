@@ -211,7 +211,8 @@ h3 {
     flex-direction: column;
     color: var(--app-content-main-color);
     gap: 15px;
-    overflow: hidden
+    /* overflow: hidden */
+    max-width: 100%;
 }
 
 

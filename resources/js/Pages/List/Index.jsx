@@ -10,6 +10,8 @@ import LinkToInvoice from "./Components/LinkToInvoice";
 
 import { getInvoiceProducts } from '@/functions/storageInvoiceProducts.js';
 
+import { InfiniteScroll } from '@inertiajs/react'
+
 function ListIndex({ cats, products }) {
 
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -45,18 +47,20 @@ function ListIndex({ cats, products }) {
                     ))
                 }
             </div>
-            <div className="product-grid">
 
-                {products.data.map((p) => {
-                    return (
-                        <ProductCart
-                            key={p.id}
-                            product={p}
-                            showMoalAdd={showMoalAdd}
-                            added={addedProducts.includes(p.id)}
-                        />
-                    )
-                })}
+            <div className="products-wrapper">
+                <InfiniteScroll data="products" className="product-grid" loading={() => "Loading more users..."}>
+                    {products.data.map((p) => {
+                        return (
+                            <ProductCart
+                                key={p.id}
+                                product={p}
+                                showMoalAdd={showMoalAdd}
+                                added={addedProducts.includes(p.id)}
+                            />
+                        )
+                    })}
+                </InfiniteScroll>
             </div>
 
             {

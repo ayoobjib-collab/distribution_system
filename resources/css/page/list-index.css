@@ -12,6 +12,10 @@
 .cats {
     border-bottom: 2px solid #d9cfcf4a;
     padding-bottom: 5px;
+    position: sticky;
+    top:0;
+    background-color:var(--sidebar);
+    z-index:3;
 }
 
 .product-grid {

@@ -20,47 +20,38 @@ const typeOptions = [
     },
 ];
 
-const baseTransData = {
-    id: createRandomId(),
-    type: 'cash',
-    reference_no: '',
-    amount: '',
-    due_date: '',
-    description: '',
-};
+const ModalAddTransaction = ({ transaction, childChanged, onModalClose }) => {
 
-const getBaseTransData = (id) => {
-    return {
-        id: id,
+    const baseTransData = {
+        id: createRandomId(),
         type: 'cash',
         reference_no: '',
         amount: '',
         due_date: '',
         description: '',
-    }
-};
-
-const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
+    };
 
     const [open, setOpen] = useState(false);
     const [singleTrans, setSingleTrans] = useState(
-        transaction ?? getBaseTransData(createRandomId)
+        transaction ?? baseTransData
     );
 
     useEffect(() => {
         if (transaction == null) return;
+
         setSingleTrans(transaction);
         setOpen(true);
     }, [transaction]);
 
-    const updateField = useCallback((name, value) => {
+    const updateField = (name, value) => {
         setSingleTrans(prev => ({
             ...prev,
             [name]: value
         }));
-    }, []);
+    };
 
     const addTransaction = () => {
+        
         if (singleTrans.amount === '') {
             alert('قیمت اجباری هست');
             return;
@@ -72,9 +63,9 @@ const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
         setOpen(false);
     }
 
-    const openModal = useCallback(() => {
+    const openModal = () => {
         setOpen(true);
-    }, []);
+    };
 
     const closeModal = useCallback(() => {
         setSingleTrans(baseTransData);
@@ -86,9 +77,6 @@ const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
         const { name, value } = e.target;
         updateField(name, value);
     }, []);
-
-
-    console.log(singleTrans.due_date);
 
     return (
         <>
@@ -140,10 +128,10 @@ const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
                             </span>
                         </div>
 
-                        <JalaliDatePicker
+                        {/* <JalaliDatePicker
                             value={singleTrans.due_date}
                             onChange={(v) => updateField('due_date', v)}
-                        />
+                        /> */}
                     </div>
                 }
 
@@ -161,4 +149,4 @@ const ModalAddTranaction = ({ transaction, childChanged, onModalClose }) => {
 
 }
 
-export default ModalAddTranaction;
+export default ModalAddTransaction;

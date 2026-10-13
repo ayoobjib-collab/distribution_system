@@ -9,8 +9,6 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { GrCompliance } from "react-icons/gr";
 import { LiaSmsSolid } from "react-icons/lia";
 
-const currentPath = window.location.href;
-
 function deleteItem($itemId) {
     if (confirm('آیا از حذف فاکتور اطمینان دارید؟'))
         router.delete('/invoice/' + $itemId);
@@ -45,10 +43,10 @@ function Index({ invoices }) {
                             <th>کاربر ثبت کننده</th>
                             <th>طرف حساب</th>
                             <th>مبلغ کل</th>
+                            <th>وضعیت</th>
                             {
                                 isAdmin &&
                                 <>
-                                    <th>وضعیت</th>
                                     <th>تراکنش‌ها</th>
                                 </>
                             }
@@ -62,15 +60,13 @@ function Index({ invoices }) {
                                 <td>{item.user.full_name}</td>
                                 <td>{item.account.name}</td>
                                 <td>{formatAmount(item.subtotal)}</td>
-
-
-
+                                <td className={item.status}>
+                                    {item.status_label}
+                                </td>
                                 {
                                     isAdmin &&
                                     <>
-                                        <td className={item.status}>
-                                            {item.status_label}
-                                        </td>
+
                                         <td d={item.transactions.length}>
                                             {
                                                 item.transactions?.length > 0 &&
