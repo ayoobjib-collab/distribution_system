@@ -16,7 +16,7 @@ class ProductListController extends Controller
         return 'List';
     }
 
-    public function run()
+    public function run(Request $request)
     {
         $this->breadcrumbs
             ->add('فاکتورها', route('invoice.index'))
@@ -24,9 +24,18 @@ class ProductListController extends Controller
 
         $products = Inertia::scroll(function () {
 
-            // dd($page);
+            $products = Product::query()
+                ->join('category_product', 'products.id', '=', 'category_product.product_id')
+                ->select('products.*', 'category_product.category_id')
+                ->when(request('category_id'), function ($query, $categoryId) {
+                    $query->where('category_product.category_id', $categoryId);
+                })
+                ->orderBy('category_product.category_id', 'asc')
+                ->orderBy('products.created_at', 'desc')
+                ->paginate(15);
+                // ->withQueryString();
 
-            return Product::with('categories')->paginate();
+            return $products;
         });
 
         return $this->render(
@@ -42,7 +51,7 @@ class ProductListController extends Controller
     {
         return Category::query()
             ->select('id', 'name')
-            ->orderBy('name')
+            ->orderBy('id')
             ->get();
     }
 

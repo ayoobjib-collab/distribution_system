@@ -21,7 +21,7 @@
         height: 100vh;
         transform: translateX(100%);
         transition: all .2s ease-in;
-        z-index: 1;
+        z-index: 5;
     }
 
     .sidebar.open {

@@ -35,7 +35,6 @@ function ProductCart({ product, showMoalAdd, added }) {
                         {product.stock}
                     </small>
                 </div>
-
             </div>
 
             <div className="pc-bottom">
